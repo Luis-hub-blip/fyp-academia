@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYP+C - Gestão Dinâmica</title>
+    <style>
+        /* Variáveis de Cor Corporativa baseadas na Marca FYP+C */
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-purple: #4a2574;
+            --accent-gold: #f59e0b;
+            --text-dark: #1e293b;
+            --bg-light: #f8fafc;
+            --cat-ingles: #3b82f6;
+            --cat-frances: #ef4444;
+            --cat-informatica: #10b981;
+            --cat-evento: #f59e0b;
+            
+            /* Cores da Agenda/Kanban */
+            --status-pendente: #dc2626;
+            --status-andamento: #d97706;
+            --status-realizada: #10b981;
+        }
+
+        body { 
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif; 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        /* BARRA DE ADMINISTRAÇÃO */
+        .admin-bar { 
+            background: #0f172a; 
+            color: white; 
+            padding: 8px 30px; 
+            text-align: right; 
+            font-size: 13px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            align-items: center;
+        }
+        .admin-status-text {
+            color: #94a3b8;
+            font-size: 12px;
+            margin-right: auto;
+        }
+        .admin-bar button { 
+            background: var(--primary-purple); 
+            color: white; 
+            border: none; 
+            padding: 6px 16px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+        .admin-bar button:hover { background: #5c2f90; }
+        .admin-bar .btn-logout { background: #dc2626; display: none; }
+        .admin-bar .btn-logout:hover { background: #b91c1c; }
+        .admin-bar .btn-change-pass { background: #475569; display: none; }
+        .admin-bar .btn-change-pass:hover { background: #334155; }
+        .admin-bar .btn-toggle-edit { background: var(--accent-gold); color: #0f172a; display: none; }
+
+        /* MODAL DE LOGIN UNIFICADO */
+        .login-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .login-modal-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+        .login-modal-card h3 { margin-top: 0; color: var(--primary-blue); font-size: 20px; margin-bottom: 20px; }
+        .login-error-msg { color: #dc2626; font-size: 13px; font-weight: bold; margin-bottom: 15px; display: none; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+        .btn-modal-cancel { background: #64748b; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-modal-confirm { background: var(--primary-blue); color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+        /* Dica de Edição Ativa */
+        .admin-edit-hint { 
+            display: none; 
+            background: #fee2e2; 
+            color: #991b1b; 
+            padding: 10px 20px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            text-align: center; 
+            border-bottom: 2px solid #fca5a5; 
+        }
+        body.admin-mode .admin-edit-hint { display: block; }
+
+        /* Cabeçalho Principal */
+        .brand-header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); 
+            color: white; 
+            padding: 15px 30px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-area { display: flex; align-items: center; gap: 20px; }
+        .logo-container { background: white; padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; width: 140px; height: 60px; }
+        .logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .company-name { font-size: 24px; font-weight: 800; }
+         
+        /* Menu de Navegação Superior */
+        .main-nav-tabs { display: flex; gap: 10px; align-items: center; }
+        .nav-tab-btn { 
+            background-color: rgba(255, 255, 255, 0.15); 
+            color: white; 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: all 0.2s;
+        }
+        .nav-tab-btn:hover { background-color: rgba(255,255,255,0.25); }
+        .nav-tab-btn.active { 
+            background-color: white; 
+            color: var(--primary-blue); 
+        }
+        .nav-admin-only { display: none; }
+        body.admin-mode .nav-admin-only { display: inline-block; }
+
+        .main-tab-content { display: none; }
+        .main-tab-content.active { display: block; }
+
+        /* HERO SLIDER */
+        .hero-slider-container {
+            position: relative;
+            width: 100%;
+            height: 540px;
+            overflow: hidden;
+            background-color: #0f172a;
+        }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+        .slide.active { opacity: 1; }
+         
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.3) 100%);
+            z-index: 1;
+        }
+
+        /* Caixa de Destaque Flutuante */
+        .hero-text-card {
+            position: relative;
+            z-index: 2;
+            margin-left: 8%;
+            max-width: 600px;
+            color: white;
+            background: rgba(15, 23, 42, 0.65);
+            padding: 35px;
+            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            border-left: 5px solid var(--accent-gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .hero-text-card h1 { font-size: 34px; margin: 0 0 15px 0; font-weight: 800; line-height: 1.2; color: white; }
+        .hero-text-card p { font-size: 15px; line-height: 1.6; margin-bottom: 25px; color: #cbd5e1; }
+         
+        /* Botões de Ação na Aba Início */
+        .home-actions-area { display: flex; gap: 15px; }
+        .hero-cta-btn {
+            background-color: var(--accent-gold);
+            color: #0f172a;
+            border: none;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-transform: uppercase;
+        }
+        .hero-cta-btn:hover { background-color: #e08e0b; }
+         
+        .hero-news-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+        .hero-news-btn:hover { background-color: white; color: #0f172a; }
+
+        /* Controlos do Slider */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: background 0.3s; }
+        .dot.active { background: var(--accent-gold); width: 24px; border-radius: 6px; }
+
+        /* Secção Inferior Corporativa */
+        .content-section { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+         
+        .info-block { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 4px solid var(--primary-purple); }
+        .info-block h3 { color: var(--primary-blue); font-size: 22px; margin-top: 0; margin-bottom: 15px; font-weight: 700; }
+        .info-block p { line-height: 1.6; color: #475569; font-size: 15px; }
+
+        /* Lista de Valores */
+        .valores-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+        .valores-list li { background: #f1f5f9; padding: 12px 15px; border-radius: 6px; font-size: 14px; color: #334155; line-height: 1.4; }
+        .valores-list li strong { color: var(--primary-blue); }
+
+        /* Banner do Slogan */
+        .commitment-banner { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); padding: 40px; text-align: center; border-radius: 8px; margin-top: 40px; margin-bottom: 40px; }
+        .commitment-banner h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin: 0 0 10px 0; }
+        .commitment-banner blockquote { font-size: 22px; font-weight: 700; color: var(--primary-blue); margin: 0; }
+
+        /* SECÇÃO DE NOVIDADES DINÂMICAS */
+        .news-section-title { font-size: 26px; color: var(--primary-blue); font-weight: 800; border-bottom: 3px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 25px; }
+        .news-container-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .news-card { background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; position: relative; }
+         
+        .news-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; }
+        .news-video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; object-fit: cover; }
+         
+        .news-card-body { padding: 20px; flex-grow: 1; }
+        .news-card-title { font-size: 18px; font-weight: 700; color: var(--primary-purple); margin: 0 0 10px 0; }
+        .news-card-text { font-size: 14px; line-height: 1.5; color: #475569; margin: 0; }
+        .btn-delete-news { background: #dc2626; color: white; border: none; padding: 6px 12px; font-size: 11px; border-radius: 4px; cursor: pointer; font-weight: bold; position: absolute; top: 10px; right: 10px; z-index: 10; display: none; }
+        body.admin-mode .btn-delete-news { display: block; }
+
+        /* Formulário Admin de Novidades */
+        .admin-news-form-block { display: none; background: #f1f5f9; border: 2px dashed var(--primary-purple); padding: 25px; border-radius: 8px; margin-bottom: 40px; }
+        body.admin-mode .admin-news-form-block { display: block; }
+        .form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; align-items: center; }
+        .form-control { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: inherit; font-size: 14px; background: #fff; }
+        .file-label { font-size: 13px; font-weight: bold; color: var(--primary-blue); display: block; margin-bottom: 5px; }
+        .btn-publish-news { background: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        .btn-publish-news:hover { background: #172d6b; }
+
+        body.admin-edit-active [contenteditable="true"] { 
+            border: 2px dashed var(--primary-blue) !important; 
+            padding: 10px !important; 
+            border-radius: 4px !important;
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+         
+        .btn-save-content { 
+            background: #16a34a; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            margin-top: 20px; 
+            display: none; 
+        }
+        body.admin-edit-active .btn-save-content { display: block; }
+
+        /* TABELAS E LAYOUT DE ABAS ADMINISTRATIVAS */
+        .adm-data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-top: 15px; }
+        .adm-data-table th { background: var(--primary-blue); color: white; padding: 12px 15px; font-size: 14px; text-align: left; }
+        .adm-data-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; font-size: 14px; color: #334155; }
+        .adm-data-table tr:last-child td { border-bottom: none; }
+        .adm-data-table tr:hover { background: #f8fafc; }
+        
+        .badge-status { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        .badge-pago { background: #d1fae5; color: #065f46; }
+        .badge-divida { background: #fee2e2; color: #991b1b; }
+
+        /* LAYOUT DO CALENDÁRIO */
+        .calendar-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; margin-top: 20px; }
+        .calendar-sidebar { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); height: fit-content; }
+        .sidebar-title { font-size: 15px; font-weight: 700; color: var(--primary-blue); margin-bottom: 15px; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; }
+         
+        .filter-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+        .filter-btn { display: flex; align-items: center; gap: 10px; background: #f1f5f9; border: none; padding: 10px; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; text-align: left; }
+        .filter-btn:hover, .filter-btn.active { background: #e2e8f0; }
+        .filter-btn.active { box-shadow: inset 0 0 0 2px var(--primary-purple); }
+        .color-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+         
+        .upcoming-list { display: flex; flex-direction: column; gap: 12px; }
+        .upcoming-item { padding: 10px; border-left: 4px solid #cbd5e1; background: #f8fafc; border-radius: 0 6px 6px 0; font-size: 13px; }
+        .upcoming-item .date { font-weight: 700; color: var(--primary-blue); display: block; margin-bottom: 2px; }
+
+        .calendar-main { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .calendar-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .calendar-nav h2 { margin: 0; font-size: 22px; color: var(--primary-blue); font-weight: 800; }
+        .nav-arrow-btn { background: var(--primary-purple); color: white; border: none; width: 36px; height: 36px; border-radius: 6px; font-size: 16px; cursor: pointer; }
+         
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+        .weekday-header { text-align: center; font-weight: 700; color: #64748b; font-size: 13px; padding-bottom: 10px; text-transform: uppercase; }
+         
+        .calendar-day { min-height: 95px; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; display: flex; flex-direction: column; gap: 4px; background: #fff; position: relative; }
+        .calendar-day.empty { background: #f8fafc; border-color: transparent; }
+        .calendar-day .day-num { font-weight: 700; color: #475569; font-size: 14px; }
+        .day-events { display: flex; flex-direction: column; gap: 3px; overflow-y: auto; max-height: 65px; }
+        .event-badge { font-size: 11px; padding: 2px 6px; color: white; border-radius: 3px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+         
+        .cat-ingles { background-color: var(--cat-ingles); }
+        .cat-frances { background-color: var(--cat-frances); }
+        .cat-informatica { background-color: var(--cat-informatica); }
+        .cat-evento { background-color: var(--cat-evento); }
+
+        .finance-section-wrapper { margin-top: 30px; background: #f1f5f9; padding: 20px; border-radius: 8px; border: 1px solid #cbd5e1; }
+
+        /* ==========================================================
+           ESTILOS EXCLUSIVOS DA AGENDA / KANBAN (BASEADO NA IMAGEM)
+           ========================================================== */
+        .agenda-view-container { display: none; }
+        .agenda-view-container.active { display: block; }
+        
+        /* Barra de Filtros Superiores da Agenda */
+        .agenda-filter-bar { display: flex; gap: 12px; margin-bottom: 25px; align-items: center; }
+        .btn-ag-filter { padding: 8px 20px; border-radius: 6px; border: none; font-weight: 700; font-size: 13px; cursor: pointer; transition: opacity 0.2s; }
+        .btn-ag-filter:hover { opacity: 0.9; }
+        .btn-ag-filter.all { background: #e2e8f0; color: #475569; }
+        .btn-ag-filter.pendente { background: var(--status-pendente); color: white; }
+        .btn-ag-filter.andamento { background: var(--status-andamento); color: white; }
+        .btn-ag-filter.realizada { background: var(--status-realizada); color: white; }
+        .btn-ag-filter.active-filter { box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.3); }
+
+        /* Grelha de Cards */
+        .agenda-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        
+        /* Estrutura do Card baseado na Imagem */
+        .agenda-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            padding: 20px;
+            border-left: 5px solid #cbd5e1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        /* Mapeamento Dinâmico de Cores de Borda por Estado */
+        .agenda-card.border-pendente { border-left-color: var(--status-pendente); }
+        .agenda-card.border-andamento { border-left-color: var(--status-andamento); }
+        .agenda-card.border-realizada { border-left-color: var(--status-realizada); }
+
+        .agenda-card-header { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748b; font-weight: 600; }
+        .agenda-card-header .date-info { display: flex; align-items: center; gap: 5px; }
+        .agenda-card-header .priority-tag { display: flex; align-items: center; gap: 4px; font-weight: 700; text-transform: capitalize; }
+        .priority-alta { color: #dc2626; }
+        .priority-media { color: #d97706; }
+        .priority-baixa { color: #2563eb; }
+
+        .agenda-card-title { font-size: 18px; font-weight: 700; color: #0f172a; margin: 4px 0 0 0; }
+        
+        .agenda-card-responsible { background: #f8fafc; padding: 8px 12px; border-radius: 6px; font-size: 13px; color: #334155; display: flex; align-items: center; gap: 8px; }
+        
+        /* Dropdowns Simulados da Captura de Ecrã */
+        .agenda-dropdown-simulation {
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #475569;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+        .agenda-dropdown-simulation span { display: flex; align-items: center; gap: 6px; }
+
+        /* Seletor Real para Troca de Estado por Sócios/Professores */
+        .agenda-state-select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 13px;
+            font-weight: 600;
+            background: #fff;
+            color: #1e293b;
+            cursor: pointer;
+        }
+
+        /* Formulário de Nova Agenda */
+        .admin-agenda-form { display: none; background: #f1f5f9; border: 2px dashed var(--primary-blue); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
+        body.admin-mode .admin-agenda-form { display: block; }
+    </style>
+</head>
+<body>
+
+    <!-- Janela Pop-up Customizada para Acesso Administrativo Unificado -->
+    <div id="login-modal" class="login-modal-overlay">
+        <div class="login-modal-card">
+            <h3>Painel Administrativo - FYP+C</h3>
+            <div id="login-error" class="login-error-msg">Utilizador ou palavra-passe incorreta! Tente novamente.</div>
+            
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="mod-username">Nome de Utilizador:</label>
+                <input type="text" id="mod-username" class="form-control" placeholder="Ex: Lázaro Luis">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="mod-password">Palavra-passe:</label>
+                <input type="password" id="mod-password" class="form-control" placeholder="••••••••">
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closeLoginModal()">Cancelar</button>
+                <button class="btn-modal-confirm" onclick="submitAdminLogin()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Administração Personalizada -->
+    <div class="admin-bar">
+        <span id="admin-status" class="admin-status-text">Modo Público</span>
+        <button id="btn-toggle-edit" class="btn-toggle-edit" onclick="toggleTextEditing()">✏️ Editar Conteúdo</button>
+        <button id="btn-login-admin" onclick="openLoginModal()">Aceder como Admin</button>
+        <button id="btn-change-pass" class="btn-change-pass" onclick="changeCurrentAdminPassword()">Alterar Password</button>
+        <button id="btn-logout-admin" class="btn-logout" onclick="logoutAdmin()">Sair</button>
+    </div>
+    <div class="admin-edit-hint">Modo Admin Ativo: Utilize o formulário da Agenda para delegar tarefas a sócios e professores. Clique em "Editar Conteúdo" para os blocos da página Inicial.</div>
+
+    <!-- Cabeçalho de Navegação -->
+    <div class="brand-header">
+        <div class="logo-area">
+            <div class="logo-container"><img class="logo-img" src="logo.png" alt="Logo"></div>
+            <div class="company-name">FYP+C</div>
+        </div>
+        <div class="main-nav-tabs">
+            <button class="nav-tab-btn active" onclick="switchMainTab('tab-inicio')">Início</button>
+            <button class="nav-tab-btn" onclick="switchMainTab('tab-calendario')">Calendário</button>
+            <button class="nav-tab-btn" onclick="switchMainTab('tab-inqueritos')">Inquéritos</button>
+            
+            <!-- ABAS EXCLUSIVAS DO ADMINISTRADOR -->
+            <button class="nav-tab-btn nav-admin-only" onclick="switchMainTab('tab-socios')">Sócios</button>
+            <button class="nav-tab-btn nav-admin-only" onclick="switchMainTab('tab-professores')">Professores</button>
+            <button class="nav-tab-btn nav-admin-only" onclick="switchMainTab('tab-alunos')">Alunos & Finanças</button>
+        </div>
+    </div>
+
+    <!-- ================= ABA INÍCIO ================= -->
+    <div id="tab-inicio" class="main-tab-content active">
+        <div class="hero-slider-container">
+            <div class="slide active" style="background-image: url('business card back.png');"></div>
+            <div class="slide" style="background-image: url('Mockup Bolsa Tote.png');"></div>
+            <div class="slide" style="background-image: url('Mockup Camiseta Polo.png');"></div>
+            <div class="slide" style="background-image: url('Signage-1.png');"></div>
+
+            <div class="hero-text-card">
+                <h1 id="field-title" contenteditable="false">Quem Somos – FYP+C</h1>
+                <p id="field-quem-somos" contenteditable="false">
+                    A FYP+C é uma academia de línguas e de informática na ótica do utilizador, dedicada ao desenvolvimento de competências linguísticas e tecnológicas essenciais para o mundo atual.
+                </p>
+                <div class="home-actions-area">
+                    <button class="hero-cta-btn" onclick="switchMainTab('tab-inqueritos')">Dar o primeiro passo</button>
+                    <button class="hero-news-btn" onclick="scrollToNews()">Novidades</button>
+                </div>
+            </div>
+
+            <div class="slider-dots">
+                <div class="dot active" onclick="setSlide(0)"></div>
+                <div class="dot" onclick="setSlide(1)"></div>
+                <div class="dot" onclick="setSlide(2)"></div>
+                <div class="dot" onclick="setSlide(3)"></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <!-- FORMULÁRIO DE NOVIDADES -->
+            <div class="admin-news-form-block">
+                <h3 style="margin-top:0; color:var(--primary-purple)">Painel do Administrador: Adicionar Nova Publicação</h3>
+                <div class="form-group-row">
+                    <div>
+                        <label class="file-label">Título da Publicação:</label>
+                        <input type="text" id="news-input-title" class="form-control" placeholder="Ex: Nova Turma de Sábado">
+                    </div>
+                    <div>
+                        <label class="file-label">Carregar Vídeo (MP4, MOV):</label>
+                        <input type="file" id="news-input-file" class="form-control" accept="video/mp4, video/quicktime">
+                    </div>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label class="file-label">Descrição / Conteúdo:</label>
+                    <textarea id="news-input-text" class="form-control" rows="3" placeholder="Texto descritivo..."></textarea>
+                </div>
+                <button class="btn-publish-news" onclick="publishNews()">Publicar Novidade</button>
+            </div>
+
+            <div id="anchor-news-section">
+                <div class="news-section-title">Últimas Novidades & Multimédia</div>
+                <div class="news-container-grid" id="news-display-grid"></div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-block">
+                    <h3 id="field-missao-title" contenteditable="false">Missão</h3>
+                    <p id="field-missao" contenteditable="false">A nossa missão é oferecer uma formação acessível, estruturada e de qualidade em línguas estrangeiras e informática...</p>
+                </div>
+                <div class="info-block">
+                    <h3 id="field-valores-title" contenteditable="false">Valores</h3>
+                    <ul class="valores-list" id="field-valores" contenteditable="false">
+                        <li><strong>Compromisso com o aluno:</strong> Acompanhamento contínuo.</li>
+                        <li><strong>Qualidade:</strong> Ensino sério e orientado para resultados.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="commitment-banner">
+                <h4 id="field-slogan-title" contenteditable="false">O nosso compromisso</h4>
+                <blockquote id="field-slogan" contenteditable="false" style="font-style: italic; border-left: 4px solid #1e3a8a; padding-left: 15px;">
+                    "Take a step on us and we'll make the whole journey together."
+                </blockquote>
+            </div>
+            <button class="btn-save-content" onclick="saveContent()">Guardar Alterações</button>
+        </div>
+    </div>
+
+    <!-- ================= ABA CALENDÁRIO & AGENDA ================= -->
+    <div id="tab-calendario" class="main-tab-content">
+        <div class="content-section">
+            <div class="calendar-layout">
+                
+                <!-- Barra Lateral de Navegação interna -->
+                <div class="calendar-sidebar">
+                    <div class="sidebar-title">Modo de Vista</div>
+                    <div class="filter-group">
+                        <button class="filter-btn active" id="side-btn-cal" onclick="toggleCalendarSubView('grid')">
+                            📅 Calendário em Grelha
+                        </button>
+                        <button class="filter-btn" id="side-btn-ag" onclick="toggleCalendarSubView('agenda')">
+                            📋 Agenda / Tarefas
+                        </button>
+                    </div>
+
+                    <!-- Filtros específicos para a Grelha do Calendário -->
+                    <div id="cal-sidebar-filters">
+                        <div class="sidebar-title">Filtrar Cursos</div>
+                        <div class="filter-group">
+                            <button class="filter-btn active" onclick="filterCategory('todos', this)">
+                                <span class="color-dot" style="background: #cbd5e1;"></span> Todos os Cursos
+                            </button>
+                            <button class="filter-btn" onclick="filterCategory('ingles', this)">
+                                <span class="color-dot" style="background: var(--cat-ingles);"></span> Inglês
+                            </button>
+                            <button class="filter-btn" onclick="filterCategory('frances', this)">
+                                <span class="color-dot" style="background: var(--cat-frances);"></span> Francês
+                            </button>
+                            <button class="filter-btn" onclick="filterCategory('informatica', this)">
+                                <span class="color-dot" style="background: var(--cat-informatica);"></span> Informática
+                            </button>
+                        </div>
+                        <div class="sidebar-title">Destaques do Mês</div>
+                        <div class="upcoming-list" id="upcoming-events-container"></div>
+                    </div>
+                </div>
+
+                <!-- SUB-VISUALIZAÇÃO 1: GRELHA PADRÃO DO CALENDÁRIO -->
+                <div class="calendar-main" id="subview-calendar-grid">
+                    <div class="calendar-nav">
+                        <button class="nav-arrow-btn" onclick="changeMonth(-1)">&lt;</button>
+                        <h2 id="calendar-month-year-title">Julho de 2026</h2>
+                        <button class="nav-arrow-btn" onclick="changeMonth(1)">&gt;</button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="weekday-header">Dom</div><div class="weekday-header">Seg</div><div class="weekday-header">Ter</div>
+                        <div class="weekday-header">Qua</div><div class="weekday-header">Qui</div><div class="weekday-header">Sex</div>
+                        <div class="weekday-header">Sáb</div>
+                        <div class="calendar-grid-body" id="calendar-days-body" style="display: contents;"></div>
+                    </div>
+                </div>
+
+                <!-- SUB-VISUALIZAÇÃO 2: PAINEL DA AGENDA (KANBAN SOLICITADO) -->
+                <div class="calendar-main agenda-view-container" id="subview-agenda-panel">
+                    
+                    <!-- Form de atribuição exclusivo do Admin -->
+                    <div class="admin-agenda-form" id="agenda-creation-block">
+                        <h3 style="margin-top:0; color: var(--primary-blue)">Nova Tarefa de Agenda (Painel Admin)</h3>
+                        <div class="form-group-row">
+                            <div>
+                                <label class="file-label">Título da Tarefa:</label>
+                                <input type="text" id="ag-form-title" class="form-control" placeholder="Ex: Ajustes do espaço">
+                            </div>
+                            <div>
+                                <label class="file-label">Data / Dia:</label>
+                                <input type="text" id="ag-form-date" class="form-control" placeholder="Ex: Quinta-feira, 16 Jul">
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <div>
+                                <label class="file-label">Responsável (Sócio/Professor):</label>
+                                <select id="ag-form-resp" class="form-control"></select>
+                            </div>
+                            <div>
+                                <label class="file-label">Prioridade:</label>
+                                <select id="ag-form-priority" class="form-control">
+                                    <option value="alta">🔺 Alta</option>
+                                    <option value="media">🔶 Média</option>
+                                    <option value="baixa">🔷 Baixa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button class="btn-publish-news" style="margin-top: 10px;" onclick="createNewAgendaTask()">Inserir na Agenda</button>
+                    </div>
+
+                    <!-- Filtros idênticos à imagem enviada -->
+                    <div class="agenda-filter-bar">
+                        <button class="btn-ag-filter all active-filter" onclick="filterAgendaState('todas', this)">Ver Todas</button>
+                        <button class="btn-ag-filter pendente" onclick="filterAgendaState('pendente', this)">Pendentes</button>
+                        <button class="btn-ag-filter andamento" onclick="filterAgendaState('em_andamento', this)">Em Andamento</button>
+                        <button class="btn-ag-filter realizada" onclick="filterAgendaState('realizada', this)">Realizadas</button>
+                    </div>
+
+                    <!-- Grelha Organizadora de Cards -->
+                    <div class="agenda-cards-grid" id="agenda-cards-render-target">
+                        <!-- Injetado por JS baseado na imagem -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= ABA INQUÉRITOS ================= -->
+    <div id="tab-inqueritos" class="main-tab-content"></div>
+
+    <!-- ================= ABAS ADMINISTRATIVAS ================= -->
+    <div id="tab-socios" class="main-tab-content">
+        <div class="content-section">
+            <h2>Gestão de Sócios Fundadores</h2>
+            <table class="adm-data-table">
+                <thead><tr><th>Nome Completo</th><th>Cargo Executivo</th><th>Status</th></tr></thead>
+                <tbody id="tbl-socios-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="tab-professores" class="main-tab-content">
+        <div class="content-section">
+            <h2>Corpo Docente da Academia</h2>
+            <table class="adm-data-table">
+                <thead><tr><th>Nome do Professor</th><th>Curso Técnico</th><th>Salas</th></tr></thead>
+                <tbody id="tbl-professores-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="tab-alunos" class="main-tab-content">
+        <div class="content-section">
+            <h2>Controlo de Alunos por Turma</h2>
+            <div id="container-turmas-alunos"></div>
+            <div class="finance-section-wrapper">
+                <h3>📊 Painel Financeiro Restrito (Mensalidades)</h3>
+                <table class="adm-data-table">
+                    <thead><tr><th>Nome do Aluno</th><th>Turma</th><th>Valor Propina</th><th>Estado Mês</th><th>Dívidas</th></tr></thead>
+                    <tbody id="tbl-financas-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ==========================================================
+           ESTRUTURA DE DADOS E PERSISTÊNCIA ATUALIZADA
+           ========================================================== */
+        let admins = JSON.parse(localStorage.getItem('fyp_academy_credentials')) || {
+            "Francisco Faztudo": "chico123",
+            "Lázaro Luis": "lazaro123",
+            "Candido Ngola": "candido123",
+            "Leonel Ngola": "leonel123",
+            "Emael Morais": "emael123",
+            "Maria Victoria": "maria123"
+        };
+
+        let currentLoggedAdmin = null;
+        let isAdminActive = false;
+        let isTextEditModeActive = false;
+        let activeAgendaFilter = "todas";
+
+        let sociosData = [
+            { nome: "Francisco Faztudo", cargo: "Sócio-Diretor Geral", status: "Ativo" },
+            { nome: "Lázaro Luis", cargo: "Sócio-Diretor Pedagógico", status: "Ativo" },
+            { nome: "York", cargo: "Sócio-Fundador", status: "Ativo" },
+            { nome: "Candido Ngola", cargo: "Sócio Executivo", status: "Ativo" },
+            { nome: "Leonel Ngola", cargo: "Sócio Executivo", status: "Ativo" },
+            { nome: "Emael Morais", cargo: "Sócio & Professor", status: "Ativo" },
+            { nome: "Maria Victoria", cargo: "Sócia Executiva", status: "Ativo" }
+        ];
+
+        let professoresData = [
+            { nome: "Teacher Amadeu", curso: "Língua Inglesa (B2)", salas: "Sala 01" },
+            { nome: "Professeur Jean-Pierre", curso: "Língua Francesa (A2)", salas: "Sala 02" },
+            { nome: "Lázaro", curso: "Informática Geral", salas: "Laboratório TI" },
+            { nome: "Rosario Justo", curso: "A Atribuir", salas: "Por Definir" },
+            { nome: "Mauro Kaila", curso: "A Atribuir", salas: "Por Definir" },
+            { nome: "Emael Morais", curso: "A Atribuir", salas: "Por Definir" }
+        ];
+
+        let alunosData = [
+            { id: 101, nome: "Manuel Diogo", curso: "Inglês", turma: "Turma ING-M1", propina: "15.000 Kz", estado: "pago", dividas: "Nenhuma" },
+            { id: 102, nome: "Helena Santos", curso: "Inglês", turma: "Turma ING-M1", propina: "15.000 Kz", estado: "divida", dividas: "1 Mês em Atraso" }
+        ];
+
+        // BASE DE DADOS DAS TAREFAS DA AGENDA
+        let agendaData = JSON.parse(localStorage.getItem('fyp_agenda_tasks')) || [
+            { id: 1, date: "Quinta-feira, 16 Jul", title: "Ajustes do espaço", responsible: "York", priority: "alta", status: "pendente" },
+            { id: 2, date: "Por marcar", title: "Formação de comunicação", responsible: "Lázaro", priority: "alta", status: "em_andamento" },
+            { id: 3, date: "Domingo", title: "Gravações", responsible: "York", priority: "media", status: "pendente" },
+            { id: 4, date: "Sexta", title: "Flyer (3) lonas mínimo", responsible: "—", priority: "media", status: "pendente" },
+            { id: 5, date: "Sexta", title: "Criar toda a papelada para começar no espaço para fazer-se inscrição no local", responsible: "Lázaro", priority: "media", status: "pendente" },
+            { id: 6, date: "Sem data", title: "Terminar o inquérito", responsible: "York", priority: "baixa", status: "pendente" },
+            { id: 7, date: "Sem data", title: "Criar um calendário de postagens", responsible: "—", priority: "baixa", status: "pendente" },
+            { id: 8, date: "Sem data", title: "Criar uma turma de 80K no espaço do projecto (New Project)", responsible: "—", priority: "alta", status: "pendente" }
+        ];
+
+        /* ==========================================================
+           SISTEMA DE RENDERIZAÇÃO DA AGENDA (ESTILO DA FOTO)
+           ========================================================= */
+        function filterAgendaState(state, btn) {
+            activeAgendaFilter = state;
+            document.querySelectorAll('.btn-ag-filter').forEach(b => b.classList.remove('active-filter'));
+            btn.classList.add('active-filter');
+            renderAgendaPanel();
+        }
+
+        function renderAgendaPanel() {
+            const target = document.getElementById('agenda-cards-render-target');
+            target.innerHTML = "";
+
+            let filtered = agendaData;
+            if(activeAgendaFilter !== 'todas') {
+                filtered = agendaData.filter(t => t.status === activeAgendaFilter);
+            }
+
+            filtered.forEach(task => {
+                const card = document.createElement('div');
+                // Adiciona a classe de borda com base no estado atual da tarefa
+                card.className = `agenda-card border-${task.status}`;
+
+                // Mapeamento visual das prioridades conforme a foto
+                let priorityIcon = "🔹";
+                if(task.priority === 'alta') priorityIcon = "🔺";
+                if(task.priority === 'media') priorityIcon = "🔶";
+
+                card.innerHTML = `
+                    <div class="agenda-card-header">
+                        <span class="date-info">📅 ${task.date}</span>
+                        <span class="priority-tag priority-${task.priority}">${priorityIcon} ${task.priority}</span>
+                    </div>
+                    <div class="agenda-card-title">${task.title}</div>
+                    <div class="agenda-card-responsible">
+                        👤 <strong>Responsável:</strong> ${task.responsible}
+                    </div>
+                    
+                    <!-- Dropdown Simulado da Foto: Nota de Progresso -->
+                    <div class="agenda-dropdown-simulation">
+                        <span>📝 Nota de Progresso</span><span>▼</span>
+                    </div>
+
+                    <!-- Dropdown Simulado da Foto: Espaço Sócios -->
+                    <div class="agenda-dropdown-simulation">
+                        <span>💬 Espaço Sócios</span><span>▼</span>
+                    </div>
+
+                    <!-- Seletor Interativo de Estado para Sócios e Professores -->
+                    <div style="margin-top: 5px;">
+                        <label class="file-label" style="font-size:11px;">Mudar Estado:</label>
+                        <select class="agenda-state-select" onchange="updateTaskStatus(${task.id}, this.value)">
+                            <option value="pendente" ${task.status === 'pendente' ? 'selected' : ''}>🔴 Pendente</option>
+                            <option value="em_andamento" ${task.status === 'em_andamento' ? 'selected' : ''}>🟠 Em Andamento</option>
+                            <option value="realizada" ${task.status === 'realizada' ? 'selected' : ''}>🟢 Realizado</option>
+                        </select>
+                    </div>
+                `;
+                target.appendChild(card);
+            });
+        }
+
+        /* Permite aos Sócios/Professores atualizarem o estado e muda a cor da borda na hora */
+        function updateTaskStatus(taskId, newStatus) {
+            agendaData = agendaData.map(t => {
+                if(t.id === taskId) t.status = newStatus;
+                return t;
+            });
+            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
+            renderAgendaPanel();
+        }
+
+        /* Criação de Nova Tarefa pelo Administrador */
+        function createNewAgendaTask() {
+            const title = document.getElementById('ag-form-title').value.trim();
+            const date = document.getElementById('ag-form-date').value.trim() || "Sem data";
+            const resp = document.getElementById('ag-form-resp').value;
+            const priority = document.getElementById('ag-form-priority').value;
+
+            if(!title) {
+                alert("Por favor, introduza o título da tarefa.");
+                return;
+            }
+
+            const newTask = {
+                id: Date.now(),
+                date: date,
+                title: title,
+                responsible: resp,
+                priority: priority,
+                status: "pendente"
+            };
+
+            agendaData.push(newTask);
+            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
+            renderAgendaPanel();
+
+            // Limpa o formulário
+            document.getElementById('ag-form-title').value = "";
+            document.getElementById('ag-form-date').value = "";
+            alert("Tarefa adicionada com sucesso à Agenda dos Sócios e Professores!");
+        }
+
+        /* ==========================================================
+           FUNÇÕES COMPLEMENTARES DE SUPORTE (INÍCIO, LOGIN, ETC.)
+           ========================================================== */
+        function switchMainTab(tabId) {
+            document.querySelectorAll('.main-tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function openLoginModal() {
+            document.getElementById('login-modal').style.display = 'flex';
+        }
+        function closeLoginModal() {
+            document.getElementById('login-modal').style.display = 'none';
+        }
+        function submitAdminLogin() {
+            const user = document.getElementById('mod-username').value.trim();
+            const pass = document.getElementById('mod-password').value;
+            if (admins[user] === pass) {
+                currentLoggedAdmin = user;
+                enableAdminMode(true);
+                closeLoginModal();
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+        function logoutAdmin() {
+            currentLoggedAdmin = null;
+            enableAdminMode(false);
+        }
+        function enableAdminMode(enabled) {
+            isAdminActive = enabled;
+            document.body.classList.toggle('admin-mode', enabled);
+            document.getElementById('admin-status').innerText = enabled ? `Admin Ativo: ${currentLoggedAdmin}` : "Modo Público";
+            document.getElementById('btn-login-admin').style.display = enabled ? 'none' : 'block';
+            document.getElementById('btn-toggle-edit').style.display = enabled ? 'block' : 'none';
+            document.getElementById('btn-logout-admin').style.display = enabled ? 'block' : 'none';
+            renderCalendar();
+            renderAgendaPanel();
+        }
+        function toggleTextEditing() {
+            isTextEditModeActive = !isTextEditModeActive;
+            document.body.classList.toggle('admin-edit-active', isTextEditModeActive);
+        }
+        function startHeroSlider() {}
+        function renderNews() {}
+        function renderAdminPanels() {}
+        function changeMonth(d) {}
+        function filterCategory(c, e) {}
+        function renderCalendar() {}
+        function injectInqueritoHTML() {}
+    </script>
+</body>
+</html>
