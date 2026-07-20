@@ -103,7 +103,7 @@
             text-align: center; 
             border-bottom: 2px solid #fca5a5; 
         }
-        body.admin-mode .admin-edit-hint { display: block; }
+        body.admin-mode .admin-edit-hint, body.prof-mode .admin-edit-hint, body.student-mode .admin-edit-hint { display: block; }
 
         /* Cabeçalho Principal */
         .brand-header { 
@@ -142,9 +142,7 @@
             color: var(--primary-blue); 
         }
         .nav-admin-only { display: none; }
-        body.admin-mode .nav-admin-only { display: inline-block; }
-        body.prof-mode .nav-admin-only { display: inline-block; }
-        body.student-mode .nav-admin-only { display: inline-block; }
+        body.admin-mode .nav-admin-only, body.prof-mode .nav-admin-only, body.student-mode .nav-admin-only { display: inline-block; }
 
         .main-tab-content { display: none; }
         .main-tab-content.active { display: block; }
@@ -253,7 +251,6 @@
         /* Banner do Slogan */
         .commitment-banner { background: linear-gradient(135deg, #f1f5f9, #e2e8f0); padding: 40px; text-align: center; border-radius: 8px; margin-top: 40px; margin-bottom: 40px; }
         .commitment-banner h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #64748b; margin: 0 0 10px 0; }
-        .commitment-banner blockquote { font-size: 22px; font-weight: 700; color: var(--primary-blue); margin: 0; }
 
         /* SECÇÃO DE NOVIDADES DINÂMICAS */
         .news-section-title { font-size: 26px; color: var(--primary-blue); font-weight: 800; border-bottom: 3px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 25px; }
@@ -305,16 +302,6 @@
         .adm-data-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; font-size: 14px; color: #334155; }
         .adm-data-table tr:last-child td { border-bottom: none; }
         .adm-data-table tr:hover { background: #f8fafc; }
-        
-        .badge-status { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
-        .badge-pago { background: #d1fae5; color: #065f46; }
-        .badge-divida { background: #fee2e2; color: #991b1b; }
-
-        /* Botões de Ação de Promoção/Exclusão para Super-Admins */
-        .btn-action-promote { background: #10b981; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; margin-right: 5px; }
-        .btn-action-promote:hover { background: #059669; }
-        .btn-action-demote { background: #dc2626; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; }
-        .btn-action-demote:hover { background: #b91c1c; }
 
         /* LAYOUT DO CALENDÁRIO */
         .calendar-layout { display: grid; grid-template-columns: 280px 1fr; gap: 30px; margin-top: 20px; }
@@ -352,13 +339,10 @@
 
         .finance-section-wrapper { margin-top: 30px; background: #f1f5f9; padding: 20px; border-radius: 8px; border: 1px solid #cbd5e1; }
 
-        /* ==========================================================
-           ESTILOS EXCLUSIVOS DA AGENDA / KANBAN
-           ========================================================== */
+        /* AGENDA / KANBAN */
         .agenda-view-container { display: none; }
         .agenda-view-container.active { display: block; }
         
-        /* Barra de Filtros Superiores da Agenda */
         .agenda-filter-bar { display: flex; gap: 12px; margin-bottom: 25px; align-items: center; }
         .btn-ag-filter { padding: 8px 20px; border-radius: 6px; border: none; font-weight: 700; font-size: 13px; cursor: pointer; transition: opacity 0.2s; }
         .btn-ag-filter:hover { opacity: 0.9; }
@@ -368,10 +352,8 @@
         .btn-ag-filter.realizada { background: var(--status-realizada); color: white; }
         .btn-ag-filter.active-filter { box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.3); }
 
-        /* Grelha de Cards */
         .agenda-cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
         
-        /* Estrutura do Card baseado na Imagem */
         .agenda-card {
             background: white;
             border-radius: 8px;
@@ -383,9 +365,8 @@
             flex-direction: column;
             gap: 12px;
         }
-        /* Mapeamento Dinâmico de Cores de Borda por Estado */
         .agenda-card.border-pendente { border-left-color: var(--status-pendente); }
-        .agenda-card.border-andamento { border-left-color: var(--status-andamento); }
+        .agenda-card.border-andamento, .agenda-card.border-em_andamento { border-left-color: var(--status-andamento); }
         .agenda-card.border-realizada { border-left-color: var(--status-realizada); }
 
         .agenda-card-header { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #64748b; font-weight: 600; }
@@ -399,7 +380,6 @@
         
         .agenda-card-responsible { background: #f8fafc; padding: 8px 12px; border-radius: 6px; font-size: 13px; color: #334155; display: flex; align-items: center; gap: 8px; }
         
-        /* Dropdowns Simulados */
         .agenda-dropdown-simulation {
             background: #f1f5f9;
             padding: 10px 14px;
@@ -414,7 +394,6 @@
         }
         .agenda-dropdown-simulation span { display: flex; align-items: center; gap: 6px; }
 
-        /* Seletor Real para Troca de Estado */
         .agenda-state-select {
             width: 100%;
             padding: 8px;
@@ -427,35 +406,16 @@
             cursor: pointer;
         }
 
-        /* Formulário de Nova Agenda */
         .admin-agenda-form { display: none; background: #f1f5f9; border: 2px dashed var(--primary-blue); padding: 20px; border-radius: 8px; margin-bottom: 25px; }
-        body.admin-mode .admin-agenda-form { display: block; }
-        body.prof-mode .admin-agenda-form { display: block; }
+        body.admin-mode .admin-agenda-form, body.prof-mode .admin-agenda-form { display: block; }
 
-        /* ESTILOS DA ABA DE INQUÉRITOS */
-        .inquiry-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .inquiry-card h2 { color: var(--primary-blue); font-weight: 800; margin-top: 0; }
-        .inquiry-form-group { margin-bottom: 20px; }
-        .inquiry-form-group label { display: block; font-weight: bold; margin-bottom: 8px; font-size: 14px; }
-
-
-        /* ==========================================================
-           ESTILOS DO NOVO LAYOUT DO MEU PERFIL (ESTILO MICROSOFT / OUTLOOK)
-           ========================================================== */
+        /* PERFIL ESTILO OUTLOOK */
         .profile-container {
             display: flex;
             min-height: calc(100vh - 140px);
-            background-color: #f3f2f1; /* Cor de fundo característica do Office/Outlook */
+            background-color: #f3f2f1;
         }
 
-        /* Coluna Lateral Esquerda (Microsoft Navigation Panel) */
         .profile-sidebar {
             width: 280px;
             background-color: #f3f2f1;
@@ -466,7 +426,6 @@
             box-sizing: border-box;
         }
 
-        /* Utilizador Ativo na barra lateral */
         .profile-user-card {
             padding: 10px 20px 20px 20px;
             border-bottom: 1px solid #e0e0e0;
@@ -516,7 +475,6 @@
             padding: 0;
         }
 
-        /* Grupo de Pastas/Selecções estilo Microsoft */
         .profile-nav-group-title {
             font-size: 11px;
             font-weight: 700;
@@ -544,7 +502,7 @@
         .profile-nav-item.active {
             background-color: #eaeaea;
             font-weight: 600;
-            border-left-color: #0078d4; /* Azul clássico de destaque da Microsoft */
+            border-left-color: #0078d4;
             color: #0078d4;
         }
         .profile-nav-item .icon-span {
@@ -561,7 +519,6 @@
             font-weight: 700;
         }
 
-        /* Coluna Direita / Área de Trabalho Dinâmica */
         .profile-main-content {
             flex-grow: 1;
             background-color: #ffffff;
@@ -570,7 +527,7 @@
             box-sizing: border-box;
         }
 
-        /* Estilos específicos para a secção Comunidade */
+        /* COMUNIDADE */
         .comm-thread-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -620,9 +577,7 @@
             margin-bottom: 3px;
         }
 
-        /* ==========================================================
-           ESTILOS DO PAINEL DE DESEMPENHO (ESTILO BUSUU)
-           ========================================================== */
+        /* DESEMPENHO (BUSUU) */
         .busuu-container {
             display: flex;
             gap: 20px;
@@ -675,7 +630,6 @@
             font-weight: 700;
             color: #1e293b;
         }
-        /* Progresso Circular Simples com Conic-Gradient */
         .circular-progress {
             width: 150px;
             height: 150px;
@@ -742,13 +696,11 @@
         </div>
         <div class="main-nav-tabs">
             <button class="nav-tab-btn active" id="btn-tab-inicio" onclick="switchMainTab('tab-inicio')">Início</button>
-            
-            <!-- ABA MEU PERFIL (EXCLUSIVA APÓS O LOGIN) -->
             <button class="nav-tab-btn nav-admin-only" id="btn-tab-meu-perfil" onclick="switchMainTab('tab-meu-perfil')">Meu Perfil</button>
         </div>
     </div>
 
-    <!-- ================= ABA INÍCIO ================= -->
+    <!-- ABA INÍCIO -->
     <div id="tab-inicio" class="main-tab-content active">
         <div class="hero-slider-container">
             <div class="slide active" style="background-image: url('business card back.png');"></div>
@@ -776,7 +728,6 @@
         </div>
 
         <div class="content-section">
-            <!-- FORMULÁRIO DE NOVIDADES -->
             <div class="admin-news-form-block">
                 <h3 style="margin-top:0; color:var(--primary-purple)">Painel do Administrador: Adicionar Nova Publicação</h3>
                 <div class="form-group-row">
@@ -825,12 +776,9 @@
         </div>
     </div>
 
-
-    <!-- ================= ABA INTEGRADA: MEU PERFIL (ESTILO OUTLOOK) ================= -->
+    <!-- ABA INTEGRADA: MEU PERFIL (ESTILO OUTLOOK) -->
     <div id="tab-meu-perfil" class="main-tab-content">
         <div class="profile-container">
-            
-            <!-- BARRA LATERAL ESTILO OUTLOOK / MICROSOFT -->
             <div class="profile-sidebar">
                 <div class="profile-user-card">
                     <div class="profile-user-card-title" id="sidebar-role-label">Sócio Logado</div>
@@ -862,7 +810,6 @@
                     <span class="icon-span" id="lbl-nav-alunos-text">📊 Alunos & Turmas</span>
                 </a>
 
-                <!-- OPÇÕES EXCLUSIVAS PARA PROFESSOR -->
                 <a class="profile-nav-item" id="p-nav-adicionar-tarefa" onclick="switchProfileSection('p-sec-adicionar-tarefa')" style="display: none;">
                     <span class="icon-span">✍️ Adicionar Tarefas</span>
                 </a>
@@ -876,9 +823,7 @@
                 </a>
             </div>
 
-            <!-- CONTENTOR DE CONTEÚDO DINÂMICO DO PERFIL -->
             <div class="profile-main-content">
-                
                 <!-- Secção: Atualizar Dados -->
                 <div id="p-sec-editar-perfil" class="profile-dynamic-section" style="display: none;">
                     <h2 id="edit-profile-title">Atualizar Dados de Conta</h2>
@@ -913,8 +858,6 @@
                 <!-- Secção: Calendário & Agenda -->
                 <div id="p-sec-calendario" class="profile-dynamic-section" style="display: block;">
                     <div class="calendar-layout">
-                        
-                        <!-- Barra Lateral de Navegação interna -->
                         <div class="calendar-sidebar">
                             <div class="sidebar-title">Modo de Vista</div>
                             <div class="filter-group">
@@ -926,7 +869,6 @@
                                 </button>
                             </div>
 
-                            <!-- Filtros específicos para a Grelha do Calendário -->
                             <div id="cal-sidebar-filters">
                                 <div class="sidebar-title">Filtrar Cursos</div>
                                 <div class="filter-group">
@@ -948,7 +890,6 @@
                             </div>
                         </div>
 
-                        <!-- SUB-VISUALIZAÇÃO 1: GRELHA PADRÃO DO CALENDÁRIO -->
                         <div class="calendar-main" id="subview-calendar-grid">
                             <div class="calendar-nav">
                                 <button class="nav-arrow-btn" onclick="changeMonth(-1)">&lt;</button>
@@ -964,16 +905,12 @@
                             </div>
                         </div>
 
-                        <!-- SUB-VISUALIZAÇÃO 2: PAINEL DA AGENDA -->
                         <div class="calendar-main agenda-view-container" id="subview-agenda-panel">
-                            
-                            <!-- Abas de Navegação Interna da Agenda -->
                             <div class="agenda-filter-bar" style="margin-bottom: 20px;">
                                 <button class="btn-ag-filter all active-filter" id="ag-subtab-geral" onclick="switchAgendaSubTab('geral')">1. Agenda Geral</button>
                                 <button class="btn-ag-filter pendente" id="ag-subtab-pendencias" onclick="switchAgendaSubTab('pendencias')">2. Minhas Pendências</button>
                             </div>
 
-                            <!-- Form de atribuição exclusivo do Admin/Sócio Logado ou Professor -->
                             <div class="admin-agenda-form" id="agenda-creation-block">
                                 <h3 style="margin-top:0; color: var(--primary-blue)">Nova Tarefa de Agenda</h3>
                                 <div class="form-group-row">
@@ -1003,10 +940,8 @@
                                 <button class="btn-publish-news" style="margin-top: 10px;" onclick="createNewAgendaTask()">Inserir na Agenda</button>
                             </div>
 
-                            <!-- Grelha Organizadora de Cards -->
                             <div class="agenda-cards-grid" id="agenda-cards-render-target"></div>
                         </div>
-
                     </div>
                 </div>
 
@@ -1014,11 +949,10 @@
                 <div id="p-sec-comunidade" class="profile-dynamic-section" style="display: none;">
                     <h2>💬 Espaço Comunidade</h2>
                     <p style="font-size:14px; color:#64748b; margin-bottom: 25px;">Acompanhe as perguntas e atividades da comunidade. As respostas dos professores atribuem 2 pontos ao aluno.</p>
-                    
                     <div id="community-questions-target"></div>
                 </div>
 
-                <!-- Secção: Professores (Apenas Visualização) -->
+                <!-- Secção: Professores -->
                 <div id="p-sec-professores" class="profile-dynamic-section" style="display: none;">
                     <h2>Corpo Docente da Academia</h2>
                     <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Visualização restrita do corpo técnico ativo da instituição.</p>
@@ -1034,7 +968,7 @@
                     </table>
                 </div>
 
-                <!-- Secção: Alunos (Apenas Visualização) -->
+                <!-- Secção: Alunos -->
                 <div id="p-sec-alunos" class="profile-dynamic-section" style="display: none;">
                     <h2>Controlo de Alunos por Turma</h2>
                     <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Listagem simplificada de alunos ativos organizada por curso.</p>
@@ -1054,7 +988,7 @@
                     </div>
                 </div>
 
-                <!-- SECÇÃO PROFESSOR: ADICIONAR TAREFAS À SUA TURMA -->
+                <!-- Secção: Adicionar Tarefas -->
                 <div id="p-sec-adicionar-tarefa" class="profile-dynamic-section" style="display: none;">
                     <h2>✍️ Atribuir Tarefa Pedagógica</h2>
                     <p style="font-size:14px; color:#64748b; margin-bottom: 20px;">Crie uma atividade direcionada para uma das suas turmas registadas.</p>
@@ -1080,7 +1014,7 @@
                     </div>
                 </div>
 
-                <!-- SECÇÃO PROFESSOR: MATERIAL PEDAGÓGICO -->
+                <!-- Secção: Material Pedagógico -->
                 <div id="p-sec-material" class="profile-dynamic-section" style="display: none;">
                     <h2>📚 Material Pedagógico Atribuído</h2>
                     <p style="font-size:14px; color:#64748b; margin-bottom: 25px;">Consulte os recursos didáticos autorizados e associados pelo Administrador à sua conta.</p>
@@ -1097,22 +1031,18 @@
                     </div>
                 </div>
 
-                <!-- SECÇÃO PROFESSOR: DESEMPENHO DOS ALUNOS (ESTILO BUSUU) -->
+                <!-- Secção: Desempenho -->
                 <div id="p-sec-desempenho" class="profile-dynamic-section" style="display: none;">
                     <h2>📈 Painel de Desempenho e Progresso</h2>
                     <p style="font-size:14px; color:#64748b;">Consulte as estatísticas agregadas de proficiência, respostas e empenho dos estudantes das suas turmas.</p>
-                    
                     <div class="busuu-container" id="desempenho-render-container"></div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <script>
-        /* ==========================================================
-           ESTRUTURA DE DADOS E PERSISTÊNCIA ATUALIZADA
-           ========================================================== */
+        /* DADOS E PERSISTÊNCIA */
         let admins = JSON.parse(localStorage.getItem('fyp_academy_credentials')) || {
             "Francisco Faztudo": "chico123",
             "Lázaro Luis": "lazaro123",
@@ -1131,10 +1061,6 @@
         let partnersProfiles = JSON.parse(localStorage.getItem('fyp_partners_profiles')) || {
             "Francisco Faztudo": { phone: "923 000 000", email: "francisco@fyp.com", avatar: "" },
             "Lázaro Luis": { phone: "924 111 222", email: "lazaro@fyp.com", avatar: "" },
-            "Candido Ngola": { phone: "", email: "", avatar: "" },
-            "Leonel Ngola": { phone: "", email: "", avatar: "" },
-            "Emael Morais": { phone: "", email: "emael@fyp.com", avatar: "" },
-            "Maria Victoria": { phone: "", email: "", avatar: "" },
             "Teacher Amadeu": { phone: "931 555 444", email: "amadeu@fyp.com", avatar: "" },
             "Professeur Jean-Pierre": { phone: "945 222 111", email: "jean@fyp.com", avatar: "" },
             "Rosario Justo": { phone: "923 999 888", email: "rosario@fyp.com", avatar: "" },
@@ -1144,40 +1070,30 @@
         };
 
         const superAdminsList = ["Francisco Faztudo", "Lázaro Luis"];
-
         let currentLoggedAdmin = null;
         let isAdminActive = false;
         let isTextEditModeActive = false;
-        let currentRole = "guest"; // guest, admin, teacher, student
-        
+        let currentRole = "guest"; 
         let activeAgendaSubTab = "geral"; 
 
         let sociosData = JSON.parse(localStorage.getItem('fyp_socios_data')) || [
             { nome: "Francisco Faztudo", cargo: "Sócio-Diretor Geral", status: "Ativo" },
             { nome: "Lázaro Luis", cargo: "Sócio-Diretor Pedagógico", status: "Ativo" },
-            { nome: "York", cargo: "Sócio-Fundador", status: "Ativo" },
-            { nome: "Candido Ngola", cargo: "Sócio Executivo", status: "Ativo" },
-            { nome: "Leonel Ngola", cargo: "Sócio Executivo", status: "Ativo" },
-            { nome: "Emael Morais", cargo: "Sócio & Professor", status: "Ativo" },
-            { nome: "Maria Victoria", cargo: "Sócia Executiva", status: "Ativo" }
+            { nome: "York", cargo: "Sócio-Fundador", status: "Ativo" }
         ];
 
         let professoresData = JSON.parse(localStorage.getItem('fyp_professores_data')) || [
             { nome: "Teacher Amadeu", curso: "Língua Inglesa (B2)", salas: "Sala 01" },
             { nome: "Professeur Jean-Pierre", curso: "Língua Francesa (A2)", salas: "Sala 02" },
             { nome: "Lázaro Luis", curso: "Informática Geral", salas: "Laboratório TI" },
-            { nome: "Rosario Justo", curso: "A Atribuir", salas: "Por Definir" },
-            { nome: "Mauro Kaila", curso: "A Atribuir", salas: "Por Definir" },
-            { nome: "Emael Morais", curso: "A Atribuir", salas: "Por Definir" }
+            { nome: "Rosario Justo", curso: "A Atribuir", salas: "Por Definir" }
         ];
 
-        // Mapeamento explícito de Turmas aos Professores
         let professorClassMapping = {
             "Teacher Amadeu": ["Turma ING-M1", "Turma ING-Sábado"],
             "Professeur Jean-Pierre": ["Turma FR-A2"],
             "Lázaro Luis": ["Turma TI-Geral"],
-            "Rosario Justo": ["Turma ING-M1"],
-            "Emael Morais": ["Turma ING-M1"]
+            "Rosario Justo": ["Turma ING-M1"]
         };
 
         let alunosData = JSON.parse(localStorage.getItem('fyp_alunos_data')) || [
@@ -1187,7 +1103,6 @@
             { id: 104, nome: "Silo João", curso: "Francês", turma: "Turma FR-A2", propina: "15.000 Kz", estado: "pago", dividas: "Nenhuma", score: 0, progress: 50, corrections: 8, likes: 10 }
         ];
 
-        // Materiais atribuídos pelos Administradores aos Professores
         let materialsMapping = {
             "Teacher Amadeu": {
                 books: ["English File B2 Third Edition.pdf", "Grammar in Use Intermediate.pdf"],
@@ -1196,25 +1111,14 @@
             "Rosario Justo": {
                 books: ["Basic Vocabulary Builder.pdf"],
                 audios: ["Conversation Starter Unit 1.mp3"]
-            },
-            "Emael Morais": {
-                books: ["Practical English Usage.pdf"],
-                audios: ["Pronunciation Drill - Vowels.mp3"]
             }
         };
 
         let agendaData = JSON.parse(localStorage.getItem('fyp_agenda_tasks')) || [
             { id: 1, date: "Quinta-feira, 16 Jul", title: "Ajustes do espaço", responsible: "York", priority: "alta", status: "pendente" },
-            { id: 2, date: "Por marcar", title: "Formação de comunicação", responsible: "Lázaro Luis", priority: "alta", status: "em_andamento" },
-            { id: 3, date: "Domingo", title: "Gravações", responsible: "York", priority: "media", status: "pendente" },
-            { id: 4, date: "Sexta", title: "Flyer (3) lonas mínimo", responsible: "—", priority: "media", status: "pendente" },
-            { id: 5, date: "Sexta", title: "Criar toda a papelada para começar no espaço para fazer-se inscrição no local", responsible: "Lázaro Luis", priority: "media", status: "pendente" },
-            { id: 6, date: "Sem data", title: "Terminar o inquérito", responsible: "York", priority: "baixa", status: "pendente" },
-            { id: 7, date: "Sem data", title: "Criar um calendário de postagens", responsible: "—", priority: "baixa", status: "pendente" },
-            { id: 8, date: "Sem data", title: "Criar uma turma de 80K no espaço do projecto (New Project)", responsible: "—", priority: "alta", status: "pendente" }
+            { id: 2, date: "Por marcar", title: "Formação de comunicação", responsible: "Lázaro Luis", priority: "alta", status: "em_andamento" }
         ];
 
-        // Novo vetor para tarefas direcionadas a turmas de alunos
         let studentClassTasks = JSON.parse(localStorage.getItem('fyp_student_class_tasks')) || [];
 
         let communityQuestions = JSON.parse(localStorage.getItem('fyp_community_questions')) || [
@@ -1223,26 +1127,16 @@
                 student: "Silo João",
                 date: "14 Jul 2026",
                 question: "As aulas práticas de informática vão utilizar sistemas operativos Linux ou apenas Windows?",
-                replies: [
-                    { author: "Lázaro Luis", text: "Focaremos inicialmente em ambiente Windows por ser o padrão de mercado solicitado pelas empresas locais." }
-                ],
+                replies: [{ author: "Lázaro Luis", text: "Focaremos inicialmente em ambiente Windows por ser o padrão de mercado." }],
                 corrected: true
-            },
-            {
-                id: 2,
-                student: "Helena Alburquerque",
-                date: "15 Jul 2026",
-                question: "O material de apoio impresso de Inglês tem um custo adicional ou já está incluído?",
-                replies: [],
-                corrected: false
             }
         ];
 
         let newsData = JSON.parse(localStorage.getItem('fyp_news_data')) || [
-            { id: 1, title: "Grandes Aberturas no Próximo Mês!", text: "As inscrições estão oficialmente abertas para o projeto 'Inglês no Golf 2'. Garanta já o seu lugar na turma de Sábado.", mediaType: "video", mediaUrl: "" }
+            { id: 1, title: "Grandes Aberturas no Próximo Mês!", text: "Inscrições abertas para o projeto 'Inglês no Golf 2'.", mediaType: "video", mediaUrl: "" }
         ];
 
-        let currentMonth = 6; // Julho
+        let currentMonth = 6; 
         let currentYear = 2026;
         let selectedCategoryFilter = "todos";
         let calendarEvents = [
@@ -1254,855 +1148,7 @@
         let tempVideoBase64 = "";
         let tempAvatarBase64 = "";
 
-        /* ==========================================================
-           CONTROLO DE SEÇÕES DO MEU PERFIL (ESTILO OUTLOOK)
-           ========================================================== */
-        function switchProfileSection(sectionId) {
-            document.querySelectorAll('.profile-dynamic-section').forEach(sec => {
-                sec.style.display = 'none';
-            });
-            document.querySelectorAll('.profile-nav-item').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            const targetSection = document.getElementById(sectionId);
-            if(targetSection) {
-                targetSection.style.display = 'block';
-            }
-
-            let navId = "";
-            if (sectionId === 'p-sec-calendario') navId = 'p-nav-calendario';
-            else if (sectionId === 'p-sec-comunidade') navId = 'p-nav-comunidade';
-            else if (sectionId === 'p-sec-professores') navId = 'p-nav-professores';
-            else if (sectionId === 'p-sec-alunos') navId = 'p-nav-alunos';
-            else if (sectionId === 'p-sec-adicionar-tarefa') navId = 'p-nav-adicionar-tarefa';
-            else if (sectionId === 'p-sec-material') navId = 'p-nav-material';
-            else if (sectionId === 'p-sec-desempenho') navId = 'p-nav-desempenho';
-
-            const activeNav = document.getElementById(navId);
-            if(activeNav) {
-                activeNav.classList.add('active');
-            }
-
-            if (sectionId === 'p-sec-calendario') {
-                renderCalendar();
-                renderAgendaPanel();
-            } else if (sectionId === 'p-sec-comunidade') {
-                renderCommunitySection();
-            } else if (sectionId === 'p-sec-editar-perfil') {
-                loadPartnerProfileForm();
-            } else if (sectionId === 'p-sec-adicionar-tarefa') {
-                loadClassDropdownForProfessor();
-            } else if (sectionId === 'p-sec-material') {
-                renderMaterials();
-            } else if (sectionId === 'p-sec-desempenho') {
-                renderBusuuPerformance();
-            }
-        }
-
-        function openInquiriesFromPublic() {
-            if (isAdminActive) {
-                switchMainTab('tab-meu-perfil');
-                switchProfileSection('p-sec-calendario');
-            } else {
-                openLoginModal();
-                alert("Por favor, faça login com as suas credenciais para aceder ao seu Perfil.");
-            }
-        }
-
-        function updateComunidadeCounterBadge() {
-            const badge = document.getElementById('comunidade-counter-badge');
-            if (badge) {
-                const pending = communityQuestions.filter(q => q.replies.length === 0).length;
-                badge.innerText = pending;
-            }
-        }
-
-        /* ==========================================================
-           ATUALIZAÇÃO DE DADOS DO SÓCIO / PROFESSOR / ALUNO
-           ========================================================= */
-        function encodePartnerAvatar(input) {
-            const file = input.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                tempAvatarBase64 = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function loadPartnerProfileForm() {
-            if (!currentLoggedAdmin) return;
-            
-            if (!partnersProfiles[currentLoggedAdmin]) {
-                partnersProfiles[currentLoggedAdmin] = { phone: "", email: "", avatar: "" };
-            }
-            
-            const profile = partnersProfiles[currentLoggedAdmin];
-            
-            document.getElementById('edit-partner-name').value = currentLoggedAdmin;
-            document.getElementById('edit-partner-phone').value = profile.phone || "";
-            document.getElementById('edit-partner-email').value = profile.email || "";
-            document.getElementById('edit-partner-pass').value = admins[currentLoggedAdmin] || "";
-            tempAvatarBase64 = profile.avatar || "";
-        }
-
-        function savePartnerProfileData() {
-            if (!currentLoggedAdmin) return;
-            
-            const nameInput = document.getElementById('edit-partner-name').value.trim();
-            const phoneInput = document.getElementById('edit-partner-phone').value.trim();
-            const emailInput = document.getElementById('edit-partner-email').value.trim();
-            const passInput = document.getElementById('edit-partner-pass').value;
-
-            if (!nameInput) {
-                alert("O nome de utilizador não pode ficar em branco.");
-                return;
-            }
-
-            const oldPass = admins[currentLoggedAdmin];
-            
-            if (nameInput !== currentLoggedAdmin) {
-                admins[nameInput] = passInput || oldPass;
-                delete admins[currentLoggedAdmin];
-                
-                partnersProfiles[nameInput] = {
-                    phone: phoneInput,
-                    email: emailInput,
-                    avatar: tempAvatarBase64
-                };
-                delete partnersProfiles[currentLoggedAdmin];
-                
-                sociosData = sociosData.map(s => {
-                    if (s.nome === currentLoggedAdmin) s.nome = nameInput;
-                    return s;
-                });
-                
-                professoresData = professoresData.map(p => {
-                    if (p.nome === currentLoggedAdmin) p.nome = nameInput;
-                    return p;
-                });
-
-                alunosData = alunosData.map(a => {
-                    if (a.nome === currentLoggedAdmin) a.nome = nameInput;
-                    return a;
-                });
-
-                if (professorClassMapping[currentLoggedAdmin]) {
-                    professorClassMapping[nameInput] = professorClassMapping[currentLoggedAdmin];
-                    delete professorClassMapping[currentLoggedAdmin];
-                }
-
-                if (materialsMapping[currentLoggedAdmin]) {
-                    materialsMapping[nameInput] = materialsMapping[currentLoggedAdmin];
-                    delete materialsMapping[currentLoggedAdmin];
-                }
-                
-                currentLoggedAdmin = nameInput;
-            } else {
-                admins[currentLoggedAdmin] = passInput || oldPass;
-                partnersProfiles[currentLoggedAdmin] = {
-                    phone: phoneInput,
-                    email: emailInput,
-                    avatar: tempAvatarBase64
-                };
-            }
-
-            localStorage.setItem('fyp_academy_credentials', JSON.stringify(admins));
-            localStorage.setItem('fyp_partners_profiles', JSON.stringify(partnersProfiles));
-            localStorage.setItem('fyp_socios_data', JSON.stringify(sociosData));
-            localStorage.setItem('fyp_professores_data', JSON.stringify(professoresData));
-            localStorage.setItem('fyp_alunos_data', JSON.stringify(alunosData));
-
-            alert("Perfil atualizado com sucesso!");
-            
-            updateProfileSidebarDisplay();
-            switchProfileSection('p-sec-calendario');
-        }
-
-        function updateProfileSidebarDisplay() {
-            const activeUserField = document.getElementById('profile-active-user-name');
-            const avatarDisplay = document.getElementById('profile-avatar-display');
-            const roleLabel = document.getElementById('sidebar-role-label');
-            const editTitle = document.getElementById('edit-profile-title');
-            
-            if (activeUserField) {
-                activeUserField.innerText = currentLoggedAdmin || "Convidado";
-            }
-            
-            if (avatarDisplay) {
-                if (currentLoggedAdmin && partnersProfiles[currentLoggedAdmin] && partnersProfiles[currentLoggedAdmin].avatar) {
-                    avatarDisplay.src = partnersProfiles[currentLoggedAdmin].avatar;
-                } else {
-                    avatarDisplay.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>";
-                }
-            }
-
-            if (roleLabel) {
-                if (currentRole === "teacher") roleLabel.innerText = "Professor Logado";
-                else if (currentRole === "student") roleLabel.innerText = "Aluno Logado";
-                else roleLabel.innerText = "Sócio Logado";
-            }
-
-            if (editTitle) {
-                if (currentRole === "teacher") editTitle.innerText = "Atualizar Dados do Professor";
-                else if (currentRole === "student") editTitle.innerText = "Atualizar Dados do Aluno";
-                else editTitle.innerText = "Atualizar Dados de Conta";
-            }
-        }
-
-        /* ==========================================================
-           SISTEMA DE RENDERIZAÇÃO DA AGENDA
-           ========================================================= */
-        function switchAgendaSubTab(subTab) {
-            activeAgendaSubTab = subTab;
-            document.getElementById('ag-subtab-geral').classList.toggle('active-filter', subTab === 'geral');
-            document.getElementById('ag-subtab-pendencias').classList.toggle('active-filter', subTab === 'pendencias');
-            renderAgendaPanel();
-        }
-
-        function renderAgendaPanel() {
-            const target = document.getElementById('agenda-cards-render-target');
-            if(!target) return;
-            target.innerHTML = "";
-
-            if (currentRole === "student") {
-                // Para o aluno logado, a sub-aba 1 mostra o "Calendário Geral" da sua turma e a sub-aba 2 as suas pendências
-                let studentObj = alunosData.find(a => a.nome === currentLoggedAdmin);
-                let classTasks = studentClassTasks.filter(t => t.class === (studentObj ? studentObj.turma : ""));
-
-                if (activeAgendaSubTab === 'geral') {
-                    // Agenda Geral da Turma do Aluno
-                    if (classTasks.length === 0) {
-                        target.innerHTML = `<p style="grid-column: 1/-1; color:#64748b; font-style:italic; padding: 20px;">Nenhuma tarefa geral publicada para a sua turma.</p>`;
-                        return;
-                    }
-                    classTasks.forEach(task => {
-                        const card = document.createElement('div');
-                        card.className = `agenda-card border-andamento`;
-                        card.innerHTML = `
-                            <div class="agenda-card-header">
-                                <span class="date-info">📅 Entrega: ${task.deadline}</span>
-                                <span class="priority-tag priority-alta">🔺 Turma</span>
-                            </div>
-                            <div class="agenda-card-title">${task.title}</div>
-                            <div class="agenda-card-responsible">
-                                👤 <strong>Atribuído por:</strong> ${task.teacher}
-                            </div>
-                            <div style="font-size: 13px; color: #475569; background: #f8fafc; padding: 8px; border-radius: 4px; border: 1px solid #cbd5e1;">
-                                ${task.desc}
-                            </div>
-                        `;
-                        target.appendChild(card);
-                    });
-                } else {
-                    // Pendências específicas atribuídas ao Aluno
-                    let pendingTasks = classTasks.filter(t => t.status !== 'realizada');
-                    if (pendingTasks.length === 0) {
-                        target.innerHTML = `<p style="grid-column: 1/-1; color:#10b981; font-weight: bold; padding: 20px;">🎉 Excelente! Não tem nenhuma pendência pendente na sua turma.</p>`;
-                        return;
-                    }
-                    pendingTasks.forEach(task => {
-                        const card = document.createElement('div');
-                        card.className = `agenda-card border-pendente`;
-                        card.innerHTML = `
-                            <div class="agenda-card-header">
-                                <span class="date-info">📅 Limite: ${task.deadline}</span>
-                                <span class="priority-tag priority-alta">🔺 Atividade</span>
-                            </div>
-                            <div class="agenda-card-title">${task.title}</div>
-                            <div class="agenda-card-responsible">
-                                👤 <strong>Professor:</strong> ${task.teacher}
-                            </div>
-                            <div style="font-size: 12px; color: #475569; margin-bottom: 5px;">
-                                <strong>Descrição:</strong> ${task.desc}
-                            </div>
-                        `;
-                        target.appendChild(card);
-                    });
-                }
-                return;
-            }
-
-            // Lógica Padrão para Sócios e Professores
-            let filtered = agendaData;
-            
-            if (activeAgendaSubTab === 'pendencias') {
-                filtered = agendaData.filter(t => t.responsible === currentLoggedAdmin);
-            }
-
-            filtered.forEach(task => {
-                const card = document.createElement('div');
-                card.className = `agenda-card border-${task.status}`;
-
-                let priorityIcon = "🔹";
-                if(task.priority === 'alta') priorityIcon = "🔺";
-                if(task.priority === 'media') priorityIcon = "🔶";
-
-                card.innerHTML = `
-                    <div class="agenda-card-header">
-                        <span class="date-info">📅 ${task.date}</span>
-                        <span class="priority-tag priority-${task.priority}">${priorityIcon} ${task.priority}</span>
-                    </div>
-                    <div class="agenda-card-title">${task.title}</div>
-                    <div class="agenda-card-responsible">
-                        👤 <strong>Responsável:</strong> ${task.responsible}
-                    </div>
-                    
-                    <div class="agenda-dropdown-simulation">
-                        <span>📝 Nota de Progresso</span><span>▼</span>
-                    </div>
-
-                    <div class="agenda-dropdown-simulation">
-                        <span>💬 Espaço Pedagógico</span><span>▼</span>
-                    </div>
-
-                    <div style="margin-top: 5px;">
-                        <label class="file-label" style="font-size:11px;">Mudar Estado:</label>
-                        <select class="agenda-state-select" onchange="updateTaskStatus(${task.id}, this.value)">
-                            <option value="pendente" ${task.status === 'pendente' ? 'selected' : ''}>🔴 Pendente</option>
-                            <option value="em_andamento" ${task.status === 'em_andamento' ? 'selected' : ''}>🟠 Em Andamento</option>
-                            <option value="realizada" ${task.status === 'realizada' ? 'selected' : ''}>🟢 Realizado</option>
-                        </select>
-                    </div>
-                `;
-                target.appendChild(card);
-            });
-        }
-
-        function updateTaskStatus(taskId, newStatus) {
-            agendaData = agendaData.map(t => {
-                if(t.id === taskId) t.status = newStatus;
-                return t;
-            });
-            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
-            renderAgendaPanel();
-        }
-
-        function createNewAgendaTask() {
-            const title = document.getElementById('ag-form-title').value.trim();
-            const date = document.getElementById('ag-form-date').value.trim() || "Sem data";
-            const resp = document.getElementById('ag-form-resp').value;
-            const priority = document.getElementById('ag-form-priority').value;
-
-            if(!title) {
-                alert("Por favor, introduza o título da tarefa.");
-                return;
-            }
-
-            const newTask = {
-                id: Date.now(),
-                date: date,
-                title: title,
-                responsible: resp,
-                priority: priority,
-                status: "pendente"
-            };
-
-            agendaData.push(newTask);
-            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
-            renderAgendaPanel();
-
-            document.getElementById('ag-form-title').value = "";
-            document.getElementById('ag-form-date').value = "";
-            alert("Tarefa adicionada com sucesso!");
-        }
-
-        /* ==========================================================
-           ADICIONAR TAREFA (PROFESSOR ➡️ TURMA)
-           ========================================================== */
-        function loadClassDropdownForProfessor() {
-            const selectEl = document.getElementById('prof-task-class');
-            if (!selectEl) return;
-            selectEl.innerHTML = "";
-
-            const classes = professorClassMapping[currentLoggedAdmin] || [];
-            if (classes.length === 0) {
-                const opt = document.createElement('option');
-                opt.text = "Nenhuma turma atribuída";
-                selectEl.appendChild(opt);
-                return;
-            }
-
-            classes.forEach(c => {
-                const opt = document.createElement('option');
-                opt.value = c;
-                opt.text = c;
-                selectEl.appendChild(opt);
-            });
-        }
-
-        function submitProfessorTask() {
-            const title = document.getElementById('prof-task-title').value.trim();
-            const selectedClass = document.getElementById('prof-task-class').value;
-            const deadline = document.getElementById('prof-task-deadline').value.trim() || "Sem data limite";
-            const desc = document.getElementById('prof-task-desc').value.trim();
-
-            if (!title || !desc) {
-                alert("Por favor, preencha todos os dados da tarefa.");
-                return;
-            }
-
-            const newTask = {
-                id: Date.now(),
-                title: title,
-                class: selectedClass,
-                deadline: deadline,
-                desc: desc,
-                teacher: currentLoggedAdmin,
-                status: "pendente"
-            };
-
-            studentClassTasks.push(newTask);
-            localStorage.setItem('fyp_student_class_tasks', JSON.stringify(studentClassTasks));
-
-            document.getElementById('prof-task-title').value = "";
-            document.getElementById('prof-task-deadline').value = "";
-            document.getElementById('prof-task-desc').value = "";
-
-            alert("Tarefa enviada para a turma com sucesso! Ficará visível nas pendências dos alunos inscritos.");
-            switchProfileSection('p-sec-calendario');
-        }
-
-        /* ==========================================================
-           VISUALIZAÇÃO DE MATERIAIS PEDAGÓGICOS (PROFESSOR & ALUNO)
-           ========================================================== */
-        function renderMaterials() {
-            const booksList = document.getElementById('material-books-list');
-            const audiosList = document.getElementById('material-audios-list');
-            if (!booksList || !audiosList) return;
-
-            booksList.innerHTML = "";
-            audiosList.innerHTML = "";
-
-            // Determinar o professor de referência (ou do próprio professor logado, ou do professor da turma do aluno)
-            let teacherRef = "";
-            if (currentRole === "teacher") {
-                teacherRef = currentLoggedAdmin;
-            } else if (currentRole === "student") {
-                let studentObj = alunosData.find(a => a.nome === currentLoggedAdmin);
-                if (studentObj) {
-                    for (let key in professorClassMapping) {
-                        if (professorClassMapping[key].includes(studentObj.turma)) {
-                            teacherRef = key;
-                            break;
-                        }
-                    }
-                }
-            }
-
-            const mats = materialsMapping[teacherRef] || { books: ["Nenhum livro atribuído de momento."], audios: ["Nenhum ficheiro áudio atribuído."] };
-
-            mats.books.forEach(b => {
-                const el = document.createElement('div');
-                el.className = 'upcoming-item';
-                el.style.borderLeftColor = 'var(--primary-blue)';
-                el.innerHTML = `📄 <strong>${b}</strong>`;
-                booksList.appendChild(el);
-            });
-
-            mats.audios.forEach(a => {
-                const el = document.createElement('div');
-                el.className = 'upcoming-item';
-                el.style.borderLeftColor = 'var(--accent-gold)';
-                el.innerHTML = `🎵 <strong>${a}</strong>`;
-                audiosList.appendChild(el);
-            });
-        }
-
-        /* ==========================================================
-           DESEMPENHO DOS ALUNOS (ESTILO BUSUU)
-           ========================================================== */
-        function renderBusuuPerformance() {
-            const container = document.getElementById('desempenho-render-container');
-            if (!container) return;
-            container.innerHTML = "";
-
-            let targetAlunos = alunosData;
-            
-            // Se for professor logado, filtra apenas alunos pertencentes às suas turmas
-            if (currentRole === "teacher") {
-                const assignedClasses = professorClassMapping[currentLoggedAdmin] || [];
-                targetAlunos = alunosData.filter(a => assignedClasses.includes(a.turma));
-            } else if (currentRole === "student") {
-                targetAlunos = alunosData.filter(a => a.nome === currentLoggedAdmin);
-            }
-
-            if (targetAlunos.length === 0) {
-                container.innerHTML = `<p style="color:#64748b; font-style:italic; padding: 10px;">Não foram encontrados alunos inscritos nas suas turmas.</p>`;
-                return;
-            }
-
-            targetAlunos.forEach(aluno => {
-                const wrap = document.createElement('div');
-                wrap.className = "busuu-container";
-                wrap.style.width = "100%";
-                wrap.style.borderBottom = "2px dashed #e2e8f0";
-                wrap.style.paddingBottom = "25px";
-                wrap.style.marginBottom = "25px";
-
-                wrap.innerHTML = `
-                    <div style="width:100%; margin-bottom: 10px;">
-                        <h3 style="margin:0; color: var(--primary-blue)">👤 Aluno: ${aluno.nome} <span style="font-size:13px; color:#64748b;">(${aluno.turma})</span></h3>
-                    </div>
-                    <div class="busuu-card-left">
-                        <h4 style="margin:0; color:#323130;">Nível de Fluência</h4>
-                        <div class="circular-progress" style="--prog: ${aluno.progress}%">
-                            <div class="circular-progress-inner">${aluno.progress}%</div>
-                        </div>
-                        <span style="font-size: 13px; font-weight: bold; color: var(--primary-purple);">Fluente em Inglês / TI</span>
-                    </div>
-                    <div class="busuu-card-right-container">
-                        <div class="busuu-stat-card">
-                            <span class="busuu-stat-icon">💬</span>
-                            <div class="busuu-stat-info">
-                                <span class="busuu-stat-title">Correções Realizadas</span>
-                                <span class="busuu-stat-value">${aluno.corrections}</span>
-                            </div>
-                        </div>
-                        <div class="busuu-stat-card">
-                            <span class="busuu-stat-icon">👍</span>
-                            <div class="busuu-stat-info">
-                                <span class="busuu-stat-title">Curtidas Recebidas</span>
-                                <span class="busuu-stat-value">${aluno.likes}</span>
-                            </div>
-                        </div>
-                        <div class="busuu-stat-card" style="border-left: 4px solid var(--accent-gold);">
-                            <span class="busuu-stat-icon">🏆</span>
-                            <div class="busuu-stat-info">
-                                <span class="busuu-stat-title">Pontos na Comunidade</span>
-                                <span class="busuu-stat-value" style="color: var(--accent-gold);">${aluno.score} Pts</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(wrap);
-            });
-        }
-
-        /* ==========================================================
-           SISTEMA DE COMUNIDADE (PONTOS AUTOMÁTICOS)
-           ========================================================== */
-        function renderCommunitySection() {
-            const container = document.getElementById('community-questions-target');
-            if (!container) return;
-            container.innerHTML = "";
-
-            if (communityQuestions.length === 0) {
-                container.innerHTML = `<p style="color:#64748b; font-style:italic;">De momento não há atividades ou perguntas de alunos.</p>`;
-                return;
-            }
-
-            communityQuestions.forEach(q => {
-                const card = document.createElement('div');
-                card.className = 'comm-thread-card';
-                
-                let repliesHtml = "";
-                q.replies.forEach(r => {
-                    repliesHtml += `
-                        <div class="comm-reply-item">
-                            <div class="comm-reply-author">✍️ ${r.author} (Membro Docente)</div>
-                            <div>${r.text}</div>
-                        </div>
-                    `;
-                });
-
-                // Verificação de privilégios para correção (Professores ou Admins)
-                const canCorrect = (currentRole === "teacher" || currentRole === "admin");
-
-                card.innerHTML = `
-                    <div class="comm-header">
-                        <span class="comm-student">👤 Aluno: ${q.student}</span>
-                        <span class="comm-date">📅 ${q.date}</span>
-                    </div>
-                    <div class="comm-question">
-                        ${q.question}
-                    </div>
-                    <div class="comm-replies-box" id="replies-box-${q.id}">
-                        ${repliesHtml}
-                    </div>
-                    
-                    <div style="margin-top:15px; display:flex; gap:10px; align-items: center; flex-wrap: wrap;">
-                        <input type="text" id="reply-input-${q.id}" class="form-control" placeholder="Escreva o feedback/correção pedagógica para o aluno..." style="flex-grow:1; min-width: 250px;">
-                        <button class="btn-publish-news" style="padding: 8px 16px;" onclick="submitCommunityReply(${q.id})">Enviar Feedback</button>
-                        
-                        ${canCorrect && !q.corrected ? 
-                            `<button class="btn-publish-news" style="background: #16a34a; padding: 8px 16px;" onclick="awardPointsToStudent(${q.id}, '${q.student}')">✔️ Validar (+2 Pontos)</button>` : ''
-                        }
-                        
-                        ${q.corrected ? `<span style="color: #16a34a; font-weight: bold; font-size:13px;">✔️ Atividade Corrigida (+2 Pts Atribuídos)</span>` : ''}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function submitCommunityReply(questionId) {
-            const input = document.getElementById(`reply-input-${questionId}`);
-            if (!input || !input.value.trim()) {
-                alert("Escreva uma resposta antes de submeter.");
-                return;
-            }
-
-            communityQuestions = communityQuestions.map(q => {
-                if (q.id === questionId) {
-                    q.replies.push({
-                        author: currentLoggedAdmin || "Professor",
-                        text: input.value.trim()
-                    });
-                }
-                return q;
-            });
-
-            localStorage.setItem('fyp_community_questions', JSON.stringify(communityQuestions));
-            renderCommunitySection();
-            updateComunidadeCounterBadge();
-            alert("Feedback pedagógico enviado com sucesso!");
-        }
-
-        function awardPointsToStudent(questionId, studentName) {
-            // Incrementar pontos na ficha do aluno
-            alunosData = alunosData.map(al => {
-                if (al.nome === studentName) {
-                    al.score = (al.score || 0) + 2;
-                    al.corrections += 1; // Incrementa as correções do estilo Busuu
-                }
-                return al;
-            });
-
-            // Marcar a pergunta como corrigida
-            communityQuestions = communityQuestions.map(q => {
-                if (q.id === questionId) {
-                    q.corrected = true;
-                }
-                return q;
-            });
-
-            localStorage.setItem('fyp_alunos_data', JSON.stringify(alunosData));
-            localStorage.setItem('fyp_community_questions', JSON.stringify(communityQuestions));
-
-            alert(`Excelente! Foram atribuídos 2 pontos ao aluno ${studentName} pelo seu desempenho.`);
-            renderCommunitySection();
-            renderAdminReadOnlyPanels();
-        }
-
-        /* ==========================================================
-           FUNÇÕES COMPLEMENTARES DE SUPORTE E NAVEGAÇÃO
-           ========================================================== */
-        function switchMainTab(tabId) {
-            document.querySelectorAll('.main-tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.nav-tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            const targetTab = document.getElementById(tabId);
-            if(targetTab) {
-                targetTab.classList.add('active');
-            }
-            
-            const btnList = document.querySelectorAll('.nav-tab-btn');
-            btnList.forEach(btn => {
-                if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) {
-                    btn.classList.add('active');
-                }
-            });
-
-            if (tabId === 'tab-meu-perfil') {
-                switchProfileSection('p-sec-calendario');
-            }
-        }
-
-        function openLoginModal() {
-            document.getElementById('login-modal').style.display = 'flex';
-        }
-        function closeLoginModal() {
-            document.getElementById('login-modal').style.display = 'none';
-            document.getElementById('login-error').style.display = 'none';
-        }
-
-        function submitAdminLogin() {
-            const user = document.getElementById('mod-username').value.trim();
-            const pass = document.getElementById('mod-password').value;
-            
-            if (admins[user] === pass) {
-                currentLoggedAdmin = user;
-                
-                // Determinação de Perfil/Role
-                if (user === "Helena Alburquerque" || user === "Silo João") {
-                    currentRole = "student";
-                } else if (user === "Teacher Amadeu" || user === "Professeur Jean-Pierre" || user === "Rosario Justo" || user === "Mauro Kaila" || user === "Emael Morais") {
-                    currentRole = "teacher";
-                } else {
-                    currentRole = "admin";
-                }
-
-                enableUserMode(true);
-                closeLoginModal();
-                switchMainTab('tab-meu-perfil');
-            } else {
-                document.getElementById('login-error').style.display = 'block';
-            }
-        }
-
-        function logoutAdmin() {
-            currentLoggedAdmin = null;
-            currentRole = "guest";
-            enableUserMode(false);
-            switchMainTab('tab-inicio');
-        }
-
-        function enableUserMode(enabled) {
-            isAdminActive = enabled && (currentRole === "admin");
-            
-            // Gerir classes CSS globais do corpo da página
-            document.body.classList.remove('admin-mode', 'prof-mode', 'student-mode');
-            if (enabled) {
-                if (currentRole === "admin") document.body.classList.add('admin-mode');
-                else if (currentRole === "teacher") document.body.classList.add('prof-mode');
-                else if (currentRole === "student") document.body.classList.add('student-mode');
-            }
-
-            // Atualização de elementos de navegação e barra de status
-            const statusEl = document.getElementById('admin-status');
-            if (statusEl) {
-                if (enabled) {
-                    statusEl.innerText = `${currentRole.toUpperCase()}: ${currentLoggedAdmin}`;
-                } else {
-                    statusEl.innerText = "Modo Público";
-                }
-            }
-
-            document.getElementById('btn-login-admin').style.display = enabled ? 'none' : 'block';
-            document.getElementById('btn-toggle-edit').style.display = (enabled && currentRole === "admin") ? 'block' : 'none';
-            document.getElementById('btn-logout-admin').style.display = enabled ? 'block' : 'none';
-            document.getElementById('btn-change-pass').style.display = enabled ? 'block' : 'none';
-            
-            // Visibilidade de opções na barra lateral estilo Outlook
-            const isProf = (currentRole === "teacher");
-            const isStud = (currentRole === "student");
-            const isAdmin = (currentRole === "admin");
-
-            document.getElementById('p-nav-adicionar-tarefa').style.display = isProf ? 'flex' : 'none';
-            document.getElementById('p-nav-material').style.display = (isProf || isStud) ? 'flex' : 'none';
-            document.getElementById('p-nav-desempenho').style.display = (isProf || isStud) ? 'flex' : 'none';
-            
-            // Ocultar navegações administrativas para Alunos
-            document.getElementById('p-nav-professores').style.display = isStud ? 'none' : 'flex';
-            document.getElementById('nav-consulta-title').style.display = isStud ? 'none' : 'block';
-
-            // Ajustar o texto do botão de Alunos dependendo do perfil
-            const lblAlunos = document.getElementById('lbl-nav-alunos-text');
-            if (lblAlunos) {
-                lblAlunos.innerText = isProf ? "📊 Alunos por Turma" : "📊 Alunos & Turmas";
-            }
-
-            updateProfileSidebarDisplay();
-
-            // Configurar barra de aviso do cabeçalho
-            const noticeBar = document.getElementById('admin-notice-bar');
-            if (enabled) {
-                if (currentRole === "admin") {
-                    const isSuper = superAdminsList.includes(currentLoggedAdmin);
-                    noticeBar.innerText = isSuper ? "Modo SUPER-ADMINSTRADOR Ativo." : "Painel do Sócio Ativo.";
-                } else if (currentRole === "teacher") {
-                    noticeBar.innerText = "Painel do Professor Ativo: Faça a gestão das suas turmas, materiais e tarefas.";
-                } else {
-                    noticeBar.innerText = "Painel do Aluno Ativo: Acompanhe o seu progresso, tarefas pendentes e comunidade.";
-                }
-            }
-
-            renderCalendar();
-            renderAgendaPanel();
-            populateResponsiblesDropdown();
-            renderAdminReadOnlyPanels();
-            updateComunidadeCounterBadge();
-        }
-
-        function toggleTextEditing() {
-            isTextEditModeActive = !isTextEditModeActive;
-            document.body.classList.toggle('admin-edit-active', isTextEditModeActive);
-            const editableFields = ["field-title", "field-quem-somos", "field-missao-title", "field-missao", "field-valores-title", "field-valores", "field-slogan-title", "field-slogan"];
-            editableFields.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.setAttribute('contenteditable', isTextEditModeActive ? "true" : "false");
-                }
-            });
-        }
-
-        function saveContent() {
-            const editedContent = {
-                title: document.getElementById('field-title').innerHTML,
-                quemSomos: document.getElementById('field-quem-somos').innerHTML,
-                missaoTitle: document.getElementById('field-missao-title').innerHTML,
-                missao: document.getElementById('field-missao').innerHTML,
-                valoresTitle: document.getElementById('field-valores-title').innerHTML,
-                valores: document.getElementById('field-valores').innerHTML,
-                sloganTitle: document.getElementById('field-slogan-title').innerHTML,
-                slogan: document.getElementById('field-slogan').innerHTML
-            };
-            localStorage.setItem('fyp_homepage_editable_content', JSON.stringify(editedContent));
-            alert("Alterações guardadas com sucesso na página inicial!");
-            toggleTextEditing();
-        }
-
-        function loadSavedContent() {
-            const saved = JSON.parse(localStorage.getItem('fyp_homepage_editable_content'));
-            if (saved) {
-                if (saved.title) document.getElementById('field-title').innerHTML = saved.title;
-                if (saved.quemSomos) document.getElementById('field-quem-somos').innerHTML = saved.quemSomos;
-                if (saved.missaoTitle) document.getElementById('field-missao-title').innerHTML = saved.missaoTitle;
-                if (saved.missao) document.getElementById('field-missao').innerHTML = saved.missao;
-                if (saved.valoresTitle) document.getElementById('field-valores-title').innerHTML = saved.valoresTitle;
-                if (saved.valores) document.getElementById('field-valores').innerHTML = saved.valores;
-                if (saved.sloganTitle) document.getElementById('field-slogan-title').innerHTML = saved.sloganTitle;
-                if (saved.slogan) document.getElementById('field-slogan').innerHTML = saved.slogan;
-            }
-        }
-
-        function changeCurrentAdminPassword() {
-            if (!currentLoggedAdmin) return;
-            const newPass = prompt("Insira a sua nova palavra-passe:");
-            if (newPass && newPass.trim() !== "") {
-                admins[currentLoggedAdmin] = newPass.trim();
-                localStorage.setItem('fyp_academy_credentials', JSON.stringify(admins));
-                alert("Palavra-passe alterada com sucesso!");
-            }
-        }
-
-        /* ==========================================================
-           SLIDER DE EVENTOS E DESTAQUES
-           ========================================================== */
-        let currentSlideIndex = 0;
-        let slideInterval = null;
-
-        function startHeroSlider() {
-            slideInterval = setInterval(() => {
-                setSlide((currentSlideIndex + 1) % 4);
-            }, 5000);
-        }
-
-        function setSlide(index) {
-            currentSlideIndex = index;
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        function scrollToNews() {
-            const element = document.getElementById('anchor-news-section');
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        /* ==========================================================
-           GESTOR DE NOVIDADES DINÂMICAS (VÍDEO & CONTEÚDO)
-           ========================================================== */
+        /* ENCODING DE MÍDIA E GESTÃO DE NOVIDADES */
         function encodeVideoFile(input) {
             const file = input.files[0];
             if (!file) return;
@@ -2116,374 +1162,205 @@
         function publishNews() {
             const title = document.getElementById('news-input-title').value.trim();
             const text = document.getElementById('news-input-text').value.trim();
-            
-            if(!title || !text) {
-                alert("Por favor, preencha o título e a descrição!");
+
+            if (!title) {
+                alert("Insira um título para a novidade.");
                 return;
             }
 
-            const newPost = {
+            const item = {
                 id: Date.now(),
                 title: title,
                 text: text,
                 mediaType: tempVideoBase64 ? "video" : "none",
-                mediaUrl: tempVideoBase64 || ""
+                mediaUrl: tempVideoBase64
             };
 
-            newsData.unshift(newPost);
+            newsData.unshift(item);
             localStorage.setItem('fyp_news_data', JSON.stringify(newsData));
             
             document.getElementById('news-input-title').value = "";
             document.getElementById('news-input-text').value = "";
-            document.getElementById('news-input-file').value = null;
+            document.getElementById('news-input-file').value = "";
             tempVideoBase64 = "";
 
+            renderNewsGrid();
             alert("Novidade publicada com sucesso!");
-            renderNews();
         }
 
-        function renderNews() {
+        function deleteNews(id) {
+            if (confirm("Tem certeza que deseja remover esta novidade?")) {
+                newsData = newsData.filter(n => n.id !== id);
+                localStorage.setItem('fyp_news_data', JSON.stringify(newsData));
+                renderNewsGrid();
+            }
+        }
+
+        function renderNewsGrid() {
             const container = document.getElementById('news-display-grid');
-            if(!container) return;
+            if (!container) return;
             container.innerHTML = "";
 
-            newsData.forEach(item => {
+            if (newsData.length === 0) {
+                container.innerHTML = `<p style="color:#64748b; font-style:italic;">Nenhuma novidade publicada de momento.</p>`;
+                return;
+            }
+
+            newsData.forEach(n => {
                 const card = document.createElement('div');
                 card.className = 'news-card';
-                
-                let mediaHtml = "";
-                if(item.mediaType === 'video' && item.mediaUrl) {
-                    mediaHtml = `
-                        <div class="news-video-wrapper">
-                            <video src="${item.mediaUrl}" controls loop muted></video>
-                        </div>
-                    `;
-                }
-
                 card.innerHTML = `
-                    ${mediaHtml}
-                    <button class="btn-delete-news" onclick="deleteNewsItem(${item.id})">Apagar</button>
+                    <button class="btn-delete-news" onclick="deleteNews(${n.id})">🗑️ Excluir</button>
+                    ${n.mediaUrl ? `<div class="news-video-wrapper"><video src="${n.mediaUrl}" controls></video></div>` : ''}
                     <div class="news-card-body">
-                        <h4 class="news-card-title">${item.title}</h4>
-                        <p class="news-card-text">${item.text}</p>
+                        <div class="news-card-title">${n.title}</div>
+                        <div class="news-card-text">${n.text}</div>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        function deleteNewsItem(id) {
-            if(confirm("Deseja apagar esta publicação permanentemente?")) {
-                newsData = newsData.filter(item => item.id !== id);
-                localStorage.setItem('fyp_news_data', JSON.stringify(newsData));
-                renderNews();
+        /* CALENDÁRIO */
+        function toggleCalendarSubView(view) {
+            const grid = document.getElementById('subview-calendar-grid');
+            const agenda = document.getElementById('subview-agenda-panel');
+            const sideCal = document.getElementById('cal-sidebar-filters');
+            const sideBtnCal = document.getElementById('side-btn-cal');
+            const sideBtnAg = document.getElementById('side-btn-ag');
+
+            if (view === 'grid') {
+                grid.style.display = 'block';
+                agenda.style.display = 'none';
+                sideCal.style.display = 'block';
+                sideBtnCal.classList.add('active');
+                sideBtnAg.classList.remove('active');
+            } else {
+                grid.style.display = 'none';
+                agenda.style.display = 'block';
+                sideCal.style.display = 'none';
+                sideBtnCal.classList.remove('active');
+                sideBtnAg.classList.add('active');
             }
         }
 
-        /* ==========================================================
-           SUB-VISTA CALENDÁRIO / TABELA DE COMPROMISSOS
-           ========================================================== */
-        const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-
-        function toggleCalendarSubView(view) {
-            document.getElementById('side-btn-cal').classList.toggle('active', view === 'grid');
-            document.getElementById('side-btn-ag').classList.toggle('active', view === 'agenda');
-            
-            document.getElementById('subview-calendar-grid').style.display = (view === 'grid') ? 'block' : 'none';
-            document.getElementById('subview-agenda-panel').classList.toggle('active', view === 'agenda');
-            document.getElementById('cal-sidebar-filters').style.display = (view === 'grid') ? 'block' : 'none';
+        function filterCategory(cat, btn) {
+            selectedCategoryFilter = cat;
+            document.querySelectorAll('#cal-sidebar-filters .filter-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+            renderCalendar();
         }
 
         function changeMonth(dir) {
             currentMonth += dir;
-            if (currentMonth > 11) {
-                currentMonth = 0;
-                currentYear++;
-            } else if (currentMonth < 0) {
-                currentMonth = 11;
-                currentYear--;
-            }
-            renderCalendar();
-        }
-
-        function filterCategory(cat, element) {
-            selectedCategoryFilter = cat;
-            document.querySelectorAll('#cal-sidebar-filters .filter-btn').forEach(b => b.classList.remove('active'));
-            if(element) element.classList.add('active');
+            if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+            if (currentMonth > 11) { currentMonth = 0; currentYear++; }
             renderCalendar();
         }
 
         function renderCalendar() {
-            const titleEl = document.getElementById('calendar-month-year-title');
-            const gridBody = document.getElementById('calendar-days-body');
-            const upcomingEl = document.getElementById('upcoming-events-container');
-            
-            if(!gridBody || !titleEl) return;
-            
-            titleEl.innerText = `${monthNames[currentMonth]} de ${currentYear}`;
-            gridBody.innerHTML = "";
-            upcomingEl.innerHTML = "";
+            const body = document.getElementById('calendar-days-body');
+            const title = document.getElementById('calendar-month-year-title');
+            if (!body) return;
 
-            const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+            const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+            title.innerText = `${monthNames[currentMonth]} de ${currentYear}`;
+            body.innerHTML = "";
+
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
             const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
 
-            for(let i = 0; i < firstDayIndex; i++) {
-                const emptyCell = document.createElement('div');
-                emptyCell.className = "calendar-day empty";
-                gridBody.appendChild(emptyCell);
+            for (let i = 0; i < firstDay; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'calendar-day empty';
+                body.appendChild(empty);
             }
 
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayCell = document.createElement('div');
-                dayCell.className = "calendar-day";
-                dayCell.innerHTML = `<span class="day-num">${day}</span><div class="day-events" id="day-evs-${day}"></div>`;
-                gridBody.appendChild(dayCell);
+                dayCell.className = 'calendar-day';
+                dayCell.innerHTML = `<span class="day-num">${day}</span><div class="day-events"></div>`;
 
-                const dayEvents = calendarEvents.filter(ev => ev.day === day && ev.month === currentMonth && ev.year === currentYear);
-                const evContainer = dayCell.querySelector('.day-events');
+                const eventsContainer = dayCell.querySelector('.day-events');
+                const matchedEvents = calendarEvents.filter(e => e.day === day && e.month === currentMonth && e.year === currentYear);
 
-                dayEvents.forEach(ev => {
-                    if (selectedCategoryFilter === 'todos' || ev.cat === selectedCategoryFilter) {
-                        const badge = document.createElement('span');
+                matchedEvents.forEach(ev => {
+                    if (selectedCategoryFilter === 'todos' || selectedCategoryFilter === ev.cat) {
+                        const badge = document.createElement('div');
                         badge.className = `event-badge cat-${ev.cat}`;
                         badge.innerText = ev.title;
-                        evContainer.appendChild(badge);
-
-                        const upcomingItem = document.createElement('div');
-                        upcomingItem.className = 'upcoming-item';
-                        upcomingItem.style.borderLeftColor = `var(--cat-${ev.cat})`;
-                        upcomingItem.innerHTML = `<span class="date">${day} de ${monthNames[currentMonth]}</span> ${ev.title}`;
-                        upcomingEl.appendChild(upcomingItem);
+                        eventsContainer.appendChild(badge);
                     }
                 });
+
+                body.appendChild(dayCell);
             }
+
+            renderUpcomingEvents();
         }
 
-        /* ==========================================================
-           VISUALIZAÇÕES PROTEGIDAS (APENAS LEITURA PARA SOCIOS & PROFS)
-           ========================================================== */
-        function populateResponsiblesDropdown() {
-            const selectEl = document.getElementById('ag-form-resp');
-            if(!selectEl) return;
-            selectEl.innerHTML = "";
+        function renderUpcomingEvents() {
+            const container = document.getElementById('upcoming-events-container');
+            if(!container) return;
+            container.innerHTML = "";
 
-            const optNone = document.createElement('option');
-            optNone.value = "—";
-            optNone.innerText = "— (A Atribuir)";
-            selectEl.appendChild(optNone);
+            calendarEvents.forEach(ev => {
+                if (selectedCategoryFilter === 'todos' || selectedCategoryFilter === ev.cat) {
+                    const item = document.createElement('div');
+                    item.className = 'upcoming-item';
+                    item.innerHTML = `<span class="date">${ev.day}/${ev.month + 1}/${ev.year}</span>${ev.title}`;
+                    container.appendChild(item);
+                }
+            });
+        }
+
+        function populateResponsiblesDropdown() {
+            const select = document.getElementById('ag-form-resp');
+            if (!select) return;
+            select.innerHTML = "";
 
             sociosData.forEach(s => {
                 const opt = document.createElement('option');
                 opt.value = s.nome;
-                opt.innerText = `Sócio: ${s.nome}`;
-                selectEl.appendChild(opt);
-            });
-
-            professoresData.forEach(p => {
-                const opt = document.createElement('option');
-                opt.value = p.nome;
-                opt.innerText = `Prof: ${p.nome}`;
-                selectEl.appendChild(opt);
+                opt.text = s.nome;
+                select.appendChild(opt);
             });
         }
 
         function renderAdminReadOnlyPanels() {
-            const tblProfs = document.getElementById('tbl-professores-body');
-            if(tblProfs) {
-                tblProfs.innerHTML = professoresData.map(p => {
-                    return `
-                        <tr>
-                            <td><strong>${p.nome}</strong></td>
-                            <td>${p.curso}</td>
-                            <td>${p.salas}</td>
-                        </tr>
-                    `;
-                }).join('');
+            const profBody = document.getElementById('tbl-professores-body');
+            const studentBody = document.getElementById('tbl-alunos-readonly-body');
+
+            if (profBody) {
+                profBody.innerHTML = professoresData.map(p => `
+                    <tr>
+                        <td><strong>${p.nome}</strong></td>
+                        <td>${p.curso}</td>
+                        <td>${p.salas}</td>
+                    </tr>
+                `).join('');
             }
 
-            const tblAlReadOnly = document.getElementById('tbl-alunos-readonly-body');
-            if (tblAlReadOnly) {
-                tblAlReadOnly.innerHTML = alunosData.map(a => {
-                    return `
-                        <tr>
-                            <td><strong>${a.nome}</strong></td>
-                            <td>${a.turma}</td>
-                            <td><span class="badge-status badge-pago">${a.score || 0} Pts</span></td>
-                        </tr>
-                    `;
-                }).join('');
-            }
-
-            const containerTurmas = document.getElementById('container-turmas-alunos');
-            if(containerTurmas) {
-                containerTurmas.innerHTML = `
-                    <div style="background:white; padding:15px; border-radius:6px; margin-bottom:15px; border-left:4px solid var(--cat-ingles)">
-                        <h4>Turma de Inglês - B2 (Início no Golf 2)</h4>
-                        <p>Total Inscritos: ${alunosData.filter(al => al.curso === 'Inglês').length} Alunos Ativos</p>
-                    </div>
-                `;
+            if (studentBody) {
+                studentBody.innerHTML = alunosData.map(a => `
+                    <tr>
+                        <td><strong>${a.nome}</strong></td>
+                        <td>${a.turma}</td>
+                        <td><span style="color:var(--accent-gold); font-weight:bold;">🏆 ${a.score || 0} Pts</span></td>
+                    </tr>
+                `).join('');
             }
         }
 
-        /* ==========================================================
-           INICIALIZAÇÃO DO SISTEMA
-           ========================================================== */
+        /* INICIALIZAÇÃO */
         window.addEventListener('DOMContentLoaded', () => {
             loadSavedContent();
-            renderNews();
+            startHeroSlider();
+            renderNewsGrid();
             renderCalendar();
-            renderAgendaPanel();
             populateResponsiblesDropdown();
             renderAdminReadOnlyPanels();
-            startHeroSlider();
-            updateComunidadeCounterBadge();
         });
-        /* ==========================================
-           1. RENDERIZAÇÃO DO CALENDÁRIO EM GRELHA (OUTLOOK)
-           ========================================== */
-        const mesesNomes = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-        let dataAtualCalendario = new Date();
-
-        function renderizarCalendarioGrelha() {
-            const gridContainer = document.getElementById('subview-calendar-grid');
-            if (!gridContainer) return;
-
-            gridContainer.innerHTML = "";
-            const ano = dataAtualCalendario.getFullYear();
-            const mes = dataAtualCalendario.getMonth();
-
-            const headerDiv = document.createElement('div');
-            headerDiv.style.display = 'flex';
-            headerDiv.style.justifyContent = 'space-between';
-            headerDiv.style.alignItems = 'center';
-            headerDiv.style.marginBottom = '15px';
-            headerDiv.innerHTML = `
-                <h3 style="margin:0; color:#333;">${mesNomes[mes]} de ${ano}</h3>
-                <div>
-                    <button type="button" onclick="navegarMesCalendario(-1)" style="padding:5px 10px; cursor:pointer; margin-right:5px; border:1px solid #ccc; background:#fff; border-radius:4px;">Ant</button>
-                    <button type="button" onclick="navegarMesCalendario(1)" style="padding:5px 10px; cursor:pointer; border:1px solid #ccc; background:#fff; border-radius:4px;">Pro</button>
-                </div>
-            `;
-            gridContainer.appendChild(headerDiv);
-
-            const table = document.createElement('table');
-            table.style.width = '100%';
-            table.style.borderCollapse = 'collapse';
-
-            const diasSemana = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-            let trDias = document.createElement('tr');
-            diasSemana.forEach(dia => {
-                let th = document.createElement('th');
-                th.innerText = dia;
-                th.style.padding = '10px';
-                th.style.background = '#f4f4f6';
-                th.style.border = '1px solid #e0e0e0';
-                trDias.appendChild(th);
-            });
-            table.appendChild(trDias);
-
-            const primeiroDiaMes = new Date(ano, mes, 1).getDay();
-            const totalDiasMes = new Date(ano, mes + 1, 0).getDate();
-            let dataCursor = 1;
-            let totalCelulas = Math.ceil((primeiroDiaMes + totalDiasMes) / 7) * 7;
-            let trVar = document.createElement('tr');
-
-            for (let i = 0; i < totalCelulas; i++) {
-                if (i % 7 === 0 && i > 0) {
-                    table.appendChild(trVar);
-                    trVar = document.createElement('tr');
-                }
-
-                let td = document.createElement('td');
-                td.style.border = '1px solid #e0e0e0';
-                td.style.verticalAlign = 'top';
-                td.style.padding = '8px';
-                td.style.height = '90px';
-                td.style.width = '14.28%';
-
-                if (i >= primeiroDiaMes && dataCursor <= totalDiasMes) {
-                    td.innerHTML = `<b>${dataCursor}</b>`;
-                    const dataStringIso = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dataCursor).padStart(2, '0')}`;
-                    
-                    let compromissos = JSON.parse(localStorage.getItem('fyp_agenda_compromissos')) || [];
-                    let eventosDoDia = compromissos.filter(c => c.data === dataStringIso);
-
-                    eventosDoDia.forEach(ev => {
-                        let evBadge = document.createElement('div');
-                        evBadge.innerText = `[${ev.hora || '00:00'}] ${ev.titulo}`;
-                        evBadge.style.fontSize = '11px';
-                        evBadge.style.background = '#0078d4';
-                        evBadge.style.color = '#fff';
-                        evBadge.style.padding = '2px 4px';
-                        evBadge.style.borderRadius = '3px';
-                        evBadge.style.marginTop = '4px';
-                        evBadge.style.overflow = 'hidden';
-                        evBadge.style.textOverflow = 'ellipsis';
-                        evBadge.style.whiteSpace = 'nowrap';
-                        td.appendChild(evBadge);
-                    });
-                    dataCursor++;
-                } else {
-                    td.style.background = '#fafafa';
-                }
-                trVar.appendChild(td);
-            }
-            table.appendChild(trVar);
-            gridContainer.appendChild(table);
-        }
-
-        window.navegarMesCalendario = function(direcao) {
-            dataAtualCalendario.setMonth(dataAtualCalendario.getMonth() + direcao);
-            renderizarCalendarioGrelha();
-        }
-
-        /* ==========================================
-           2. CARREGADOR DE VÍDEOS NA SECÇÃO DE NOVIDADES
-           ========================================== */
-        const novidadesVideosData = [
-            {
-                titulo: "Abertura do Novo Módulo de Programação Web na FYP+C",
-                descricao: "Veja como foi o primeiro dia dos nossos alunos aprendendo Engenharia de Software.",
-                urlVideo: "https://www.w3schools.com/html/mov_bbb.mp4",
-                dataPost: "17/07/2026"
-            }
-        ];
-
-        function carregarSecoNovidadesVideos() {
-            const containerNovidades = document.getElementById('feed-novidades-videos');
-            if (!containerNovidades) return;
-
-            containerNovidades.innerHTML = "";
-            novidadesVideosData.forEach(item => {
-                const card = document.createElement('div');
-                card.style.background = '#fff';
-                card.style.border = '1px solid #e0e0e0';
-                card.style.borderRadius = '8px';
-                card.style.marginBottom = '20px';
-                card.style.overflow = 'hidden';
-
-                card.innerHTML = `
-                    <video controls style="width:100%; display:block;">
-                        <source src="${item.urlVideo}" type="video/mp4">
-                    </video>
-                    <div style="padding:15px;">
-                        <span style="font-size:12px; color:#0078d4; font-weight:bold;">${item.dataPost}</span>
-                        <h4 style="margin: 5px 0 10px 0; font-size:16px;">${item.titulo}</h4>
-                        <p style="margin:0; font-size:14px; color:#666;">${item.descricao}</p>
-                    </div>
-                `;
-                containerNovidades.appendChild(card);
-            });
-        }
-
-        // Executar inicializações adicionais da FYP+C
-        if (!localStorage.getItem('fyp_agenda_compromissos')) {
-            localStorage.setItem('fyp_agenda_compromissos', JSON.stringify([
-                { data: "2026-07-20", hora: "09:00", titulo: "Aula de Inglês Avançado", responsavel: "Francisco" }
-            ]));
-        }
-        renderizarCalendarioGrelha();
-        carregarSecoNovidadesVideos();
     </script>
 </body>
 </html>
