@@ -30,6 +30,217 @@
             margin: 0; 
             padding: 0; 
         }
+/* --- REGRAS DO EDUSYSTEM ERP --- */
+.view-section {
+  display: none !important;
+}
+
+.view-section.active {
+  display: block !important;
+}
+
+#p-sec-edusystem {
+  display: none;
+  flex-direction: row;
+  width: calc(100% + 60px);
+  margin: -30px;
+  min-height: 500px;
+  background-color: #f4f6f9;
+}
+
+#p-sec-edusystem aside {
+  width: 280px;
+  background-color: #1e293b;
+  color: #fff;
+  padding: 20px 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#p-sec-edusystem aside h2 {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #38bdf8;
+  padding: 0 10px;
+}
+
+#p-sec-edusystem .lang-box {
+  background: #0f172a;
+  padding: 12px;
+  margin: 0 15px 20px 15px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+}
+
+#p-sec-edusystem .lang-box label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#p-sec-edusystem .lang-box select {
+  width: 100%;
+  padding: 8px;
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid #475569;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#p-sec-edusystem aside nav { flex-grow: 1; }
+
+#p-sec-edusystem aside nav button {
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  text-align: left;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#p-sec-edusystem aside nav button:hover,
+#p-sec-edusystem aside nav button.active {
+  background-color: #0f172a;
+  color: #fff;
+  border-left: 4px solid #38bdf8;
+}
+
+#p-sec-edusystem aside nav button span.badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #334155;
+}
+
+#p-sec-edusystem main {
+  flex: 1;
+  padding: 25px;
+  background-color: #f4f6f9;
+  overflow-y: auto;
+}
+
+#p-sec-edusystem header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#p-sec-edusystem header h1 { font-size: 1.4rem; color: #0f172a; }
+
+#p-sec-edusystem .grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+#p-sec-edusystem .card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#p-sec-edusystem .card h3 {
+  font-size: 0.85rem;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+#p-sec-edusystem .card .value { font-size: 1.6rem; font-weight: bold; color: #0f172a; }
+#p-sec-edusystem .card .sub { font-size: 0.8rem; margin-top: 5px; }
+#p-sec-edusystem .sub.positive { color: #16a34a; }
+#p-sec-edusystem .sub.negative { color: #dc2626; }
+
+#p-sec-edusystem .content-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+#p-sec-edusystem .content-box h3 { margin-bottom: 10px; color: #1e293b; font-size: 1.1rem; }
+
+#p-sec-edusystem #form-tps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+  align-items: stretch;
+}
+
+#p-sec-edusystem #form-tps input,
+#p-sec-edusystem #form-tps select,
+#p-sec-edusystem #form-tps button {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+#p-sec-edusystem #form-tps button {
+  background: #0284c7;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#p-sec-edusystem #form-tps button:hover { background: #0369a1; }
+
+#p-sec-edusystem table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+#p-sec-edusystem th,
+#p-sec-edusystem td {
+  padding: 10px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+#p-sec-edusystem th { background-color: #f8fafc; color: #475569; }
+
+#p-sec-edusystem .tag { padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+#p-sec-edusystem .tag.novo { background: #dbeafe; color: #1e40af; }
+#p-sec-edusystem .tag.visita { background: #fef3c7; color: #92400e; }
+#p-sec-edusystem .tag.matriculado { background: #dcfce7; color: #166534; }
+
+#p-sec-edusystem .dss-risk-card { border-top: 4px solid transparent; }
+#p-sec-edusystem .dss-risk-baixo { border-top-color: #10b981; }
+#p-sec-edusystem .dss-risk-medio { border-top-color: #f59e0b; }
+#p-sec-edusystem .dss-risk-alto { border-top-color: #ef4444; }
+#p-sec-edusystem .dss-risk-baixo .value { color: #10b981; }
+#p-sec-edusystem .dss-risk-medio .value { color: #f59e0b; }
+#p-sec-edusystem .dss-risk-alto .value { color: #ef4444; }
+
+#p-sec-edusystem .chart-wrapper { position: relative; height: 260px; margin-top: 10px; }
+#p-sec-edusystem .ess-chart-wide { grid-column: 1 / -1; }
+#p-sec-edusystem .ess-charts-row, #p-sec-edusystem .dss-charts-row { margin-bottom: 20px; }
 
         /* BARRA DE ADMINISTRAÇÃO */
         .admin-bar { 
@@ -301,6 +512,39 @@
 
         /* TABELAS E LAYOUT DE ABAS ADMINISTRATIVAS */
         .adm-data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.02); margin-top: 15px; }
+
+        .pfc-stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .pfc-stat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 25px 20px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: box-shadow 0.2s, transform 0.2s; }
+        .pfc-stat-card.clickable { cursor: pointer; }
+        .pfc-stat-card.clickable:hover { box-shadow: 0 6px 14px rgba(0,0,0,0.08); transform: translateY(-2px); }
+        .pfc-stat-icon { font-size: 38px; margin-bottom: 10px; }
+        .pfc-stat-label { font-size: 15px; color: #334155; margin-bottom: 8px; }
+        .pfc-stat-value { font-size: 32px; font-weight: bold; color: #0f172a; }
+
+        /* Lista de contactos estilo WhatsApp (tema claro) */
+        .wa-contact-list { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin-top: 10px; }
+        .wa-contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: background 0.15s; }
+        .wa-contact-item:last-child { border-bottom: none; }
+        .wa-contact-item:hover { background: #f8fafc; }
+        .wa-avatar { width: 46px; height: 46px; min-width: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 15px; }
+        .wa-avatar-lg { width: 76px; height: 76px; min-width: 76px; font-size: 26px; }
+        .wa-contact-info { flex: 1; min-width: 0; }
+        .wa-contact-name { font-weight: 600; color: #0f172a; font-size: 15px; }
+        .wa-contact-sub { font-size: 13px; color: #64748b; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .wa-contact-chevron { color: #cbd5e1; font-size: 22px; }
+
+        /* Ficha de perfil (inspirada no Portal do Colaborador) */
+        .wa-back-btn { background: none; border: none; color: var(--primary-blue); font-weight: 600; font-size: 14px; cursor: pointer; margin-bottom: 18px; padding: 0; }
+        .wa-profile-header { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; }
+        .wa-profile-header h3 { margin: 0; font-size: 20px; color: #0f172a; }
+        .wa-profile-header p { margin: 4px 0 0; color: #64748b; font-size: 14px; }
+        .wa-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+        .wa-profile-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px 20px; }
+        .wa-profile-card h4 { margin: 0 0 12px; font-size: 13px; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 0.04em; }
+        .wa-profile-card p { margin: 7px 0; font-size: 14px; color: #334155; }
+        .wa-tag { padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .wa-tag-green { background: #dcfce7; color: #166534; }
+        .wa-tag-red { background: #fee2e2; color: #991b1b; }
         .adm-data-table th { background: var(--primary-blue); color: white; padding: 12px 15px; font-size: 14px; text-align: left; }
         .adm-data-table td { padding: 12px 15px; border-bottom: 1px solid #e2e8f0; font-size: 14px; color: #334155; }
         .adm-data-table tr:last-child td { border-bottom: none; }
@@ -699,6 +943,7 @@
             color: #1e293b;
         }
     </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -720,6 +965,53 @@
             <div class="modal-actions">
                 <button class="btn-modal-cancel" onclick="closeLoginModal()">Cancelar</button>
                 <button class="btn-modal-confirm" onclick="submitAdminLogin()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Janela Pop-up de Inscrição Pública de Alunos -->
+    <div id="public-registration-modal" class="login-modal-overlay">
+        <div class="login-modal-card">
+            <h3>Formulário de Inscrição - FYP+C</h3>
+            <p style="font-size:13px; color:#64748b; margin-top:-10px; margin-bottom:15px;">Preencha os seus dados para dar o primeiro passo. Entraremos em contacto após a análise da sua inscrição.</p>
+
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="reg-nome">Nome Completo:</label>
+                <input type="text" id="reg-nome" class="form-control" placeholder="Ex: Manuel António">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="reg-telefone">Número de Telefone:</label>
+                <input type="text" id="reg-telefone" class="form-control" placeholder="Ex: +244 9xx xxx xxx">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="reg-email">E-mail:</label>
+                <input type="email" id="reg-email" class="form-control" placeholder="Ex: nome@email.com">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="reg-curso">Curso Pretendido:</label>
+                <select id="reg-curso" class="form-control" onchange="atualizarNivelPublico()">
+                    <option value="Informática">Informática</option>
+                    <option value="Francês">Francês</option>
+                    <option value="Inglês">Inglês</option>
+                    <option value="Cabeleireiro">Cabeleireiro</option>
+                    <option value="Pastelaria">Pastelaria</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 15px;" id="reg-nivel-wrapper" hidden>
+                <label class="file-label" for="reg-nivel">Nível Pretendido:</label>
+                <select id="reg-nivel" class="form-control">
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closePublicRegistrationModal()">Cancelar</button>
+                <button class="btn-modal-confirm" onclick="submitPublicRegistration()">Enviar Inscrição</button>
             </div>
         </div>
     </div>
@@ -846,6 +1138,9 @@
                 <a class="profile-nav-item active" id="p-nav-calendario" onclick="switchProfileSection('p-sec-calendario')">
                     <span class="icon-span">📅 Calendário & Agenda</span>
                 </a>
+                <a class="profile-nav-item" id="p-nav-edusystem" onclick="switchProfileSection('p-sec-edusystem')">
+    <span>💼 EduSystem ERP</span>
+</a>
 
                 <a class="profile-nav-item" id="p-nav-comunidade" onclick="switchProfileSection('p-sec-comunidade')">
                     <span class="icon-span">💬 Comunidade</span>
@@ -854,12 +1149,12 @@
 
                 <div class="profile-nav-group-title" style="margin-top: 15px;" id="nav-consulta-title">Consulta Geral</div>
 
-                <a class="profile-nav-item" id="p-nav-professores" onclick="switchProfileSection('p-sec-professores')">
-                    <span class="icon-span">👨‍🏫 Corpo Docente</span>
+                <a class="profile-nav-item" id="p-nav-consulta-geral" onclick="switchProfileSection('p-sec-consulta-geral')">
+                    <span class="icon-span">🧑‍💼 Person FYP+C</span>
                 </a>
 
-                <a class="profile-nav-item" id="p-nav-alunos" onclick="switchProfileSection('p-sec-alunos')">
-                    <span class="icon-span" id="lbl-nav-alunos-text">📊 Alunos & Turmas</span>
+                <a class="profile-nav-item" id="p-nav-administracao" onclick="switchProfileSection('p-sec-administracao')" style="display: none;">
+                    <span class="icon-span">🛡️ Administração</span>
                 </a>
 
                 <!-- OPÇÕES EXCLUSIVAS PARA PROFESSOR -->
@@ -910,7 +1205,694 @@
                     </div>
                 </div>
 
+                <!-- Secção: EduSystem ERP -->
+                <div id="p-sec-edusystem" class="profile-dynamic-section" style="display: none;">
+<aside>
+  <h2>EduSystem ERP</h2>
+  
+  <!-- Seletor de Idiomas -->
+  <div class="lang-box">
+    <label id="lbl-lang">Idioma / Language:</label>
+    <select id="lang-select" onchange="alterarIdioma(this.value)">
+      <option value="pt" selected>Português 🇦🇴 / 🇵🇹</option>
+      <option value="en">English 🇬🇧 / 🇺🇸</option>
+      <option value="fr">Français 🇫🇷</option>
+    </select>
+  </div>
+
+  <nav>
+    <button id="nav-tps" class="active" onclick="switchTab('tps')">
+      <span class="txt">1. Presença & Aulas</span> <span class="badge">TPS</span>
+    </button>
+    <button id="nav-crm" onclick="switchTab('crm')">
+      <span class="txt">2. Captação/Matrículas</span> <span class="badge">CRM</span>
+    </button>
+    <button id="nav-mis" onclick="switchTab('mis')">
+      <span class="txt">3. Relatório da Turma</span> <span class="badge">MIS</span>
+    </button>
+    <button id="nav-dss" onclick="switchTab('dss')">
+      <span class="txt">4. Simulador de Riscos</span> <span class="badge">DSS</span>
+    </button>
+    <button id="nav-ess" onclick="switchTab('ess')">
+      <span class="txt">5. Visão da Diretoria</span> <span class="badge">ESS</span>
+    </button>
+  </nav>
+</aside>
+
+<!-- Área Principal do ERP -->
+<main>
+  <header>
+    <h1 id="page-title">Sistema de Processamento de Transações (TPS)</h1>
+    <span id="user-role" style="font-size: 0.85rem; color: #64748b;">Usuário: Professor / Operacional</span>
+  </header>
+
+  <!-- 1. TPS: Operacional -->
+  <section id="tps" class="view-section active">
+    <div class="content-box">
+      <h3 id="tps-h3">Lançamento Diário de Frequência e Nota (TPS)</h3>
+      <p id="tps-desc" style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+        Nível Operacional: Registrar a rotina diária em tempo real na base de dados central.
+      </p>
+      <form id="form-tps" onsubmit="adicionarFrequencia(event)">
+        <input type="text" id="aluno-nome" placeholder="Nome do Aluno" required>
+        <select id="aluno-curso" onchange="atualizarNivel()">
+          <option value="Informática">Informática</option>
+          <option value="Francês">Francês</option>
+          <option value="Inglês">Inglês</option>
+          <option value="Cabeleireiro">Cabeleireiro</option>
+          <option value="Pastelaria">Pastelaria</option>
+        </select>
+        <select id="aluno-nivel" style="display: none;">
+          <option value="A1">A1</option>
+          <option value="A2">A2</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+          <option value="C1">C1</option>
+          <option value="C2">C2</option>
+        </select>
+        <select id="aluno-status">
+          <option value="Presente" id="opt-pres">Presente</option>
+          <option value="Falta" id="opt-abs">Falta</option>
+        </select>
+        <input type="number" id="aluno-nota" placeholder="Nota Teste (0-20)" min="0" max="20" required>
+        <button type="submit" id="btn-save-tps">Salvar Registro</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th id="th-date">Data/Hora</th>
+            <th id="th-student">Aluno</th>
+            <th id="th-class">Curso</th>
+            <th id="th-level">Nível</th>
+            <th id="th-status">Status</th>
+            <th id="th-grade">Nota Lançada</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-tps">
+          <tr>
+            <td>12/09 - 08:00</td>
+            <td>Manuel António</td>
+            <td>Inglês</td>
+            <td>B1</td>
+            <td><span style="color: green;" class="txt-pres">Presente</span></td>
+            <td>16</td>
+          </tr>
+          <tr>
+            <td>12/09 - 08:01</td>
+            <td>Ana Paula</td>
+            <td>Informática</td>
+            <td>—</td>
+            <td><span style="color: red;" class="txt-abs">Falta</span></td>
+            <td>08</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2. CRM: Vendas e Atendimento -->
+  <section id="crm" class="view-section">
+    <div class="content-box">
+      <h3 id="crm-h3">Pipeline de Captação de Alunos (CRM Escolar)</h3>
+      <p id="crm-desc" style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+        Gerenciamento do relacionamento com novos alunos e encarregados de educação.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th id="th-crm-cand">Candidato / Responsável</th>
+            <th id="th-crm-contact">Contato</th>
+            <th id="th-crm-stage">Estágio no Funil</th>
+            <th id="th-crm-action">Ação Necessária</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>João Pedro (Pai: Carlos)</td>
+            <td>923-000-111</td>
+            <td><span class="tag novo" id="tag-crm-1">Novo Interessado</span></td>
+            <td id="act-crm-1">Agendar visita guiada à escola</td>
+          </tr>
+          <tr>
+            <td>Maria Beatriz</td>
+            <td>912-333-444</td>
+            <td><span class="tag visita" id="tag-crm-2">Visitou a Escola</span></td>
+            <td id="act-crm-2">Enviar proposta de bolsa de estudo</td>
+          </tr>
+          <tr>
+            <td>Lucas Gabriel</td>
+            <td>945-888-999</td>
+            <td><span class="tag matriculado" id="tag-crm-3">Matrícula Concluída</span></td>
+            <td id="act-crm-3">Encaminhado para o ERP (Módulo Acadêmico)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. MIS: Relatórios Gerenciais -->
+  <section id="mis" class="view-section">
+    <div class="grid-cards">
+      <div class="card">
+        <h3 id="mis-c1-title">Média da Turma (10º A)</h3>
+        <div class="value">13.5 / 20</div>
+        <div class="sub positive" id="mis-c1-sub">↑ +1.2 vs. mês anterior</div>
+      </div>
+      <div class="card">
+        <h3 id="mis-c2-title">Taxa de Assiduidade</h3>
+        <div class="value">88%</div>
+        <div class="sub negative" id="mis-c2-sub">↓ 3% abaixo da meta de 91%</div>
+      </div>
+    </div>
+    <div class="content-box">
+      <h3 id="mis-h3">Relatório Gerencial Mensal por Turma (MIS)</h3>
+      <p id="mis-desc" style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+        Nível Tático: Dados consolidados para coordenação pedagógica tomar decisões de acompanhamento.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th id="th-mis-turma">Turma</th>
+            <th id="th-mis-total">Total Alunos</th>
+            <th id="th-mis-avg">Média Geral</th>
+            <th id="th-mis-crit">Alunos Críticos (&lt; 10)</th>
+            <th id="th-mis-st">Status do Mês</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10º Ano A</td>
+            <td>35</td>
+            <td>14.2</td>
+            <td id="td-mis-c1">3 alunos</td>
+            <td><span style="color: green; font-weight: bold;" id="td-mis-s1">Estável</span></td>
+          </tr>
+          <tr>
+            <td>10º Ano B</td>
+            <td>32</td>
+            <td>09.8</td>
+            <td id="td-mis-c2">11 alunos</td>
+            <td><span style="color: red; font-weight: bold;" id="td-mis-s2">Requer Intervenção</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. DSS: Apoio à Decisão -->
+  <section id="dss" class="view-section">
+    <div class="grid-cards">
+      <div class="card dss-risk-card dss-risk-baixo">
+        <h3 id="dss-baixo-title">Risco Baixo</h3>
+        <div class="value" id="dss-count-baixo">0</div>
+        <div class="sub" id="dss-baixo-sub">alunos em situação estável</div>
+      </div>
+      <div class="card dss-risk-card dss-risk-medio">
+        <h3 id="dss-medio-title">Risco Médio</h3>
+        <div class="value" id="dss-count-medio">0</div>
+        <div class="sub" id="dss-medio-sub">a acompanhar de perto</div>
+      </div>
+      <div class="card dss-risk-card dss-risk-alto">
+        <h3 id="dss-alto-title">Risco Alto</h3>
+        <div class="value" id="dss-count-alto">0</div>
+        <div class="sub" id="dss-alto-sub">intervenção recomendada</div>
+      </div>
+    </div>
+
+    <div class="grid-cards dss-charts-row">
+      <div class="card">
+        <h3 id="dss-chart1-title">Distribuição de Risco dos Alunos</h3>
+        <div class="chart-wrapper"><canvas id="canvas-dss-distribuicao"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 id="dss-chart2-title">Risco Médio por Turma</h3>
+        <div class="chart-wrapper"><canvas id="canvas-dss-turma"></canvas></div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <h3 id="dss-h3">Análise Preditiva de Risco de Evasão / Reprovação (DSS)</h3>
+      <p id="dss-desc" style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+        Nível Tático/Estratégico: Algoritmo cruza dados de faltas, mensalidades e notas para apontar riscos.
+      </p>
+      <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 12px; margin-bottom: 15px; border-radius: 4px;">
+        <strong id="dss-alert-lbl">Alerta do Sistema:</strong> <span id="dss-alert-txt">14% dos alunos do 10º Ano B têm 70% de chance de reprovação se o ritmo atual de faltas continuar.</span>
+      </div>
+      <button id="btn-dss-sim" onclick="simularReforzo()" style="padding: 10px 15px; background: #15803d; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Simular Cenário: Aplicar Aulas de Reforço no Sábado
+      </button>
+      <p id="resultado-simulacao" style="margin-top: 12px; font-weight: bold; color: #0f172a;"></p>
+    </div>
+  </section>
+
+  <!-- 5. ESS: Painel Executivo para Sócios e Diretores -->
+  <section id="ess" class="view-section">
+    <div class="grid-cards">
+      <div class="card">
+        <h3 id="ess-c1-title">Faturamento Anual (ERP)</h3>
+        <div class="value">45.000.000 Kz</div>
+        <div class="sub positive" id="ess-c1-sub">Meta anual 85% atingida</div>
+      </div>
+      <div class="card">
+        <h3 id="ess-c2-title">Inadimplência Global</h3>
+        <div class="value">4.2%</div>
+        <div class="sub positive" id="ess-c2-sub">Saudável (&lt; 5%)</div>
+      </div>
+      <div class="card">
+        <h3 id="ess-c3-title">Novas Matrículas (CRM)</h3>
+        <div class="value">+120</div>
+        <div class="sub positive" id="ess-c3-sub">↑ 15% em relação ao ano passado</div>
+      </div>
+    </div>
+
+    <div class="grid-cards ess-charts-row">
+      <div class="card ess-chart-wide">
+        <h3 id="ess-chart1-title">Evolução do Faturamento Mensal (Kz)</h3>
+        <div class="chart-wrapper"><canvas id="canvas-ess-faturamento"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid-cards ess-charts-row">
+      <div class="card">
+        <h3 id="ess-chart2-title">Alunos por Curso</h3>
+        <div class="chart-wrapper"><canvas id="canvas-ess-cursos"></canvas></div>
+      </div>
+      <div class="card">
+        <h3 id="ess-chart3-title">Saúde Financeira (Pagos vs. Em Dívida)</h3>
+        <div class="chart-wrapper"><canvas id="canvas-ess-financeiro"></canvas></div>
+      </div>
+    </div>
+
+    <div class="content-box">
+      <h3 id="ess-h3">Painel Estratégico Executivo (ESS / EIS)</h3>
+      <p id="ess-desc" style="font-size: 0.85rem; color: #64748b; margin-bottom: 15px;">
+        Nível Estratégico: Visão macro da saúde financeira, operacional e mercadológica da instituição.
+      </p>
+      <div style="background: #f1f5f9; padding: 15px; border-radius: 6px; text-align: center;">
+        <p id="ess-board-msg" style="color: #475569; font-weight: 500;">Visão do Conselho: Expansão do Bloco B projetada para o próximo semestre letivo com base na alta taxa de ocupação das turmas (92%).</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  let idAtual = 'pt';
+  let abaAtiva = 'tps';
+
+  // Dicionário Completo de Idiomas (Português, Inglês, Francês)
+  const dicionario = {
+    pt: {
+      role: "Usuário: Professor / Operacional / Sócio",
+      nav_tps: "1. Presença & Aulas",
+      nav_crm: "2. Captação/Matrículas",
+      nav_mis: "3. Relatório da Turma",
+      nav_dss: "4. Simulador de Riscos",
+      nav_ess: "5. Visão da Diretoria",
+      title_tps: "Sistema de Processamento de Transações (TPS) - Operacional",
+      title_crm: "Gestão de Relacionamento e Vendas (CRM) - Comercial",
+      title_mis: "Sistema de Informação Gerencial (MIS) - Coordenação",
+      title_dss: "Sistema de Apoio à Decisão (DSS) - Análise Preditiva",
+      title_ess: "Sistema de Apoio ao Executivo (ESS) - Diretoria General / Sócios",
+      
+      // TPS
+      tps_h3: "Lançamento Diário de Frequência e Nota (TPS)",
+      tps_desc: "Nível Operacional: Registrar a rotina diária em tempo real na base de dados central.",
+      input_name: "Nome do Aluno",
+      input_grade: "Nota Teste (0-20)",
+      opt_pres: "Presente",
+      opt_abs: "Falta",
+      btn_save: "Salvar Registro",
+      th_date: "Data/Hora",
+      th_student: "Aluno",
+      th_class: "Curso",
+      th_level: "Nível",
+      th_status: "Status",
+      th_grade: "Nota Lançada",
+
+      // CRM
+      crm_h3: "Pipeline de Captação de Alunos (CRM Escolar)",
+      crm_desc: "Gerenciamento do relacionamento com novos alunos e encarregados de educação.",
+      th_crm_cand: "Candidato / Responsável",
+      th_crm_contact: "Contato",
+      th_crm_stage: "Estágio no Funil",
+      th_crm_action: "Ação Necessária",
+      tag_crm_1: "Novo Interessado",
+      tag_crm_2: "Visitou a Escola",
+      tag_crm_3: "Matrícula Concluída",
+      act_crm_1: "Agendar visita guiada à escola",
+      act_crm_2: "Enviar proposta de bolsa de estudo",
+      act_crm_3: "Encaminhado para o ERP (Módulo Acadêmico)",
+
+      // MIS
+      mis_c1_title: "Média da Turma (10º A)",
+      mis_c1_sub: "↑ +1.2 vs. mês anterior",
+      mis_c2_title: "Taxa de Assiduidade",
+      mis_c2_sub: "↓ 3% abaixo da meta de 91%",
+      mis_h3: "Relatório Gerencial Mensal por Turma (MIS)",
+      mis_desc: "Nível Tático: Dados consolidados para coordenação pedagógica tomar decisões de acompanhamento.",
+      th_mis_turma: "Turma",
+      th_mis_total: "Total Alunos",
+      th_mis_avg: "Média Geral",
+      th_mis_crit: "Alunos Críticos (< 10)",
+      th_mis_st: "Status do Mês",
+      td_mis_c1: "3 alunos",
+      td_mis_c2: "11 alunos",
+      td_mis_s1: "Estável",
+      td_mis_s2: "Requer Intervenção",
+
+      // DSS
+      dss_h3: "Análise Preditiva de Risco de Evasão / Reprovação (DSS)",
+      dss_desc: "Nível Tático/Estratégico: Algoritmo cruza dados de faltas, mensalidades e notas para apontar riscos.",
+      dss_alert_lbl: "Alerta do Sistema:",
+      dss_alert_txt: "14% dos alunos do 10º Ano B têm 70% de chance de reprovação se o ritmo atual de faltas continuar.",
+      btn_dss_sim: "Simular Cenário: Aplicar Aulas de Reforço no Sábado",
+      sim_res: "Resultado da Simulação: A introdução de aulas de reforço ao sábado reduz a taxa de risco de reprovação de 14% para 3.5% e eleva a média prevista do 10º B para 12.1 valores.",
+
+      // ESS
+      ess_c1_title: "Faturamento Anual (ERP)",
+      ess_c1_sub: "Meta anual 85% atingida",
+      ess_c2_title: "Inadimplência Global",
+      ess_c2_sub: "Saudável (< 5%)",
+      ess_c3_title: "Novas Matrículas (CRM)",
+      ess_c3_sub: "↑ 15% em relação ao ano passado",
+      ess_h3: "Painel Estratégico Executivo (ESS / EIS)",
+      ess_desc: "Nível Estratégico: Visão macro da saúde financeira, operacional e mercadológica da instituição.",
+      ess_board_msg: "Visão do Conselho: Expansão do Bloco B projetada para o próximo semestre letivo com base na alta taxa de ocupação das turmas (92%)."
+    },
+    en: {
+      role: "User: Teacher / Operational / Partner",
+      nav_tps: "1. Attendance & Grades",
+      nav_crm: "2. Admissions/CRM",
+      nav_mis: "3. Class Reports",
+      nav_dss: "4. Risk Simulator",
+      nav_ess: "5. Board Dashboard",
+      title_tps: "Transaction Processing System (TPS) - Operational",
+      title_crm: "Customer Relationship Management (CRM) - Admissions",
+      title_mis: "Management Information System (MIS) - Coordination",
+      title_dss: "Decision Support System (DSS) - Predictive Analytics",
+      title_ess: "Executive Support System (ESS) - Board of Directors / Partners",
+
+      // TPS
+      tps_h3: "Daily Attendance & Grade Entry (TPS)",
+      tps_desc: "Operational Level: Record daily routines in real-time into the central database.",
+      input_name: "Student Name",
+      input_grade: "Test Score (0-20)",
+      opt_pres: "Present",
+      opt_abs: "Absent",
+      btn_save: "Save Entry",
+      th_date: "Date/Time",
+      th_student: "Student",
+      th_class: "Course",
+      th_level: "Level",
+      th_status: "Status",
+      th_grade: "Grade Entered",
+
+      // CRM
+      crm_h3: "Student Admission Pipeline (School CRM)",
+      crm_desc: "Relationship management with prospective students and guardians.",
+      th_crm_cand: "Candidate / Guardian",
+      th_crm_contact: "Contact",
+      th_crm_stage: "Funnel Stage",
+      th_crm_action: "Required Action",
+      tag_crm_1: "New Lead",
+      tag_crm_2: "School Tour Done",
+      tag_crm_3: "Enrolled",
+      act_crm_1: "Schedule campus tour",
+      act_crm_2: "Send scholarship proposal",
+      act_crm_3: "Transferred to ERP (Academic Module)",
+
+      // MIS
+      mis_c1_title: "Class Average (Grade 10A)",
+      mis_c1_sub: "↑ +1.2 vs. last month",
+      mis_c2_title: "Attendance Rate",
+      mis_c2_sub: "↓ 3% below 91% target",
+      mis_h3: "Monthly Class Management Report (MIS)",
+      mis_desc: "Tactical Level: Consolidated data for academic coordination follow-up.",
+      th_mis_turma: "Class",
+      th_mis_total: "Total Students",
+      th_mis_avg: "Overall Average",
+      th_mis_crit: "Critical Students (< 10)",
+      th_mis_st: "Monthly Status",
+      td_mis_c1: "3 students",
+      td_mis_c2: "11 students",
+      td_mis_s1: "Stable",
+      td_mis_s2: "Action Required",
+
+      // DSS
+      dss_h3: "Predictive Dropout & Failure Risk Analysis (DSS)",
+      dss_desc: "Tactical/Strategic Level: Algorithm combines absences, fees, and grades to highlight risks.",
+      dss_alert_lbl: "System Alert:",
+      dss_alert_txt: "14% of Grade 10B students have a 70% risk of failure if absence rate continues.",
+      btn_dss_sim: "Simulate Scenario: Saturday Support Classes",
+      sim_res: "Simulation Result: Adding Saturday extra classes reduces failure risk rate from 14% to 3.5% and increases 10B overall projected average to 12.1 points.",
+
+      // ESS
+      ess_c1_title: "Annual Revenue (ERP)",
+      ess_c1_sub: "85% of annual target reached",
+      ess_c2_title: "Global Default Rate",
+      ess_c2_sub: "Healthy (< 5%)",
+      ess_c3_title: "New Enrollments (CRM)",
+      ess_c3_sub: "↑ 15% vs. previous year",
+      ess_h3: "Executive Strategic Dashboard (ESS / EIS)",
+      ess_desc: "Strategic Level: Macro overview of financial, operational, and market health.",
+      ess_board_msg: "Board Insight: Block B expansion projected for next academic semester based on high classroom occupancy (92%)."
+    },
+    fr: {
+      role: "Utilisateur: Enseignant / Opérationnel / Associé",
+      nav_tps: "1. Présence & Notes",
+      nav_crm: "2. Admissions/CRM",
+      nav_mis: "3. Rapport de Classe",
+      nav_dss: "4. Simulateur de Risques",
+      nav_ess: "5. Dashboard Direction",
+      title_tps: "Système de Traitement des Transactions (TPS) - Opérationnel",
+      title_crm: "Gestion de la Relation Client (CRM) - Commercial",
+      title_mis: "Système d'Information de Gestion (MIS) - Coordination",
+      title_dss: "Système d'Aide à la Décision (DSS) - Analyse Prédictive",
+      title_ess: "Système d'Information Dirigeant (ESS) - Conseil d'Administration / Associés",
+
+      // TPS
+      tps_h3: "Saisie Quotidienne des Présences et Notes (TPS)",
+      tps_desc: "Niveau Opérationnel: Enregistrer la routine quotidienne en temps réel dans la base centralisée.",
+      input_name: "Nom de l'Élève",
+      input_grade: "Note du Test (0-20)",
+      opt_pres: "Présent",
+      opt_abs: "Absent",
+      btn_save: "Enregistrer",
+      th_date: "Date/Heure",
+      th_student: "Élève",
+      th_class: "Cours",
+      th_level: "Niveau",
+      th_status: "Statut",
+      th_grade: "Note Saisie",
+
+      // CRM
+      crm_h3: "Pipeline d'Admission des Élèves (CRM Scolaire)",
+      crm_desc: "Gestion de la relation avec les futurs élèves et les responsables légaux.",
+      th_crm_cand: "Candidat / Tuteur",
+      th_crm_contact: "Contact",
+      th_crm_stage: "Étape du Entonnoir",
+      th_crm_action: "Action Requise",
+      tag_crm_1: "Nouveau Prospect",
+      tag_crm_2: "Visite Effectuée",
+      tag_crm_3: "Inscription Finalisée",
+      act_crm_1: "Planifier une visite guidée",
+      act_crm_2: "Envoyer la proposition de bourse",
+      act_crm_3: "Transféré à l'ERP (Module Académique)",
+
+      // MIS
+      mis_c1_title: "Moyenne de Classe (10e A)",
+      mis_c1_sub: "↑ +1.2 vs mois dernier",
+      mis_c2_title: "Taux de Présence",
+      mis_c2_sub: "↓ 3% sous l'objectif de 91%",
+      mis_h3: "Rapport de Gestion Mensuel par Classe (MIS)",
+      mis_desc: "Niveau Tactique: Données consolidées pour le suivi de la coordination pédagogique.",
+      th_mis_turma: "Classe",
+      th_mis_total: "Total Élèves",
+      th_mis_avg: "Moyenne Générale",
+      th_mis_crit: "Élèves Critiques (< 10)",
+      th_mis_st: "Statut du Mois",
+      td_mis_c1: "3 élèves",
+      td_mis_c2: "11 élèves",
+      td_mis_s1: "Stable",
+      td_mis_s2: "Intervention Requise",
+
+      // DSS
+      dss_h3: "Analyse Prédictive des Risques de Décrochage (DSS)",
+      dss_desc: "Niveau Tactique/Stratégique: L'algorithme croise absences, frais et notes pour identifier les risques.",
+      dss_alert_lbl: "Alerte Système:",
+      dss_alert_txt: "14% des élèves de 10e B ont 70% de risques d'échec si le rythme d'absences continue.",
+      btn_dss_sim: "Simuler le Scénario: Cours de Soutien le Samedi",
+      sim_res: "Résultat de Simulation: L'ajout de cours de soutien le samedi réduit le risque d'échec de 14% à 3.5% et monte la moyenne prévue de 10e B à 12.1 points.",
+
+      // ESS
+      ess_c1_title: "Chiffre d'Affaires Annuel (ERP)",
+      ess_c1_sub: "Objectif annuel atteint à 85%",
+      ess_c2_title: "Taux de Impayés",
+      ess_c2_sub: "Sain (< 5%)",
+      ess_c3_title: "Nouvelles Inscriptions (CRM)",
+      ess_c3_sub: "↑ 15% par rapport à l'année dernière",
+      ess_h3: "Tableau de Bord Stratégique (ESS / EIS)",
+      ess_desc: "Niveau Stratégique: Vue macro de la santé financière, opérationnelle et commerciale.",
+      ess_board_msg: "Perspective du Conseil: Extension du Bâtiment B projetée pour le prochain semestre en raison de la forte occupation des classes (92%)."
+    }
+  };
+
+  // Alternar idiomas
+  function alterarIdioma(lang) {
+    idAtual = lang;
+    const t = dicionario[lang];
+
+    document.getElementById('user-role').innerText = t.role;
+    document.querySelector('#nav-tps .txt').innerText = t.nav_tps;
+    document.querySelector('#nav-crm .txt').innerText = t.nav_crm;
+    document.querySelector('#nav-mis .txt').innerText = t.nav_mis;
+    document.querySelector('#nav-dss .txt').innerText = t.nav_dss;
+    document.querySelector('#nav-ess .txt').innerText = t.nav_ess;
+
+    // TPS
+    document.getElementById('tps-h3').innerText = t.tps_h3;
+    document.getElementById('tps-desc').innerText = t.tps_desc;
+    document.getElementById('aluno-nome').placeholder = t.input_name;
+    document.getElementById('aluno-nota').placeholder = t.input_grade;
+    document.getElementById('opt-pres').innerText = t.opt_pres;
+    document.getElementById('opt-abs').innerText = t.opt_abs;
+    document.getElementById('btn-save-tps').innerText = t.btn_save;
+    document.getElementById('th-date').innerText = t.th_date;
+    document.getElementById('th-student').innerText = t.th_student;
+    document.getElementById('th-class').innerText = t.th_class;
+    document.getElementById('th-level').innerText = t.th_level;
+    document.getElementById('th-status').innerText = t.th_status;
+    document.getElementById('th-grade').innerText = t.th_grade;
+
+    // CRM
+    document.getElementById('crm-h3').innerText = t.crm_h3;
+    document.getElementById('crm-desc').innerText = t.crm_desc;
+    document.getElementById('th-crm-cand').innerText = t.th_crm_cand;
+    document.getElementById('th-crm-contact').innerText = t.th_crm_contact;
+    document.getElementById('th-crm-stage').innerText = t.th_crm_stage;
+    document.getElementById('th-crm-action').innerText = t.th_crm_action;
+    document.getElementById('tag-crm-1').innerText = t.tag_crm_1;
+    document.getElementById('tag-crm-2').innerText = t.tag_crm_2;
+    document.getElementById('tag-crm-3').innerText = t.tag_crm_3;
+    document.getElementById('act-crm-1').innerText = t.act_crm_1;
+    document.getElementById('act-crm-2').innerText = t.act_crm_2;
+    document.getElementById('act-crm-3').innerText = t.act_crm_3;
+
+    // MIS
+    document.getElementById('mis-c1-title').innerText = t.mis_c1_title;
+    document.getElementById('mis-c1-sub').innerText = t.mis_c1_sub;
+    document.getElementById('mis-c2-title').innerText = t.mis_c2_title;
+    document.getElementById('mis-c2-sub').innerText = t.mis_c2_sub;
+    document.getElementById('mis-h3').innerText = t.mis_h3;
+    document.getElementById('mis-desc').innerText = t.mis_desc;
+    document.getElementById('th-mis-turma').innerText = t.th_mis_turma;
+    document.getElementById('th-mis-total').innerText = t.th_mis_total;
+    document.getElementById('th-mis-avg').innerText = t.th_mis_avg;
+    document.getElementById('th-mis-crit').innerText = t.th_mis_crit;
+    document.getElementById('th-mis-st').innerText = t.th_mis_st;
+    document.getElementById('td-mis-c1').innerText = t.td_mis_c1;
+    document.getElementById('td-mis-c2').innerText = t.td_mis_c2;
+    document.getElementById('td-mis-s1').innerText = t.td_mis_s1;
+    document.getElementById('td-mis-s2').innerText = t.td_mis_s2;
+
+    // DSS
+    document.getElementById('dss-h3').innerText = t.dss_h3;
+    document.getElementById('dss-desc').innerText = t.dss_desc;
+    document.getElementById('dss-alert-lbl').innerText = t.dss_alert_lbl;
+    document.getElementById('dss-alert-txt').innerText = t.dss_alert_txt;
+    document.getElementById('btn-dss-sim').innerText = t.btn_dss_sim;
+    if (document.getElementById('resultado-simulacao').innerText !== "") {
+      document.getElementById('resultado-simulacao').innerText = t.sim_res;
+    }
+
+    // ESS
+    document.getElementById('ess-c1-title').innerText = t.ess_c1_title;
+    document.getElementById('ess-c1-sub').innerText = t.ess_c1_sub;
+    document.getElementById('ess-c2-title').innerText = t.ess_c2_title;
+    document.getElementById('ess-c2-sub').innerText = t.ess_c2_sub;
+    document.getElementById('ess-c3-title').innerText = t.ess_c3_title;
+    document.getElementById('ess-c3-sub').innerText = t.ess_c3_sub;
+    document.getElementById('ess-h3').innerText = t.ess_h3;
+    document.getElementById('ess-desc').innerText = t.ess_desc;
+    document.getElementById('ess-board-msg').innerText = t.ess_board_msg;
+
+    // Atualiza o título da página de acordo com a aba ativa
+    atualizarTitulo(abaAtiva);
+  }
+
+  function atualizarTitulo(tabId) {
+    const t = dicionario[idAtual];
+    const titles = {
+      'tps': t.title_tps,
+      'crm': t.title_crm,
+      'mis': t.title_mis,
+      'dss': t.title_dss,
+      'ess': t.title_ess
+    };
+    document.getElementById('page-title').innerText = titles[tabId];
+  }
+
+  function switchTab(tabId) {
+    abaAtiva = tabId;
+    document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('aside nav button').forEach(btn => btn.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    document.getElementById('nav-' + tabId).classList.add('active');
+
+    atualizarTitulo(tabId);
+
+    if (tabId === 'dss') renderGraficosDSS();
+    if (tabId === 'ess') renderGraficosESS();
+  }
+
+  function atualizarNivel() {
+    const curso = document.getElementById('aluno-curso').value;
+    const nivelSelect = document.getElementById('aluno-nivel');
+    if (curso === 'Inglês' || curso === 'Francês') {
+      nivelSelect.style.display = '';
+    } else {
+      nivelSelect.style.display = 'none';
+      nivelSelect.selectedIndex = 0;
+    }
+  }
+
+  function adicionarFrequencia(e) {
+    e.preventDefault();
+    const t = dicionario[idAtual];
+    const nome = document.getElementById('aluno-nome').value;
+    const curso = document.getElementById('aluno-curso').value;
+    const nivelSelect = document.getElementById('aluno-nivel');
+    const nivel = nivelSelect.style.display === 'none' ? '—' : nivelSelect.value;
+    const status = document.getElementById('aluno-status').value;
+    const nota = document.getElementById('aluno-nota').value;
+
+    const corStatus = status === 'Presente' || status === 'Present' || status === 'Présent' ? 'green' : 'red';
+    const novaLinha = `
+      <tr>
+        <td>Agora / Now</td>
+        <td>${nome}</td>
+        <td>${curso}</td>
+        <td>${nivel}</td>
+        <td><span style="color: ${corStatus};">${status}</span></td>
+        <td>${nota}</td>
+      </tr>
+    `;
+    document.getElementById('tabela-tps').insertAdjacentHTML('afterbegin', novaLinha);
+    document.getElementById('form-tps').reset();
+    atualizarNivel();
+  }
+
+  function simularReforzo() {
+    const t = dicionario[idAtual];
+    document.getElementById('resultado-simulacao').innerText = t.sim_res;
+  }
+</script>
+                </div>
+
                 <!-- Secção: Calendário & Agenda -->
+
                 <div id="p-sec-calendario" class="profile-dynamic-section" style="display: block;">
                     <div class="calendar-layout">
                         
@@ -1018,43 +2000,170 @@
                     <div id="community-questions-target"></div>
                 </div>
 
-                <!-- Secção: Professores (Apenas Visualização) -->
-                <div id="p-sec-professores" class="profile-dynamic-section" style="display: none;">
-                    <h2>Corpo Docente da Academia</h2>
-                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Visualização restrita do corpo técnico ativo da instituição.</p>
-                    <table class="adm-data-table">
-                        <thead>
-                            <tr>
-                                <th>Nome do Professor</th>
-                                <th>Curso Técnico</th>
-                                <th>Salas</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbl-professores-body"></tbody>
-                    </table>
-                </div>
+                <!-- Secção: Consulta Geral (Person FYP+C) -->
+                <div id="p-sec-consulta-geral" class="profile-dynamic-section" style="display: none;">
+                    <h2>Person FYP+C</h2>
+                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Consulte rapidamente os principais números da academia.</p>
 
-                <!-- Secção: Alunos (Apenas Visualização) -->
-                <div id="p-sec-alunos" class="profile-dynamic-section" style="display: none;">
-                    <h2>Controlo de Alunos por Turma</h2>
-                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Listagem simplificada de alunos ativos organizada por curso.</p>
-                    <div id="container-turmas-alunos"></div>
-                    
-                    <div class="finance-section-wrapper" style="background:#fff; border: 1px solid #e2e8f0; padding:0;">
-                        <table class="adm-data-table">
-                            <thead>
-                                <tr>
-                                    <th>Nome do Aluno</th>
-                                    <th>Turma Inscrita</th>
-                                    <th>Pontuação da Comunidade</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbl-alunos-readonly-body"></tbody>
-                        </table>
+                    <h3 style="font-size:16px; color:#1e293b; margin-bottom:10px;">Estatísticas</h3>
+                    <div class="pfc-stats-grid">
+                        <div class="pfc-stat-card clickable" onclick="switchProfileSection('p-sec-alunos')">
+                            <div class="pfc-stat-icon">🎓</div>
+                            <div class="pfc-stat-label">Alunos e turmas</div>
+                            <div class="pfc-stat-value" id="pfc-count-alunos">0</div>
+                        </div>
+                        <div class="pfc-stat-card clickable" onclick="switchProfileSection('p-sec-professores')">
+                            <div class="pfc-stat-icon">👨‍🏫</div>
+                            <div class="pfc-stat-label">Corpo docente</div>
+                            <div class="pfc-stat-value" id="pfc-count-professores">0</div>
+                        </div>
+                        <div class="pfc-stat-card clickable" id="pfc-card-socios" onclick="switchProfileSection('p-sec-socios')">
+                            <div class="pfc-stat-icon">🤝</div>
+                            <div class="pfc-stat-label">Sócios</div>
+                            <div class="pfc-stat-value" id="pfc-count-socios">0</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- SECÇÃO PROFESSOR: ADICIONAR TAREFAS À SUA TURMA -->
+                <!-- Secção: Professores (Lista de Contactos + Ficha) -->
+                <div id="p-sec-professores" class="profile-dynamic-section" style="display: none;">
+                    <h2>Corpo Docente da Academia</h2>
+                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Clique num professor para ver a ficha completa.</p>
+
+                    <div id="professores-lista-view">
+                        <div class="wa-contact-list" id="wa-lista-professores"></div>
+                    </div>
+
+                    <div id="professores-detalhe-view" style="display:none;">
+                        <button class="wa-back-btn" onclick="voltarListaProfessores()">← Voltar à lista</button>
+                        <div id="wa-detalhe-professor-content"></div>
+                    </div>
+                </div>
+
+                <!-- Secção: Alunos (Lista de Contactos + Ficha) -->
+                <div id="p-sec-alunos" class="profile-dynamic-section" style="display: none;">
+                    <h2>Controlo de Alunos por Turma</h2>
+                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Clique num aluno para ver a ficha completa.</p>
+
+                    <div id="alunos-lista-view">
+                        <div class="wa-contact-list" id="wa-lista-alunos"></div>
+                    </div>
+
+                    <div id="alunos-detalhe-view" style="display:none;">
+                        <button class="wa-back-btn" onclick="voltarListaAlunos()">← Voltar à lista</button>
+                        <div id="wa-detalhe-aluno-content"></div>
+                    </div>
+                </div>
+
+                <!-- Secção: Sócios (Lista de Contactos + Ficha) -->
+                <div id="p-sec-socios" class="profile-dynamic-section" style="display: none;">
+                    <h2>Sócios da Academia</h2>
+                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Clique num sócio para ver a ficha completa.</p>
+
+                    <div id="socios-lista-view">
+                        <div class="wa-contact-list" id="wa-lista-socios"></div>
+                    </div>
+
+                    <div id="socios-detalhe-view" style="display:none;">
+                        <button class="wa-back-btn" onclick="voltarListaSocios()">← Voltar à lista</button>
+                        <div id="wa-detalhe-socio-content"></div>
+                    </div>
+                </div>
+
+                <!-- Secção: Administração (Super-Admins) -->
+                <div id="p-sec-administracao" class="profile-dynamic-section" style="display: none;">
+                    <h2>🛡️ Administração</h2>
+                    <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Gestão de sócios, matrículas e privilégios de acesso ao EduSystem ERP.</p>
+
+                    <!-- Bloco visível apenas para Maria Victória (apenas aprovação de remoção) -->
+                    <div id="adm-bloco-aprovacoes-apenas" style="display:none;">
+                        <h3 style="font-size:16px; color:#1e293b; margin-bottom:8px;">Aprovações Pendentes de Remoção de Sócio</h3>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:15px;">A remoção de um sócio só é concluída com a aprovação de Lázaro Luís, Francisco Faztudo e Maria Victória.</p>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sócio a Remover</th>
+                                    <th>Aprovações Obtidas</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-remocoes-aprovacao-body"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Bloco completo visível para Lázaro Luís e Francisco Faztudo -->
+                    <div id="adm-bloco-completo" style="display:none;">
+
+                        <h3 style="font-size:16px; color:#1e293b; margin-bottom:8px;">Solicitações de Matrícula Pendentes</h3>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Contacto</th>
+                                    <th>Curso</th>
+                                    <th>Nível</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-matriculas-pendentes-body"></tbody>
+                        </table>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Sócios Ativos</h3>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Cargo</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-socios-ativos-body"></tbody>
+                        </table>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Remoções Aguardando Aprovação</h3>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sócio a Remover</th>
+                                    <th>Aprovações Obtidas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-remocoes-pendentes-body"></tbody>
+                        </table>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Adicionar Novo Sócio</h3>
+                        <div style="max-width: 500px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px;">
+                            <div style="margin-bottom: 12px;">
+                                <label class="file-label">Nome Completo:</label>
+                                <input type="text" id="novo-socio-nome" class="form-control">
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <label class="file-label">Cargo:</label>
+                                <input type="text" id="novo-socio-cargo" class="form-control" placeholder="Ex: Sócio Executivo">
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label class="file-label">Palavra-passe Inicial:</label>
+                                <input type="password" id="novo-socio-senha" class="form-control">
+                            </div>
+                            <button class="btn-publish-news" onclick="adicionarSocio()">Adicionar Sócio</button>
+                        </div>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Privilégios do EduSystem ERP</h3>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:10px;">As opções 4 (Simulador de Riscos) e 5 (Visão da Diretoria) são exclusivas de Francisco Faztudo, Lázaro Luís e Maria Victória e não podem ser atribuídas aqui.</p>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Sócio</th>
+                                    <th>1. Presença & Aulas</th>
+                                    <th>2. Captação/Matrículas</th>
+                                    <th>3. Relatório da Turma</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-privilegios-erp-body"></tbody>
+                        </table>
+                    </div>
+                </div>
                 <div id="p-sec-adicionar-tarefa" class="profile-dynamic-section" style="display: none;">
                     <h2>✍️ Atribuir Tarefa Pedagógica</h2>
                     <p style="font-size:14px; color:#64748b; margin-bottom: 20px;">Crie uma atividade direcionada para uma das suas turmas registadas.</p>
@@ -1109,8 +2218,8 @@
         </div>
     </div>
 
-    <script>
-        /* ==========================================================
+    <script
+>        /* ==========================================================
            ESTRUTURA DE DADOS E PERSISTÊNCIA ATUALIZADA
            ========================================================== */
         let admins = JSON.parse(localStorage.getItem('fyp_academy_credentials')) || {
@@ -1120,6 +2229,7 @@
             "Leonel Ngola": "leonel123",
             "Emael Morais": "emael123",
             "Maria Victoria": "maria123",
+             "Osvaldo Manuel": "osvaldo123",
             "Teacher Amadeu": "amadeu123",
             "Professeur Jean-Pierre": "jean123",
             "Rosario Justo": "justo123",
@@ -1144,6 +2254,17 @@
         };
 
         const superAdminsList = ["Francisco Faztudo", "Lázaro Luis"];
+        const erpFullAccessList = ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"];
+        const removalApprovers = ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"];
+
+        // Privilégios de acesso às opções 1 (TPS), 2 (CRM) e 3 (MIS) do EduSystem ERP, por sócio
+        let sociosPrivileges = JSON.parse(localStorage.getItem('fyp_socios_privileges')) || {};
+
+        // Solicitações de matrícula enviadas pelo formulário público "Dar o primeiro passo"
+        let matriculaSolicitacoes = JSON.parse(localStorage.getItem('fyp_matricula_solicitacoes')) || [];
+
+        // Solicitações de remoção de sócio, pendentes de aprovação tripla
+        let removalRequests = JSON.parse(localStorage.getItem('fyp_removal_requests')) || [];
 
         let currentLoggedAdmin = null;
         let isAdminActive = false;
@@ -1155,10 +2276,10 @@
         let sociosData = JSON.parse(localStorage.getItem('fyp_socios_data')) || [
             { nome: "Francisco Faztudo", cargo: "Sócio-Diretor Geral", status: "Ativo" },
             { nome: "Lázaro Luis", cargo: "Sócio-Diretor Pedagógico", status: "Ativo" },
-            { nome: "York", cargo: "Sócio-Fundador", status: "Ativo" },
             { nome: "Candido Ngola", cargo: "Sócio Executivo", status: "Ativo" },
             { nome: "Leonel Ngola", cargo: "Sócio Executivo", status: "Ativo" },
             { nome: "Emael Morais", cargo: "Sócio & Professor", status: "Ativo" },
+            { nome: "Osvaldo Manuel", cargo: "Sócio & Ária tecnica", status: "Ativo" },
             { nome: "Maria Victoria", cargo: "Sócia Executiva", status: "Ativo" }
         ];
 
@@ -1267,14 +2388,18 @@
 
             const targetSection = document.getElementById(sectionId);
             if(targetSection) {
-                targetSection.style.display = 'block';
+                targetSection.style.display = (sectionId === 'p-sec-edusystem') ? 'flex' : 'block';
             }
 
             let navId = "";
             if (sectionId === 'p-sec-calendario') navId = 'p-nav-calendario';
             else if (sectionId === 'p-sec-comunidade') navId = 'p-nav-comunidade';
-            else if (sectionId === 'p-sec-professores') navId = 'p-nav-professores';
-            else if (sectionId === 'p-sec-alunos') navId = 'p-nav-alunos';
+            else if (sectionId === 'p-sec-consulta-geral') navId = 'p-nav-consulta-geral';
+            else if (sectionId === 'p-sec-professores') navId = 'p-nav-consulta-geral';
+            else if (sectionId === 'p-sec-alunos') navId = 'p-nav-consulta-geral';
+            else if (sectionId === 'p-sec-socios') navId = 'p-nav-consulta-geral';
+            else if (sectionId === 'p-sec-administracao') navId = 'p-nav-administracao';
+            else if (sectionId === 'p-sec-edusystem') navId = 'p-nav-edusystem';
             else if (sectionId === 'p-sec-adicionar-tarefa') navId = 'p-nav-adicionar-tarefa';
             else if (sectionId === 'p-sec-material') navId = 'p-nav-material';
             else if (sectionId === 'p-sec-desempenho') navId = 'p-nav-desempenho';
@@ -1297,6 +2422,21 @@
                 renderMaterials();
             } else if (sectionId === 'p-sec-desempenho') {
                 renderBusuuPerformance();
+            } else if (sectionId === 'p-sec-administracao') {
+                renderAdministracaoPanel();
+            } else if (sectionId === 'p-sec-edusystem') {
+                aplicarPrivilegiosERP();
+            } else if (sectionId === 'p-sec-consulta-geral') {
+                renderConsultaGeralStats();
+            } else if (sectionId === 'p-sec-alunos') {
+                renderContatosAlunos();
+                voltarListaAlunos();
+            } else if (sectionId === 'p-sec-professores') {
+                renderContatosProfessores();
+                voltarListaProfessores();
+            } else if (sectionId === 'p-sec-socios') {
+                renderContatosSocios();
+                voltarListaSocios();
             }
         }
 
@@ -1305,9 +2445,55 @@
                 switchMainTab('tab-meu-perfil');
                 switchProfileSection('p-sec-calendario');
             } else {
-                openLoginModal();
-                alert("Por favor, faça login com as suas credenciais para aceder ao seu Perfil.");
+                openPublicRegistrationModal();
             }
+        }
+
+        function openPublicRegistrationModal() {
+            document.getElementById('public-registration-modal').style.display = 'flex';
+            atualizarNivelPublico();
+        }
+
+        function closePublicRegistrationModal() {
+            document.getElementById('public-registration-modal').style.display = 'none';
+        }
+
+        function atualizarNivelPublico() {
+            const curso = document.getElementById('reg-curso').value;
+            const wrapper = document.getElementById('reg-nivel-wrapper');
+            wrapper.hidden = !(curso === 'Inglês' || curso === 'Francês');
+        }
+
+        function submitPublicRegistration() {
+            const nome = document.getElementById('reg-nome').value.trim();
+            const telefone = document.getElementById('reg-telefone').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const curso = document.getElementById('reg-curso').value;
+            const wrapper = document.getElementById('reg-nivel-wrapper');
+            const nivel = wrapper.hidden ? '—' : document.getElementById('reg-nivel').value;
+
+            if (!nome || !telefone) {
+                alert('Por favor, preencha pelo menos o nome e o telefone.');
+                return;
+            }
+
+            matriculaSolicitacoes.push({
+                id: Date.now(),
+                nome, telefone, email, curso, nivel,
+                data: new Date().toLocaleDateString('pt-PT'),
+                status: 'pendente'
+            });
+            localStorage.setItem('fyp_matricula_solicitacoes', JSON.stringify(matriculaSolicitacoes));
+
+            document.getElementById('reg-nome').value = '';
+            document.getElementById('reg-telefone').value = '';
+            document.getElementById('reg-email').value = '';
+            document.getElementById('reg-curso').selectedIndex = 0;
+            atualizarNivelPublico();
+
+            closePublicRegistrationModal();
+            alert('Inscrição enviada com sucesso! Entraremos em contacto brevemente.');
+            renderAdministracaoPanel();
         }
 
         function updateComunidadeCounterBadge() {
@@ -1985,14 +3171,12 @@
             document.getElementById('p-nav-desempenho').style.display = (isProf || isStud) ? 'flex' : 'none';
             
             // Ocultar navegações administrativas para Alunos
-            document.getElementById('p-nav-professores').style.display = isStud ? 'none' : 'flex';
+            document.getElementById('p-nav-consulta-geral').style.display = isStud ? 'none' : 'flex';
             document.getElementById('nav-consulta-title').style.display = isStud ? 'none' : 'block';
 
-            // Ajustar o texto do botão de Alunos dependendo do perfil
-            const lblAlunos = document.getElementById('lbl-nav-alunos-text');
-            if (lblAlunos) {
-                lblAlunos.innerText = isProf ? "📊 Alunos por Turma" : "📊 Alunos & Turmas";
-            }
+            // Botão Administração: visível para os super-admins e para Maria Victória (apenas aprovações)
+            const podeVerAdministracao = isAdmin && (superAdminsList.includes(currentLoggedAdmin) || currentLoggedAdmin === "Maria Victoria");
+            document.getElementById('p-nav-administracao').style.display = podeVerAdministracao ? 'flex' : 'none';
 
             updateProfileSidebarDisplay();
 
@@ -2013,6 +3197,9 @@
             renderAgendaPanel();
             populateResponsiblesDropdown();
             renderAdminReadOnlyPanels();
+            renderAdministracaoPanel();
+            renderConsultaGeralStats();
+            if (enabled) aplicarPrivilegiosERP();
             updateComunidadeCounterBadge();
         }
 
@@ -2287,41 +3474,608 @@
             });
         }
 
+        function gerarAvatarIniciais(nome, classeExtra) {
+            const cores = ['#2563eb', '#7c3aed', '#db2777', '#059669', '#d97706', '#dc2626', '#0891b2', '#4f46e5'];
+            const partes = (nome || '').trim().split(' ').filter(Boolean);
+            const iniciais = ((partes[0] ? partes[0][0] : '') + (partes.length > 1 ? partes[partes.length - 1][0] : '')).toUpperCase();
+            let hash = 0;
+            for (let i = 0; i < nome.length; i++) { hash = nome.charCodeAt(i) + ((hash << 5) - hash); }
+            const cor = cores[Math.abs(hash) % cores.length];
+            return `<div class="wa-avatar ${classeExtra || ''}" style="background:${cor};">${iniciais}</div>`;
+        }
+
         function renderAdminReadOnlyPanels() {
-            const tblProfs = document.getElementById('tbl-professores-body');
-            if(tblProfs) {
-                tblProfs.innerHTML = professoresData.map(p => {
-                    return `
-                        <tr>
-                            <td><strong>${p.nome}</strong></td>
-                            <td>${p.curso}</td>
-                            <td>${p.salas}</td>
-                        </tr>
-                    `;
-                }).join('');
-            }
+            renderContatosProfessores();
+            renderContatosAlunos();
+            renderContatosSocios();
+        }
 
-            const tblAlReadOnly = document.getElementById('tbl-alunos-readonly-body');
-            if (tblAlReadOnly) {
-                tblAlReadOnly.innerHTML = alunosData.map(a => {
-                    return `
-                        <tr>
-                            <td><strong>${a.nome}</strong></td>
-                            <td>${a.turma}</td>
-                            <td><span class="badge-status badge-pago">${a.score || 0} Pts</span></td>
-                        </tr>
-                    `;
-                }).join('');
-            }
-
-            const containerTurmas = document.getElementById('container-turmas-alunos');
-            if(containerTurmas) {
-                containerTurmas.innerHTML = `
-                    <div style="background:white; padding:15px; border-radius:6px; margin-bottom:15px; border-left:4px solid var(--cat-ingles)">
-                        <h4>Turma de Inglês - B2 (Início no Golf 2)</h4>
-                        <p>Total Inscritos: ${alunosData.filter(al => al.curso === 'Inglês').length} Alunos Ativos</p>
+        function renderContatosProfessores() {
+            const lista = document.getElementById('wa-lista-professores');
+            if (!lista) return;
+            lista.innerHTML = professoresData.map(p => `
+                <div class="wa-contact-item" onclick="abrirDetalheProfessor('${p.nome.replace(/'/g, "\\'")}')">
+                    ${gerarAvatarIniciais(p.nome)}
+                    <div class="wa-contact-info">
+                        <div class="wa-contact-name">${p.nome}</div>
+                        <div class="wa-contact-sub">${p.curso}</div>
                     </div>
-                `;
+                    <div class="wa-contact-chevron">›</div>
+                </div>
+            `).join('') || '<p style="color:#94a3b8; padding:15px;">Nenhum professor registado.</p>';
+        }
+
+        function abrirDetalheProfessor(nome) {
+            const p = professoresData.find(pr => pr.nome === nome);
+            if (!p) return;
+            const turmas = professorClassMapping[nome] ? professorClassMapping[nome].join(', ') : 'Nenhuma turma atribuída';
+
+            document.getElementById('wa-detalhe-professor-content').innerHTML = `
+                <div class="wa-profile-header">
+                    ${gerarAvatarIniciais(p.nome, 'wa-avatar-lg')}
+                    <div>
+                        <h3>${p.nome}</h3>
+                        <p>${p.curso}</p>
+                    </div>
+                </div>
+                <div class="wa-profile-grid">
+                    <div class="wa-profile-card">
+                        <h4>Dados Profissionais</h4>
+                        <p><strong>Curso Técnico:</strong> ${p.curso}</p>
+                        <p><strong>Sala Atribuída:</strong> ${p.salas}</p>
+                        <p><strong>Turmas:</strong> ${turmas}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('professores-lista-view').style.display = 'none';
+            document.getElementById('professores-detalhe-view').style.display = 'block';
+        }
+
+        function voltarListaProfessores() {
+            document.getElementById('professores-detalhe-view').style.display = 'none';
+            document.getElementById('professores-lista-view').style.display = 'block';
+        }
+
+        function renderContatosAlunos() {
+            const lista = document.getElementById('wa-lista-alunos');
+            if (!lista) return;
+            lista.innerHTML = alunosData.map(a => `
+                <div class="wa-contact-item" onclick="abrirDetalheAluno(${a.id})">
+                    ${gerarAvatarIniciais(a.nome)}
+                    <div class="wa-contact-info">
+                        <div class="wa-contact-name">${a.nome}</div>
+                        <div class="wa-contact-sub">${a.curso} · ${a.turma}</div>
+                    </div>
+                    <div class="wa-contact-chevron">›</div>
+                </div>
+            `).join('') || '<p style="color:#94a3b8; padding:15px;">Nenhum aluno registado.</p>';
+        }
+
+        function abrirDetalheAluno(id) {
+            const a = alunosData.find(al => al.id === id);
+            if (!a) return;
+            const estadoTag = a.estado === 'pago'
+                ? '<span class="wa-tag wa-tag-green">Pago</span>'
+                : '<span class="wa-tag wa-tag-red">Em Dívida</span>';
+
+            document.getElementById('wa-detalhe-aluno-content').innerHTML = `
+                <div class="wa-profile-header">
+                    ${gerarAvatarIniciais(a.nome, 'wa-avatar-lg')}
+                    <div>
+                        <h3>${a.nome}</h3>
+                        <p>${a.curso} · ${a.turma}</p>
+                    </div>
+                </div>
+                <div class="wa-profile-grid">
+                    <div class="wa-profile-card">
+                        <h4>Dados Académicos</h4>
+                        <p><strong>Curso:</strong> ${a.curso}</p>
+                        <p><strong>Turma:</strong> ${a.turma}</p>
+                        <p><strong>Progresso:</strong> ${a.progress || 0}%</p>
+                        <p><strong>Pontuação da Comunidade:</strong> ${a.score || 0} Pts</p>
+                        <p><strong>Correções Feitas:</strong> ${a.corrections || 0}</p>
+                        <p><strong>Gostos Recebidos:</strong> ${a.likes || 0}</p>
+                    </div>
+                    <div class="wa-profile-card">
+                        <h4>Situação Financeira</h4>
+                        <p><strong>Propina:</strong> ${a.propina}</p>
+                        <p><strong>Estado:</strong> ${estadoTag}</p>
+                        <p><strong>Dívidas:</strong> ${a.dividas}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('alunos-lista-view').style.display = 'none';
+            document.getElementById('alunos-detalhe-view').style.display = 'block';
+        }
+
+        function voltarListaAlunos() {
+            document.getElementById('alunos-detalhe-view').style.display = 'none';
+            document.getElementById('alunos-lista-view').style.display = 'block';
+        }
+
+        function renderContatosSocios() {
+            const lista = document.getElementById('wa-lista-socios');
+            if (!lista) return;
+            lista.innerHTML = sociosData.map(s => `
+                <div class="wa-contact-item" onclick="abrirDetalheSocio('${s.nome.replace(/'/g, "\\'")}')">
+                    ${gerarAvatarIniciais(s.nome)}
+                    <div class="wa-contact-info">
+                        <div class="wa-contact-name">${s.nome}</div>
+                        <div class="wa-contact-sub">${s.cargo}</div>
+                    </div>
+                    <div class="wa-contact-chevron">›</div>
+                </div>
+            `).join('') || '<p style="color:#94a3b8; padding:15px;">Nenhum sócio registado.</p>';
+        }
+
+        function abrirDetalheSocio(nome) {
+            const s = sociosData.find(so => so.nome === nome);
+            if (!s) return;
+
+            const statusTag = s.status === 'Ativo'
+                ? '<span class="wa-tag wa-tag-green">Ativo</span>'
+                : '<span class="wa-tag wa-tag-red">Inativo</span>';
+
+            const temAcessoTotal = erpFullAccessList.includes(s.nome);
+            let acessoErp;
+            if (temAcessoTotal) {
+                acessoErp = 'Acesso completo (opções 1 a 5)';
+            } else {
+                const priv = sociosPrivileges[s.nome] || { tps: true, crm: true, mis: true };
+                const permitidas = [];
+                if (priv.tps) permitidas.push('1. Presença & Aulas');
+                if (priv.crm) permitidas.push('2. Captação/Matrículas');
+                if (priv.mis) permitidas.push('3. Relatório da Turma');
+                acessoErp = permitidas.length ? permitidas.join(', ') : 'Sem acesso atribuído';
+            }
+
+            document.getElementById('wa-detalhe-socio-content').innerHTML = `
+                <div class="wa-profile-header">
+                    ${gerarAvatarIniciais(s.nome, 'wa-avatar-lg')}
+                    <div>
+                        <h3>${s.nome}</h3>
+                        <p>${s.cargo}</p>
+                    </div>
+                </div>
+                <div class="wa-profile-grid">
+                    <div class="wa-profile-card">
+                        <h4>Dados do Sócio</h4>
+                        <p><strong>Cargo:</strong> ${s.cargo}</p>
+                        <p><strong>Status:</strong> ${statusTag}</p>
+                    </div>
+                    <div class="wa-profile-card">
+                        <h4>Acesso ao EduSystem ERP</h4>
+                        <p>${acessoErp}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('socios-lista-view').style.display = 'none';
+            document.getElementById('socios-detalhe-view').style.display = 'block';
+        }
+
+        function voltarListaSocios() {
+            document.getElementById('socios-detalhe-view').style.display = 'none';
+            document.getElementById('socios-lista-view').style.display = 'block';
+        }
+
+        /* ==========================================================
+           SECÇÃO DE ADMINISTRAÇÃO (SUPER-ADMINS)
+           ========================================================== */
+        function renderConsultaGeralStats() {
+            const elAlunos = document.getElementById('pfc-count-alunos');
+            const elProfessores = document.getElementById('pfc-count-professores');
+            const elSocios = document.getElementById('pfc-count-socios');
+            if (elAlunos) elAlunos.innerText = alunosData.length;
+            if (elProfessores) elProfessores.innerText = professoresData.length;
+            if (elSocios) elSocios.innerText = sociosData.length;
+        }
+
+        /* ==========================================================
+           GRÁFICOS DO EDUSYSTEM ERP (DSS - SIMULADOR DE RISCOS / ESS - VISÃO DA DIRETORIA)
+           ========================================================== */
+        let chartDssDistribuicao = null;
+        let chartDssTurma = null;
+        let chartEssFaturamento = null;
+        let chartEssCursos = null;
+        let chartEssFinanceiro = null;
+
+        function calcularRiscoAluno(a) {
+            let risco = 0;
+            if (a.estado !== 'pago') risco += 35;
+            const prog = a.progress || 0;
+            if (prog < 50) risco += 40;
+            else if (prog < 70) risco += 20;
+            const corr = a.corrections || 0;
+            if (corr < 10) risco += 25;
+            else if (corr < 20) risco += 10;
+            return Math.min(risco, 100);
+        }
+
+        function renderGraficosDSS() {
+            if (typeof Chart === 'undefined') return;
+
+            const categorias = { baixo: 0, medio: 0, alto: 0 };
+            const riscoPorTurma = {};
+
+            alunosData.forEach(a => {
+                const r = calcularRiscoAluno(a);
+                if (r >= 60) categorias.alto++;
+                else if (r >= 30) categorias.medio++;
+                else categorias.baixo++;
+
+                if (!riscoPorTurma[a.turma]) riscoPorTurma[a.turma] = [];
+                riscoPorTurma[a.turma].push(r);
+            });
+
+            const elBaixo = document.getElementById('dss-count-baixo');
+            const elMedio = document.getElementById('dss-count-medio');
+            const elAlto = document.getElementById('dss-count-alto');
+            if (elBaixo) elBaixo.innerText = categorias.baixo;
+            if (elMedio) elMedio.innerText = categorias.medio;
+            if (elAlto) elAlto.innerText = categorias.alto;
+
+            const ctxDist = document.getElementById('canvas-dss-distribuicao');
+            if (ctxDist) {
+                if (chartDssDistribuicao) chartDssDistribuicao.destroy();
+                chartDssDistribuicao = new Chart(ctxDist, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Risco Baixo', 'Risco Médio', 'Risco Alto'],
+                        datasets: [{
+                            data: [categorias.baixo, categorias.medio, categorias.alto],
+                            backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 12 } } } }
+                    }
+                });
+            }
+
+            const turmas = Object.keys(riscoPorTurma);
+            const medias = turmas.map(t => {
+                const lista = riscoPorTurma[t];
+                return Math.round(lista.reduce((s, v) => s + v, 0) / lista.length);
+            });
+
+            const ctxTurma = document.getElementById('canvas-dss-turma');
+            if (ctxTurma) {
+                if (chartDssTurma) chartDssTurma.destroy();
+                const dadosMedia = medias.length ? medias : [0];
+                chartDssTurma = new Chart(ctxTurma, {
+                    type: 'bar',
+                    data: {
+                        labels: turmas.length ? turmas : ['Sem dados'],
+                        datasets: [{
+                            label: 'Risco Médio (%)',
+                            data: dadosMedia,
+                            backgroundColor: dadosMedia.map(v => v >= 60 ? '#ef4444' : v >= 30 ? '#f59e0b' : '#10b981'),
+                            borderRadius: 6,
+                            maxBarThickness: 55
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } } },
+                        plugins: { legend: { display: false } }
+                    }
+                });
+            }
+        }
+
+        function renderGraficosESS() {
+            if (typeof Chart === 'undefined') return;
+
+            // Evolução do faturamento mensal (dados ilustrativos, alinhados ao total anual do painel)
+            const mesesEss = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+            const faturamentoMensal = [2.8, 3.0, 3.2, 3.4, 3.6, 3.9, 4.1, 3.8, 4.0, 4.3, 4.6, 4.3].map(v => v * 1000000);
+
+            const ctxFat = document.getElementById('canvas-ess-faturamento');
+            if (ctxFat) {
+                if (chartEssFaturamento) chartEssFaturamento.destroy();
+                chartEssFaturamento = new Chart(ctxFat, {
+                    type: 'line',
+                    data: {
+                        labels: mesesEss,
+                        datasets: [{
+                            label: 'Faturamento (Kz)',
+                            data: faturamentoMensal,
+                            borderColor: '#2563eb',
+                            backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                            fill: true,
+                            tension: 0.35,
+                            pointBackgroundColor: '#2563eb',
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { ticks: { callback: v => (v / 1000000).toFixed(1) + 'M' } } }
+                    }
+                });
+            }
+
+            // Alunos por curso (dados reais do sistema)
+            const cursosLista = ['Informática', 'Francês', 'Inglês', 'Cabeleireiro', 'Pastelaria'];
+            const coresCursos = ['#2563eb', '#7c3aed', '#0891b2', '#db2777', '#d97706'];
+            const contagemCursos = cursosLista.map(c => alunosData.filter(a => a.curso === c).length);
+
+            const ctxCursos = document.getElementById('canvas-ess-cursos');
+            if (ctxCursos) {
+                if (chartEssCursos) chartEssCursos.destroy();
+                chartEssCursos = new Chart(ctxCursos, {
+                    type: 'doughnut',
+                    data: { labels: cursosLista, datasets: [{ data: contagemCursos, backgroundColor: coresCursos, borderWidth: 0 }] },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } } }
+                    }
+                });
+            }
+
+            // Situação financeira (dados reais do sistema)
+            const pagos = alunosData.filter(a => a.estado === 'pago').length;
+            const emDivida = alunosData.length - pagos;
+
+            const ctxFin = document.getElementById('canvas-ess-financeiro');
+            if (ctxFin) {
+                if (chartEssFinanceiro) chartEssFinanceiro.destroy();
+                chartEssFinanceiro = new Chart(ctxFin, {
+                    type: 'pie',
+                    data: { labels: ['Pagos', 'Em Dívida'], datasets: [{ data: [pagos, emDivida], backgroundColor: ['#10b981', '#ef4444'], borderWidth: 0 }] },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 12 } } } }
+                    }
+                });
+            }
+        }
+
+        function persistSociosPrivileges() {
+            localStorage.setItem('fyp_socios_privileges', JSON.stringify(sociosPrivileges));
+        }
+        function persistMatriculaSolicitacoes() {
+            localStorage.setItem('fyp_matricula_solicitacoes', JSON.stringify(matriculaSolicitacoes));
+        }
+        function persistRemovalRequests() {
+            localStorage.setItem('fyp_removal_requests', JSON.stringify(removalRequests));
+        }
+        function persistAdminsData() {
+            localStorage.setItem('fyp_academy_credentials', JSON.stringify(admins));
+            localStorage.setItem('fyp_socios_data', JSON.stringify(sociosData));
+        }
+
+        function renderAdministracaoPanel() {
+            const painelAdministracao = document.getElementById('p-sec-administracao');
+            if (!painelAdministracao) return;
+
+            const isSuperCompleto = currentRole === "admin" && superAdminsList.includes(currentLoggedAdmin);
+            const isAprovadoraApenas = currentRole === "admin" && currentLoggedAdmin === "Maria Victoria" && !isSuperCompleto;
+
+            document.getElementById('adm-bloco-completo').style.display = isSuperCompleto ? 'block' : 'none';
+            document.getElementById('adm-bloco-aprovacoes-apenas').style.display = isAprovadoraApenas ? 'block' : 'none';
+
+            // Tabela de aprovações (versão simplificada para Maria Victória)
+            const tblAprovacoes = document.getElementById('tbl-remocoes-aprovacao-body');
+            if (tblAprovacoes) {
+                tblAprovacoes.innerHTML = removalRequests.map(r => `
+                    <tr>
+                        <td><strong>${r.nome}</strong></td>
+                        <td>${r.aprovacoes.join(', ')}</td>
+                        <td>
+                            ${r.aprovacoes.includes(currentLoggedAdmin)
+                                ? '<span style="color:#10b981; font-weight:bold;">Já aprovou</span>'
+                                : `<button class="btn-action-promote" onclick="aprovarRemocaoSocio('${r.nome}')">Aprovar Remoção</button>`}
+                        </td>
+                    </tr>
+                `).join('') || '<tr><td colspan="3" style="color:#94a3b8;">Sem solicitações pendentes.</td></tr>';
+            }
+
+            if (!isSuperCompleto) return;
+
+            // Solicitações de matrícula pendentes
+            const tblMatriculas = document.getElementById('tbl-matriculas-pendentes-body');
+            if (tblMatriculas) {
+                tblMatriculas.innerHTML = matriculaSolicitacoes.map(m => `
+                    <tr>
+                        <td><strong>${m.nome}</strong></td>
+                        <td>${m.telefone}${m.email ? ' / ' + m.email : ''}</td>
+                        <td>${m.curso}</td>
+                        <td>${m.nivel}</td>
+                        <td>
+                            <button class="btn-action-promote" onclick="aceitarMatricula(${m.id})">Aceitar</button>
+                            <button class="btn-action-demote" onclick="rejeitarMatricula(${m.id})">Rejeitar</button>
+                        </td>
+                    </tr>
+                `).join('') || '<tr><td colspan="5" style="color:#94a3b8;">Sem solicitações pendentes.</td></tr>';
+            }
+
+            // Sócios ativos
+            const tblSocios = document.getElementById('tbl-socios-ativos-body');
+            if (tblSocios) {
+                tblSocios.innerHTML = sociosData.map(s => `
+                    <tr>
+                        <td><strong>${s.nome}</strong></td>
+                        <td>${s.cargo}</td>
+                        <td>${s.status}</td>
+                        <td>
+                            ${removalRequests.find(r => r.nome === s.nome)
+                                ? '<span style="color:#f59e0b; font-weight:bold;">Remoção Pendente</span>'
+                                : `<button class="btn-action-demote" onclick="solicitarRemocaoSocio('${s.nome}')">Solicitar Remoção</button>`}
+                        </td>
+                    </tr>
+                `).join('') || '<tr><td colspan="4" style="color:#94a3b8;">Nenhum sócio registado.</td></tr>';
+            }
+
+            // Remoções aguardando aprovação (visão completa)
+            const tblRemocoesCompleto = document.getElementById('tbl-remocoes-pendentes-body');
+            if (tblRemocoesCompleto) {
+                tblRemocoesCompleto.innerHTML = removalRequests.map(r => `
+                    <tr>
+                        <td><strong>${r.nome}</strong></td>
+                        <td>${r.aprovacoes.join(', ')} (${r.aprovacoes.length}/${removalApprovers.length})</td>
+                    </tr>
+                `).join('') || '<tr><td colspan="2" style="color:#94a3b8;">Sem remoções pendentes.</td></tr>';
+            }
+
+            // Privilégios do EduSystem ERP (exclui quem já tem acesso total fixo)
+            const tblPrivilegios = document.getElementById('tbl-privilegios-erp-body');
+            if (tblPrivilegios) {
+                const sociosConfiguraveis = sociosData.filter(s => !erpFullAccessList.includes(s.nome));
+                tblPrivilegios.innerHTML = sociosConfiguraveis.map(s => {
+                    const priv = sociosPrivileges[s.nome] || { tps: true, crm: true, mis: true };
+                    return `
+                        <tr>
+                            <td><strong>${s.nome}</strong></td>
+                            <td style="text-align:center;"><input type="checkbox" ${priv.tps ? 'checked' : ''} onchange="togglePrivilegio('${s.nome}','tps',this.checked)"></td>
+                            <td style="text-align:center;"><input type="checkbox" ${priv.crm ? 'checked' : ''} onchange="togglePrivilegio('${s.nome}','crm',this.checked)"></td>
+                            <td style="text-align:center;"><input type="checkbox" ${priv.mis ? 'checked' : ''} onchange="togglePrivilegio('${s.nome}','mis',this.checked)"></td>
+                        </tr>
+                    `;
+                }).join('') || '<tr><td colspan="4" style="color:#94a3b8;">Nenhum sócio configurável.</td></tr>';
+            }
+        }
+
+        function adicionarSocio() {
+            const nome = document.getElementById('novo-socio-nome').value.trim();
+            const cargo = document.getElementById('novo-socio-cargo').value.trim() || "Sócio Executivo";
+            const senha = document.getElementById('novo-socio-senha').value.trim();
+
+            if (!nome || !senha) {
+                alert('Preencha o nome e a palavra-passe do novo sócio.');
+                return;
+            }
+            if (admins[nome]) {
+                alert('Já existe um utilizador registado com este nome.');
+                return;
+            }
+
+            admins[nome] = senha;
+            sociosData.push({ nome, cargo, status: "Ativo" });
+            sociosPrivileges[nome] = { tps: true, crm: true, mis: true };
+
+            persistAdminsData();
+            persistSociosPrivileges();
+
+            document.getElementById('novo-socio-nome').value = '';
+            document.getElementById('novo-socio-cargo').value = '';
+            document.getElementById('novo-socio-senha').value = '';
+
+            alert(`Sócio ${nome} adicionado com sucesso.`);
+            renderAdministracaoPanel();
+        }
+
+        function solicitarRemocaoSocio(nome) {
+            if (removalRequests.find(r => r.nome === nome)) {
+                alert('Já existe uma solicitação de remoção pendente para este sócio.');
+                return;
+            }
+            removalRequests.push({ nome, aprovacoes: [currentLoggedAdmin] });
+            persistRemovalRequests();
+            renderAdministracaoPanel();
+        }
+
+        function aprovarRemocaoSocio(nome) {
+            const req = removalRequests.find(r => r.nome === nome);
+            if (!req) return;
+
+            if (!req.aprovacoes.includes(currentLoggedAdmin)) {
+                req.aprovacoes.push(currentLoggedAdmin);
+            }
+
+            const aprovacaoCompleta = removalApprovers.every(aprov => req.aprovacoes.includes(aprov));
+            if (aprovacaoCompleta) {
+                // Remove apenas o login/registo de sócio; pontuações e históricos ligados ao nome permanecem intactos.
+                delete admins[nome];
+                sociosData = sociosData.filter(s => s.nome !== nome);
+                delete sociosPrivileges[nome];
+                removalRequests = removalRequests.filter(r => r.nome !== nome);
+
+                persistAdminsData();
+                persistSociosPrivileges();
+                persistRemovalRequests();
+
+                alert(`Sócio ${nome} removido com sucesso (aprovação unânime obtida). Pontuações e históricos associados foram mantidos.`);
+            } else {
+                persistRemovalRequests();
+            }
+            renderAdministracaoPanel();
+        }
+
+        function togglePrivilegio(nome, modulo, marcado) {
+            if (!sociosPrivileges[nome]) {
+                sociosPrivileges[nome] = { tps: true, crm: true, mis: true };
+            }
+            sociosPrivileges[nome][modulo] = marcado;
+            persistSociosPrivileges();
+        }
+
+        function aceitarMatricula(id) {
+            const solicitacao = matriculaSolicitacoes.find(m => m.id === id);
+            if (!solicitacao) return;
+
+            const novoId = alunosData.length ? Math.max(...alunosData.map(a => a.id)) + 1 : 1;
+            alunosData.push({
+                id: novoId,
+                nome: solicitacao.nome,
+                curso: solicitacao.curso,
+                turma: solicitacao.nivel && solicitacao.nivel !== '—' ? `Turma ${solicitacao.curso} - ${solicitacao.nivel}` : "A Atribuir",
+                propina: "A Definir",
+                estado: "divida",
+                dividas: "Primeira Mensalidade Pendente",
+                score: 0, progress: 0, corrections: 0, likes: 0
+            });
+            localStorage.setItem('fyp_alunos_data', JSON.stringify(alunosData));
+
+            matriculaSolicitacoes = matriculaSolicitacoes.filter(m => m.id !== id);
+            persistMatriculaSolicitacoes();
+
+            alert(`Matrícula de ${solicitacao.nome} aceite e adicionada aos Alunos & Turmas.`);
+            renderAdministracaoPanel();
+            renderAdminReadOnlyPanels();
+        }
+
+        function rejeitarMatricula(id) {
+            matriculaSolicitacoes = matriculaSolicitacoes.filter(m => m.id !== id);
+            persistMatriculaSolicitacoes();
+            renderAdministracaoPanel();
+        }
+
+        function aplicarPrivilegiosERP() {
+            const nome = currentLoggedAdmin;
+            const temAcessoFixo = erpFullAccessList.includes(nome);
+            const isSocioAdmin = currentRole === "admin";
+
+            const priv = (isSocioAdmin && !temAcessoFixo)
+                ? (sociosPrivileges[nome] || { tps: true, crm: true, mis: true })
+                : { tps: true, crm: true, mis: true };
+
+            const permitido = {
+                tps: isSocioAdmin ? priv.tps : true,
+                crm: isSocioAdmin ? priv.crm : true,
+                mis: isSocioAdmin ? priv.mis : true,
+                dss: isSocioAdmin ? temAcessoFixo : true,
+                ess: isSocioAdmin ? temAcessoFixo : true
+            };
+
+            document.getElementById('nav-tps').style.display = permitido.tps ? 'flex' : 'none';
+            document.getElementById('nav-crm').style.display = permitido.crm ? 'flex' : 'none';
+            document.getElementById('nav-mis').style.display = permitido.mis ? 'flex' : 'none';
+            document.getElementById('nav-dss').style.display = permitido.dss ? 'flex' : 'none';
+            document.getElementById('nav-ess').style.display = permitido.ess ? 'flex' : 'none';
+
+            if (!permitido[abaAtiva]) {
+                const ordem = ['tps', 'crm', 'mis', 'dss', 'ess'];
+                const primeiraPermitida = ordem.find(aba => permitido[aba]);
+                if (primeiraPermitida) switchTab(primeiraPermitida);
             }
         }
 
@@ -2335,6 +4089,8 @@
             renderAgendaPanel();
             populateResponsiblesDropdown();
             renderAdminReadOnlyPanels();
+            renderAdministracaoPanel();
+            renderConsultaGeralStats();
             startHeroSlider();
             updateComunidadeCounterBadge();
         });
