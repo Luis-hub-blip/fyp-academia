@@ -448,8 +448,154 @@
         .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.4); border-radius: 50%; cursor: pointer; transition: background 0.3s; }
         .dot.active { background: var(--accent-gold); width: 24px; border-radius: 6px; }
 
+        /* ================= ANIMAÇÃO DE ENTRADA AO ROLAR (SCROLL REVEAL) ================= */
+        .reveal-on-scroll { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal-on-scroll.visivel { opacity: 1; transform: translateY(0); }
+
+        /* ================= FAIXA DE ESTATÍSTICAS ================= */
+        .stats-strip {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            background: linear-gradient(120deg, var(--primary-blue), var(--primary-purple));
+            color: #fff;
+            padding: 30px 20px;
+        }
+        .stat-item { text-align: center; min-width: 100px; }
+        .stat-number { font-size: 2.4rem; font-weight: 800; color: var(--accent-gold); line-height: 1; }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.85); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        /* ================= CURSOS EM DESTAQUE ================= */
+        .cursos-destaque-section { background: var(--bg-light); padding: 45px 20px 50px; text-align: center; }
+        .cursos-destaque-title { font-size: 1.5rem; color: var(--text-dark); margin: 0 0 28px; }
+        .cursos-destaque-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; max-width: 1000px; margin: 0 auto; }
+        .curso-mini-card {
+            background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 20px 26px; min-width: 130px; cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 2px 6px rgba(15,23,42,0.05);
+        }
+        .curso-mini-card:hover { transform: translateY(-6px); box-shadow: 0 12px 24px rgba(15,23,42,0.1); }
+        .curso-mini-icon {
+            width: 52px; height: 52px; border-radius: 50%; margin: 0 auto 12px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .curso-mini-card span { font-weight: 600; color: var(--text-dark); font-size: 0.92rem; }
+
+        /* ================= TESTEMUNHOS ================= */
+        .testemunhos-section { text-align: center; margin: 45px 0; }
+        .testemunhos-title { font-size: 1.4rem; color: var(--text-dark); margin-bottom: 20px; }
+        .testemunhos-carousel { position: relative; max-width: 650px; margin: 0 auto; min-height: 110px; }
+        .testemunho-card {
+            display: none; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+            padding: 28px 30px; box-shadow: 0 4px 12px rgba(15,23,42,0.05);
+        }
+        .testemunho-card.active { display: block; animation: fypcFadeUp 0.5s ease both; }
+        .testemunho-card p { font-size: 1.05rem; font-style: italic; color: #334155; margin: 0 0 12px; }
+        .testemunho-card span { font-weight: 600; color: var(--primary-blue); font-size: 0.88rem; }
+        .testemunhos-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+        .t-dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: background 0.3s; }
+        .t-dot.active { background: var(--primary-blue); }
+
         /* Secção Inferior Corporativa */
         .content-section { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        .site-footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            padding: 22px 20px;
+            text-align: center;
+        }
+        .site-footer-title {
+            font-size: 0.72rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin: 0 0 6px;
+            font-weight: 700;
+        }
+        .site-footer-partners {
+            font-size: 0.85rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        /* ================= FYP+C TEC ================= */
+        .fypc-tec-hero {
+            background: linear-gradient(120deg, var(--primary-blue), var(--primary-purple));
+            color: #fff;
+            text-align: center;
+            padding: 70px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .fypc-tec-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.10), transparent 45%),
+                        radial-gradient(circle at 80% 80%, rgba(245,158,11,0.18), transparent 45%);
+        }
+        .fypc-tec-hero h1 {
+            position: relative;
+            font-size: 2.4rem;
+            margin: 0 0 12px;
+            animation: fypcFadeUp 0.6s ease both;
+        }
+        .fypc-tec-hero p {
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            animation: fypcFadeUp 0.6s 0.1s ease both;
+        }
+
+        @keyframes fypcFadeUp {
+            from { opacity: 0; transform: translateY(14px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fypc-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 35px;
+        }
+        .fypc-service-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px 22px;
+            box-shadow: 0 2px 8px rgba(15,23,42,0.05);
+            transition: transform 0.25s, box-shadow 0.25s;
+            animation: fypcFadeUp 0.5s ease both;
+        }
+        .fypc-service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 28px rgba(15,23,42,0.12);
+        }
+        .fypc-service-icon {
+            width: 58px; height: 58px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            margin-bottom: 16px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+        }
+        .fypc-service-card h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--text-dark); }
+        .fypc-service-resumo { font-size: 0.88rem; color: #64748b; margin: 0 0 12px; line-height: 1.4; }
+        .fypc-service-detalhe {
+            font-size: 0.85rem; color: #475569; line-height: 1.5;
+            max-height: 0; overflow: hidden; opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+        }
+        .fypc-service-detalhe.aberto { max-height: 220px; opacity: 1; margin-bottom: 12px; }
+        .fypc-saber-mais-btn {
+            background: none; border: none; color: var(--primary-blue); font-weight: 600;
+            font-size: 0.85rem; cursor: pointer; padding: 0; margin-top: 4px;
+        }
+        .fypc-saber-mais-btn:hover { text-decoration: underline; }
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
          
         .info-block { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-top: 4px solid var(--primary-purple); }
@@ -467,22 +613,59 @@
         .commitment-banner blockquote { font-size: 22px; font-weight: 700; color: var(--primary-blue); margin: 0; }
 
         /* SECÇÃO DE NOVIDADES DINÂMICAS */
-        .news-section-title { font-size: 26px; color: var(--primary-blue); font-weight: 800; border-bottom: 3px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 25px; }
-        .news-container-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 25px; margin-bottom: 40px; }
-        .news-card { background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; position: relative; }
-         
+        .news-section-title { font-size: 26px; color: var(--primary-blue); font-weight: 800; border-bottom: 3px solid var(--accent-gold); padding-bottom: 8px; margin-bottom: 15px; }
+
+        .news-filter-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+        .news-filter-btn { padding: 7px 16px; border-radius: 20px; border: 1px solid #cbd5e1; background: #fff; color: #475569; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; }
+        .news-filter-btn:hover { border-color: var(--primary-blue); }
+        .news-filter-btn.active { background: var(--primary-blue); color: #fff; border-color: var(--primary-blue); }
+
+        .news-carousel-wrapper { position: relative; }
+        .news-scroll-btn {
+            position: absolute; top: 40%; transform: translateY(-50%);
+            width: 38px; height: 38px; border-radius: 50%; border: 1px solid #e2e8f0;
+            background: #fff; color: var(--primary-blue); font-size: 20px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(15,23,42,0.1); z-index: 5; display: flex; align-items: center; justify-content: center;
+        }
+        .news-scroll-left { left: -18px; }
+        .news-scroll-right { right: -18px; }
+
+        .news-container-grid {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .news-container-grid::-webkit-scrollbar { height: 6px; }
+        .news-container-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+        .news-card {
+            background: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            overflow: hidden; display: flex; flex-direction: column; position: relative;
+            flex: 0 0 320px; scroll-snap-align: start;
+        }
+        .news-card.news-featured { flex: 0 0 460px; }
+        .news-card.news-featured .news-video-wrapper { padding-bottom: 45%; }
+
         .news-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; }
         .news-video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; object-fit: cover; }
-         
+
         .news-card-body { padding: 20px; flex-grow: 1; }
+        .news-card-date { font-size: 12px; color: #94a3b8; margin-bottom: 6px; display: block; }
         .news-card-title { font-size: 18px; font-weight: 700; color: var(--primary-purple); margin: 0 0 10px 0; }
-        .news-card-text { font-size: 14px; line-height: 1.5; color: #475569; margin: 0; }
+        .news-card-text { font-size: 14px; line-height: 1.5; color: #475569; margin: 0 0 12px; }
+        .news-like-btn { background: none; border: 1px solid #e2e8f0; border-radius: 20px; padding: 5px 12px; font-size: 13px; cursor: pointer; color: #475569; transition: 0.2s; }
+        .news-like-btn:hover { border-color: #ef4444; }
+        .news-like-btn.liked { color: #ef4444; border-color: #ef4444; background: #fef2f2; }
         .btn-delete-news { background: #dc2626; color: white; border: none; padding: 6px 12px; font-size: 11px; border-radius: 4px; cursor: pointer; font-weight: bold; position: absolute; top: 10px; right: 10px; z-index: 10; display: none; }
-        body.admin-mode .btn-delete-news { display: block; }
+        body.content-editor-mode .btn-delete-news { display: block; }
 
         /* Formulário Admin de Novidades */
         .admin-news-form-block { display: none; background: #f1f5f9; border: 2px dashed var(--primary-purple); padding: 25px; border-radius: 8px; margin-bottom: 40px; }
-        body.admin-mode .admin-news-form-block { display: block; }
+        body.content-editor-mode .admin-news-form-block { display: block; }
         .form-group-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; align-items: center; }
         .form-control { width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-family: inherit; font-size: 14px; background: #fff; }
         .file-label { font-size: 13px; font-weight: bold; color: var(--primary-blue); display: block; margin-bottom: 5px; }
@@ -520,6 +703,10 @@
         .pfc-stat-icon { font-size: 38px; margin-bottom: 10px; }
         .pfc-stat-label { font-size: 15px; color: #334155; margin-bottom: 8px; }
         .pfc-stat-value { font-size: 32px; font-weight: bold; color: #0f172a; }
+
+        .btn-choice { flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; background: #fff; color: #475569; border-radius: 6px; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s; }
+        .btn-choice:hover { border-color: var(--primary-blue); }
+        .btn-choice.active { background: var(--primary-blue); color: #fff; border-color: var(--primary-blue); }
 
         /* Lista de contactos estilo WhatsApp (tema claro) */
         .wa-contact-list { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin-top: 10px; }
@@ -1016,6 +1203,36 @@
         </div>
     </div>
 
+    <!-- Janela Pop-up de Solicitação de Serviços FYP+C Tec -->
+    <div id="solicitar-servico-modal" class="login-modal-overlay">
+        <div class="login-modal-card">
+            <h3>Solicitar Serviços — FYP+C Tec</h3>
+            <p style="font-size:13px; color:#64748b; margin-top:-10px; margin-bottom:15px;">Diga-nos o que precisa e a nossa equipa entrará em contacto consigo.</p>
+
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="serv-nome">Nome Completo:</label>
+                <input type="text" id="serv-nome" class="form-control" placeholder="Ex: Manuel António">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label" for="serv-contacto">Contacto (telefone ou e-mail):</label>
+                <input type="text" id="serv-contacto" class="form-control" placeholder="Ex: +244 9xx xxx xxx">
+            </div>
+            <div style="margin-bottom: 12px;">
+                <label class="file-label">Serviços Pretendidos:</label>
+                <div id="serv-checkboxes" style="display:flex; flex-direction:column; gap:6px; margin-top:4px;"></div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <label class="file-label" for="serv-mensagem">Mensagem (opcional):</label>
+                <textarea id="serv-mensagem" class="form-control" rows="3" placeholder="Conte-nos um pouco mais sobre o que precisa..."></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-modal-cancel" onclick="closeSolicitarServicoModal()">Cancelar</button>
+                <button class="btn-modal-confirm" onclick="submitSolicitacaoServico()">Enviar Solicitação</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Barra de Administração Personalizada -->
     <div class="admin-bar">
         <span id="admin-status" class="admin-status-text">Modo Público</span>
@@ -1034,6 +1251,7 @@
         </div>
         <div class="main-nav-tabs">
             <button class="nav-tab-btn active" id="btn-tab-inicio" onclick="switchMainTab('tab-inicio')">Início</button>
+            <button class="nav-tab-btn" id="btn-tab-fypc-tec" onclick="switchMainTab('tab-fypc-tec')">FYP+C Tec</button>
             
             <!-- ABA MEU PERFIL (EXCLUSIVA APÓS O LOGIN) -->
             <button class="nav-tab-btn nav-admin-only" id="btn-tab-meu-perfil" onclick="switchMainTab('tab-meu-perfil')">Meu Perfil</button>
@@ -1067,6 +1285,51 @@
             </div>
         </div>
 
+        <div class="stats-strip reveal-on-scroll" id="stats-strip">
+            <div class="stat-item">
+                <div class="stat-number" id="stat-alunos">0</div>
+                <div class="stat-label">Alunos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="stat-professores">0</div>
+                <div class="stat-label">Professores</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="stat-socios">0</div>
+                <div class="stat-label">Sócios</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="stat-cursos">5</div>
+                <div class="stat-label">Cursos</div>
+            </div>
+        </div>
+
+        <div class="cursos-destaque-section reveal-on-scroll">
+            <h2 class="cursos-destaque-title">Os Nossos Cursos</h2>
+            <div class="cursos-destaque-grid">
+                <div class="curso-mini-card" onclick="abrirRegistroComCurso('Informática')">
+                    <div class="curso-mini-icon" style="background: linear-gradient(135deg,#2563eb,#38bdf8)">💻</div>
+                    <span>Informática</span>
+                </div>
+                <div class="curso-mini-card" onclick="abrirRegistroComCurso('Inglês')">
+                    <div class="curso-mini-icon" style="background: linear-gradient(135deg,#3b82f6,#60a5fa)">🇬🇧</div>
+                    <span>Inglês</span>
+                </div>
+                <div class="curso-mini-card" onclick="abrirRegistroComCurso('Francês')">
+                    <div class="curso-mini-icon" style="background: linear-gradient(135deg,#ef4444,#f87171)">🇫🇷</div>
+                    <span>Francês</span>
+                </div>
+                <div class="curso-mini-card" onclick="abrirRegistroComCurso('Cabeleireiro')">
+                    <div class="curso-mini-icon" style="background: linear-gradient(135deg,#db2777,#f472b6)">💇</div>
+                    <span>Cabeleireiro</span>
+                </div>
+                <div class="curso-mini-card" onclick="abrirRegistroComCurso('Pastelaria')">
+                    <div class="curso-mini-icon" style="background: linear-gradient(135deg,#d97706,#fbbf24)">🧁</div>
+                    <span>Pastelaria</span>
+                </div>
+            </div>
+        </div>
+
         <div class="content-section">
             <!-- FORMULÁRIO DE NOVIDADES -->
             <div class="admin-news-form-block">
@@ -1077,20 +1340,29 @@
                         <input type="text" id="news-input-title" class="form-control" placeholder="Ex: Nova Turma de Sábado">
                     </div>
                     <div>
-                        <label class="file-label">Carregar Vídeo (MP4, MOV):</label>
-                        <input type="file" id="news-input-file" class="form-control" accept="video/mp4, video/quicktime" onchange="encodeVideoFile(this)">
+                        <label class="file-label">Carregar Vídeo ou Imagem:</label>
+                        <input type="file" id="news-input-file" class="form-control" accept="video/mp4, video/quicktime, image/png, image/jpeg, image/webp" onchange="encodeMediaFile(this)">
                     </div>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label class="file-label">Descrição / Conteúdo:</label>
+                    <label class="file-label">Descrição da Atividade:</label>
                     <textarea id="news-input-text" class="form-control" rows="3" placeholder="Texto descritivo..."></textarea>
                 </div>
                 <button class="btn-publish-news" onclick="publishNews()">Publicar Novidade</button>
             </div>
 
             <div id="anchor-news-section">
-                <div class="news-section-title">Últimas Novidades & Multimédia</div>
-                <div class="news-container-grid" id="news-display-grid"></div>
+                <div class="news-section-title">Notícias sobre Nós</div>
+                <div class="news-filter-bar">
+                    <button class="news-filter-btn active" data-filtro="todos" onclick="filtrarNoticias('todos', this)">Todas</button>
+                    <button class="news-filter-btn" data-filtro="video" onclick="filtrarNoticias('video', this)">Vídeos</button>
+                    <button class="news-filter-btn" data-filtro="image" onclick="filtrarNoticias('image', this)">Fotos</button>
+                </div>
+                <div class="news-carousel-wrapper">
+                    <button class="news-scroll-btn news-scroll-left" onclick="scrollNoticias(-1)" aria-label="Anterior">‹</button>
+                    <div class="news-container-grid" id="news-display-grid"></div>
+                    <button class="news-scroll-btn news-scroll-right" onclick="scrollNoticias(1)" aria-label="Seguinte">›</button>
+                </div>
             </div>
 
             <div class="info-grid">
@@ -1113,7 +1385,47 @@
                     "Take a step on us and we'll make the whole journey together."
                 </blockquote>
             </div>
+
+            <div class="testemunhos-section reveal-on-scroll">
+                <h3 class="testemunhos-title">O que dizem de nós</h3>
+                <div class="testemunhos-carousel" id="testemunhos-carousel">
+                    <div class="testemunho-card active">
+                        <p id="field-testemunho-1" contenteditable="false">"Escreva aqui um testemunho real de um aluno, sócio ou parceiro."</p>
+                        <span id="field-testemunho-1-autor" contenteditable="false">— Nome do Autor</span>
+                    </div>
+                    <div class="testemunho-card">
+                        <p id="field-testemunho-2" contenteditable="false">"Escreva aqui um segundo testemunho real."</p>
+                        <span id="field-testemunho-2-autor" contenteditable="false">— Nome do Autor</span>
+                    </div>
+                    <div class="testemunho-card">
+                        <p id="field-testemunho-3" contenteditable="false">"Escreva aqui um terceiro testemunho real."</p>
+                        <span id="field-testemunho-3-autor" contenteditable="false">— Nome do Autor</span>
+                    </div>
+                </div>
+                <div class="testemunhos-dots">
+                    <div class="t-dot active" onclick="setTestemunho(0)"></div>
+                    <div class="t-dot" onclick="setTestemunho(1)"></div>
+                    <div class="t-dot" onclick="setTestemunho(2)"></div>
+                </div>
+            </div>
+
             <button class="btn-save-content" onclick="saveContent()">Guardar Alterações</button>
+        </div>
+    </div>
+
+    <!-- ================= ABA FYP+C TEC ================= -->
+    <div id="tab-fypc-tec" class="main-tab-content">
+        <div class="fypc-tec-hero">
+            <h1>FYP+C Tec</h1>
+            <p>Soluções tecnológicas completas para impulsionar o seu negócio — do software à segurança, da nuvem à inteligência artificial.</p>
+        </div>
+
+        <div class="content-section">
+            <div class="fypc-services-grid" id="fypc-services-grid"></div>
+
+            <div style="text-align:center; margin: 35px 0 10px;">
+                <button class="hero-cta-btn" onclick="openSolicitarServicoModal()">Solicitar Serviços</button>
+            </div>
         </div>
     </div>
 
@@ -1882,6 +2194,17 @@
     document.getElementById('tabela-tps').insertAdjacentHTML('afterbegin', novaLinha);
     document.getElementById('form-tps').reset();
     atualizarNivel();
+
+    // Atualiza em tempo real a ficha do aluno correspondente, se ele já existir no sistema
+    const nomeAlvo = nome.trim().toLowerCase();
+    const alunoEncontrado = alunosData.find(a => a.nome.trim().toLowerCase() === nomeAlvo);
+    if (alunoEncontrado) {
+        const presente = corStatus === 'green';
+        alunoEncontrado.progress = Math.max(0, Math.min(100, (alunoEncontrado.progress || 0) + (presente ? 3 : -2)));
+        if (presente) alunoEncontrado.score = (alunoEncontrado.score || 0) + 1;
+        localStorage.setItem('fyp_alunos_data', JSON.stringify(alunosData));
+    }
+    sincronizarSistema();
   }
 
   function simularReforzo() {
@@ -2075,7 +2398,7 @@
                     <h2>🛡️ Administração</h2>
                     <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Gestão de sócios, matrículas e privilégios de acesso ao EduSystem ERP.</p>
 
-                    <!-- Bloco visível apenas para Maria Victória (apenas aprovação de remoção) -->
+                    <!-- Bloco visível apenas para Maria Victória (apenas aprovação de remoção/promoção) -->
                     <div id="adm-bloco-aprovacoes-apenas" style="display:none;">
                         <h3 style="font-size:16px; color:#1e293b; margin-bottom:8px;">Aprovações Pendentes de Remoção de Sócio</h3>
                         <p style="font-size:13px; color:#64748b; margin-bottom:15px;">A remoção de um sócio só é concluída com a aprovação de Lázaro Luís, Francisco Faztudo e Maria Victória.</p>
@@ -2088,6 +2411,20 @@
                                 </tr>
                             </thead>
                             <tbody id="tbl-remocoes-aprovacao-body"></tbody>
+                        </table>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Aprovações Pendentes de Promoção</h3>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:15px;">Uma promoção só é concluída com a aprovação de Lázaro Luís, Francisco Faztudo e Maria Victória.</p>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nova Promoção</th>
+                                    <th>Aprovações Obtidas</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-promocoes-aprovacao-body"></tbody>
                         </table>
                     </div>
 
@@ -2132,25 +2469,79 @@
                             <tbody id="tbl-remocoes-pendentes-body"></tbody>
                         </table>
 
-                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Adicionar Novo Sócio</h3>
-                        <div style="max-width: 500px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px;">
-                            <div style="margin-bottom: 12px;">
-                                <label class="file-label">Nome Completo:</label>
-                                <input type="text" id="novo-socio-nome" class="form-control">
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Promoções Aguardando Aprovação</h3>
+                        <table class="adm-data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nova Promoção</th>
+                                    <th>Aprovações Obtidas</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbl-promocoes-pendentes-body"></tbody>
+                        </table>
+
+                        <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Promover e Adicionar</h3>
+                        <div style="max-width: 520px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px;">
+
+                            <div class="pfc-choice-row" style="display:flex; gap:10px; margin-bottom:18px;">
+                                <button type="button" class="btn-choice active" id="btn-modo-adicionar" onclick="selecionarModoPromoverAdicionar('adicionar')">1. Adicionar</button>
+                                <button type="button" class="btn-choice" id="btn-modo-promover" onclick="selecionarModoPromoverAdicionar('promover')">2. Promover</button>
                             </div>
-                            <div style="margin-bottom: 12px;">
-                                <label class="file-label">Cargo:</label>
-                                <input type="text" id="novo-socio-cargo" class="form-control" placeholder="Ex: Sócio Executivo">
+
+                            <!-- Sub-bloco: Adicionar Sócio (fluxo já existente) -->
+                            <div id="bloco-adicionar-socio">
+                                <div style="margin-bottom: 12px;">
+                                    <label class="file-label">Nome Completo:</label>
+                                    <input type="text" id="novo-socio-nome" class="form-control">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label class="file-label">Cargo:</label>
+                                    <input type="text" id="novo-socio-cargo" class="form-control" placeholder="Ex: Sócio Executivo">
+                                </div>
+                                <div style="margin-bottom: 15px;">
+                                    <label class="file-label">Palavra-passe Inicial:</label>
+                                    <input type="password" id="novo-socio-senha" class="form-control">
+                                </div>
+                                <button class="btn-publish-news" onclick="adicionarSocio()">Adicionar Sócio</button>
                             </div>
-                            <div style="margin-bottom: 15px;">
-                                <label class="file-label">Palavra-passe Inicial:</label>
-                                <input type="password" id="novo-socio-senha" class="form-control">
+
+                            <!-- Sub-bloco: Promover (fluxo em cascata) -->
+                            <div id="bloco-promover-socio" style="display:none;">
+                                <div style="margin-bottom: 12px;">
+                                    <label class="file-label">1. Selecionar Categoria:</label>
+                                    <select id="promo-categoria" class="form-control" onchange="atualizarListaPromocaoNomes()">
+                                        <option value="">-- Selecionar --</option>
+                                        <option value="professor">Professor</option>
+                                        <option value="aluno">Aluno</option>
+                                        <option value="socio">Sócio</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 12px;" id="promo-nome-wrapper" hidden>
+                                    <label class="file-label">2. Selecionar Nome:</label>
+                                    <select id="promo-nome" class="form-control" onchange="atualizarNovaPromocaoBloco()"></select>
+                                </div>
+                                <div style="margin-bottom: 12px;" id="promo-cargo-wrapper" hidden>
+                                    <label class="file-label">3. Nova Promoção:</label>
+                                    <select id="promo-cargo" class="form-control" onchange="atualizarSenhaPromocaoWrapper()">
+                                        <option value="">-- Selecionar --</option>
+                                        <option value="professor">Promover para Professor</option>
+                                        <option value="administrador">Promover para Administrador</option>
+                                        <option value="socio">Promover para Sócio</option>
+                                        <option value="secretaria">Promover para Secretaria</option>
+                                        <option value="super_administrador">Promover para Super Administrador</option>
+                                    </select>
+                                </div>
+                                <div style="margin-bottom: 15px;" id="promo-senha-wrapper" hidden>
+                                    <label class="file-label">Senha Inicial (esta pessoa ainda não tem login):</label>
+                                    <input type="password" id="promo-senha" class="form-control">
+                                </div>
+                                <button class="btn-publish-news" id="btn-solicitar-promocao" onclick="solicitarPromocao()" hidden>Solicitar Promoção</button>
                             </div>
-                            <button class="btn-publish-news" onclick="adicionarSocio()">Adicionar Sócio</button>
                         </div>
 
                         <h3 style="font-size:16px; color:#1e293b; margin: 25px 0 8px;">Privilégios do EduSystem ERP</h3>
-                        <p style="font-size:13px; color:#64748b; margin-bottom:10px;">As opções 4 (Simulador de Riscos) e 5 (Visão da Diretoria) são exclusivas de Francisco Faztudo, Lázaro Luís e Maria Victória e não podem ser atribuídas aqui.</p>
+                        <p style="font-size:13px; color:#64748b; margin-bottom:10px;">As opções 4 (Simulador de Riscos) e 5 (Visão da Diretoria) são exclusivas de Francisco Faztudo, Lázaro Luís, Maria Victória e de quem for promovido a Super Administrador.</p>
                         <table class="adm-data-table">
                             <thead>
                                 <tr>
@@ -2218,6 +2609,13 @@
         </div>
     </div>
 
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <p class="site-footer-title">Parceiros</p>
+            <p class="site-footer-partners">Urânios &nbsp;·&nbsp; Golf 2 em Movimento</p>
+        </div>
+    </footer>
+
     <script
 >        /* ==========================================================
            ESTRUTURA DE DADOS E PERSISTÊNCIA ATUALIZADA
@@ -2253,9 +2651,24 @@
             "Silo João": { phone: "932 777 666", email: "silo@fyp.com", avatar: "" }
         };
 
-        const superAdminsList = ["Francisco Faztudo", "Lázaro Luis"];
-        const erpFullAccessList = ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"];
-        const removalApprovers = ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"];
+        let superAdminsList = JSON.parse(localStorage.getItem('fyp_super_admins')) || ["Francisco Faztudo", "Lázaro Luis"];
+        let erpFullAccessList = JSON.parse(localStorage.getItem('fyp_erp_full_access')) || ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"];
+        const removalApprovers = ["Francisco Faztudo", "Lázaro Luis", "Maria Victoria"]; // Aprovadores fixos de remoções e promoções
+
+        // Listas dinâmicas de papéis de login (podem crescer via promoção)
+        let teachersNomesList = JSON.parse(localStorage.getItem('fyp_teachers_nomes')) || ["Teacher Amadeu", "Professeur Jean-Pierre", "Rosario Justo", "Mauro Kaila", "Emael Morais"];
+        let studentsNomesList = JSON.parse(localStorage.getItem('fyp_students_nomes')) || ["Helena Alburquerque", "Silo João"];
+
+        // Solicitações de promoção pendentes de aprovação tripla
+        let promotionRequests = JSON.parse(localStorage.getItem('fyp_promotion_requests')) || [];
+
+        const rotulosCargoPromocao = {
+            professor: "Professor",
+            administrador: "Administrador",
+            socio: "Sócio",
+            secretaria: "Secretaria",
+            super_administrador: "Super Administrador"
+        };
 
         // Privilégios de acesso às opções 1 (TPS), 2 (CRM) e 3 (MIS) do EduSystem ERP, por sócio
         let sociosPrivileges = JSON.parse(localStorage.getItem('fyp_socios_privileges')) || {};
@@ -2265,6 +2678,11 @@
 
         // Solicitações de remoção de sócio, pendentes de aprovação tripla
         let removalRequests = JSON.parse(localStorage.getItem('fyp_removal_requests')) || [];
+
+        // Rastreia qual ficha de detalhe está aberta neste momento, para poder atualizá-la em tempo real
+        let alunoDetalheAtualId = null;
+        let professorDetalheAtualNome = null;
+        let socioDetalheAtualNome = null;
 
         let currentLoggedAdmin = null;
         let isAdminActive = false;
@@ -2360,8 +2778,10 @@
         ];
 
         let newsData = JSON.parse(localStorage.getItem('fyp_news_data')) || [
-            { id: 1, title: "Grandes Aberturas no Próximo Mês!", text: "As inscrições estão oficialmente abertas para o projeto 'Inglês no Golf 2'. Garanta já o seu lugar na turma de Sábado.", mediaType: "video", mediaUrl: "" }
+            { id: 1, title: "Grandes Aberturas no Próximo Mês!", text: "As inscrições estão oficialmente abertas para o projeto 'Inglês no Golf 2'. Garanta já o seu lugar na turma de Sábado.", mediaType: "video", mediaUrl: "", date: Date.now() - (3 * 24 * 60 * 60 * 1000), likes: 0 }
         ];
+        let filtroNoticiasAtivo = "todos";
+        let noticiasCurtidas = JSON.parse(localStorage.getItem('fyp_noticias_curtidas')) || [];
 
         let currentMonth = 6; // Julho
         let currentYear = 2026;
@@ -2493,7 +2913,7 @@
 
             closePublicRegistrationModal();
             alert('Inscrição enviada com sucesso! Entraremos em contacto brevemente.');
-            renderAdministracaoPanel();
+            sincronizarSistema();
         }
 
         function updateComunidadeCounterBadge() {
@@ -3043,6 +3463,7 @@
             localStorage.setItem('fyp_community_questions', JSON.stringify(communityQuestions));
             renderCommunitySection();
             updateComunidadeCounterBadge();
+            sincronizarSistema();
             alert("Feedback pedagógico enviado com sucesso!");
         }
 
@@ -3052,6 +3473,7 @@
                 if (al.nome === studentName) {
                     al.score = (al.score || 0) + 2;
                     al.corrections += 1; // Incrementa as correções do estilo Busuu
+                    al.progress = Math.max(0, Math.min(100, (al.progress || 0) + 2));
                 }
                 return al;
             });
@@ -3069,7 +3491,7 @@
 
             alert(`Excelente! Foram atribuídos 2 pontos ao aluno ${studentName} pelo seu desempenho.`);
             renderCommunitySection();
-            renderAdminReadOnlyPanels();
+            sincronizarSistema();
         }
 
         /* ==========================================================
@@ -3112,9 +3534,9 @@
                 currentLoggedAdmin = user;
                 
                 // Determinação de Perfil/Role
-                if (user === "Helena Alburquerque" || user === "Silo João") {
+                if (studentsNomesList.includes(user)) {
                     currentRole = "student";
-                } else if (user === "Teacher Amadeu" || user === "Professeur Jean-Pierre" || user === "Rosario Justo" || user === "Mauro Kaila" || user === "Emael Morais") {
+                } else if (teachersNomesList.includes(user)) {
                     currentRole = "teacher";
                 } else {
                     currentRole = "admin";
@@ -3137,13 +3559,18 @@
 
         function enableUserMode(enabled) {
             isAdminActive = enabled && (currentRole === "admin");
-            
+
             // Gerir classes CSS globais do corpo da página
-            document.body.classList.remove('admin-mode', 'prof-mode', 'student-mode');
+            document.body.classList.remove('admin-mode', 'prof-mode', 'student-mode', 'content-editor-mode');
             if (enabled) {
                 if (currentRole === "admin") document.body.classList.add('admin-mode');
                 else if (currentRole === "teacher") document.body.classList.add('prof-mode');
                 else if (currentRole === "student") document.body.classList.add('student-mode');
+
+                // Edição do conteúdo da área inicial (Quem Somos, Notícias, etc.) restrita ao trio de confiança
+                if (currentRole === "admin" && removalApprovers.includes(currentLoggedAdmin)) {
+                    document.body.classList.add('content-editor-mode');
+                }
             }
 
             // Atualização de elementos de navegação e barra de status
@@ -3157,7 +3584,7 @@
             }
 
             document.getElementById('btn-login-admin').style.display = enabled ? 'none' : 'block';
-            document.getElementById('btn-toggle-edit').style.display = (enabled && currentRole === "admin") ? 'block' : 'none';
+            document.getElementById('btn-toggle-edit').style.display = (enabled && currentRole === "admin" && removalApprovers.includes(currentLoggedAdmin)) ? 'block' : 'none';
             document.getElementById('btn-logout-admin').style.display = enabled ? 'block' : 'none';
             document.getElementById('btn-change-pass').style.display = enabled ? 'block' : 'none';
             
@@ -3196,9 +3623,7 @@
             renderCalendar();
             renderAgendaPanel();
             populateResponsiblesDropdown();
-            renderAdminReadOnlyPanels();
-            renderAdministracaoPanel();
-            renderConsultaGeralStats();
+            sincronizarSistema();
             if (enabled) aplicarPrivilegiosERP();
             updateComunidadeCounterBadge();
         }
@@ -3206,7 +3631,7 @@
         function toggleTextEditing() {
             isTextEditModeActive = !isTextEditModeActive;
             document.body.classList.toggle('admin-edit-active', isTextEditModeActive);
-            const editableFields = ["field-title", "field-quem-somos", "field-missao-title", "field-missao", "field-valores-title", "field-valores", "field-slogan-title", "field-slogan"];
+            const editableFields = ["field-title", "field-quem-somos", "field-missao-title", "field-missao", "field-valores-title", "field-valores", "field-slogan-title", "field-slogan", "field-testemunho-1", "field-testemunho-1-autor", "field-testemunho-2", "field-testemunho-2-autor", "field-testemunho-3", "field-testemunho-3-autor"];
             editableFields.forEach(id => {
                 const element = document.getElementById(id);
                 if (element) {
@@ -3224,7 +3649,13 @@
                 valoresTitle: document.getElementById('field-valores-title').innerHTML,
                 valores: document.getElementById('field-valores').innerHTML,
                 sloganTitle: document.getElementById('field-slogan-title').innerHTML,
-                slogan: document.getElementById('field-slogan').innerHTML
+                slogan: document.getElementById('field-slogan').innerHTML,
+                testemunho1: document.getElementById('field-testemunho-1').innerHTML,
+                testemunho1Autor: document.getElementById('field-testemunho-1-autor').innerHTML,
+                testemunho2: document.getElementById('field-testemunho-2').innerHTML,
+                testemunho2Autor: document.getElementById('field-testemunho-2-autor').innerHTML,
+                testemunho3: document.getElementById('field-testemunho-3').innerHTML,
+                testemunho3Autor: document.getElementById('field-testemunho-3-autor').innerHTML
             };
             localStorage.setItem('fyp_homepage_editable_content', JSON.stringify(editedContent));
             alert("Alterações guardadas com sucesso na página inicial!");
@@ -3242,6 +3673,12 @@
                 if (saved.valores) document.getElementById('field-valores').innerHTML = saved.valores;
                 if (saved.sloganTitle) document.getElementById('field-slogan-title').innerHTML = saved.sloganTitle;
                 if (saved.slogan) document.getElementById('field-slogan').innerHTML = saved.slogan;
+                if (saved.testemunho1) document.getElementById('field-testemunho-1').innerHTML = saved.testemunho1;
+                if (saved.testemunho1Autor) document.getElementById('field-testemunho-1-autor').innerHTML = saved.testemunho1Autor;
+                if (saved.testemunho2) document.getElementById('field-testemunho-2').innerHTML = saved.testemunho2;
+                if (saved.testemunho2Autor) document.getElementById('field-testemunho-2-autor').innerHTML = saved.testemunho2Autor;
+                if (saved.testemunho3) document.getElementById('field-testemunho-3').innerHTML = saved.testemunho3;
+                if (saved.testemunho3Autor) document.getElementById('field-testemunho-3-autor').innerHTML = saved.testemunho3Autor;
             }
         }
 
@@ -3288,11 +3725,91 @@
         }
 
         /* ==========================================================
+           FAIXA DE ESTATÍSTICAS (CONTAGEM ANIMADA)
+           ========================================================== */
+        let contadoresJaAnimados = false;
+
+        function animarContador(elementId, valorFinal, duracaoMs) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            const inicio = performance.now();
+            function passo(agora) {
+                const progresso = Math.min((agora - inicio) / duracaoMs, 1);
+                el.innerText = Math.floor(progresso * valorFinal);
+                if (progresso < 1) requestAnimationFrame(passo);
+                else el.innerText = valorFinal;
+            }
+            requestAnimationFrame(passo);
+        }
+
+        function animarContadores() {
+            if (contadoresJaAnimados) return;
+            contadoresJaAnimados = true;
+            animarContador('stat-alunos', alunosData.length, 1200);
+            animarContador('stat-professores', professoresData.length, 1200);
+            animarContador('stat-socios', sociosData.length, 1200);
+        }
+
+        /* ==========================================================
+           CURSOS EM DESTAQUE -> ATALHO PARA INSCRIÇÃO
+           ========================================================== */
+        function abrirRegistroComCurso(curso) {
+            openPublicRegistrationModal();
+            const selectCurso = document.getElementById('reg-curso');
+            if (selectCurso) {
+                selectCurso.value = curso;
+                atualizarNivelPublico();
+            }
+        }
+
+        /* ==========================================================
+           TESTEMUNHOS (CARROSSEL)
+           ========================================================== */
+        let testemunhoAtivo = 0;
+        let testemunhoIntervalo = null;
+
+        function setTestemunho(indice) {
+            testemunhoAtivo = indice;
+            document.querySelectorAll('.testemunho-card').forEach((card, i) => card.classList.toggle('active', i === indice));
+            document.querySelectorAll('.t-dot').forEach((dot, i) => dot.classList.toggle('active', i === indice));
+        }
+
+        function iniciarCarrosselTestemunhos() {
+            if (testemunhoIntervalo) clearInterval(testemunhoIntervalo);
+            testemunhoIntervalo = setInterval(() => {
+                setTestemunho((testemunhoAtivo + 1) % 3);
+            }, 6000);
+        }
+
+        /* ==========================================================
+           ANIMAÇÃO DE ENTRADA AO ROLAR A PÁGINA (SCROLL REVEAL)
+           ========================================================== */
+        function iniciarScrollReveal() {
+            const elementos = document.querySelectorAll('.reveal-on-scroll');
+            if (!elementos.length) return;
+
+            const observador = new IntersectionObserver((entradas) => {
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add('visivel');
+                        if (entrada.target.id === 'stats-strip') animarContadores();
+                        observador.unobserve(entrada.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            elementos.forEach(el => observador.observe(el));
+        }
+
+        /* ==========================================================
            GESTOR DE NOVIDADES DINÂMICAS (VÍDEO & CONTEÚDO)
            ========================================================== */
-        function encodeVideoFile(input) {
+        let tempMediaTipo = "";
+
+        function encodeMediaFile(input) {
             const file = input.files[0];
             if (!file) return;
+            tempMediaTipo = file.type.startsWith('image/') ? 'image' : 'video';
             const reader = new FileReader();
             reader.onload = function(e) {
                 tempVideoBase64 = e.target.result;
@@ -3313,8 +3830,10 @@
                 id: Date.now(),
                 title: title,
                 text: text,
-                mediaType: tempVideoBase64 ? "video" : "none",
-                mediaUrl: tempVideoBase64 || ""
+                mediaType: tempVideoBase64 ? tempMediaTipo : "none",
+                mediaUrl: tempVideoBase64 || "",
+                date: Date.now(),
+                likes: 0
             };
 
             newsData.unshift(newPost);
@@ -3324,8 +3843,142 @@
             document.getElementById('news-input-text').value = "";
             document.getElementById('news-input-file').value = null;
             tempVideoBase64 = "";
+            tempMediaTipo = "";
 
             alert("Novidade publicada com sucesso!");
+            renderNews();
+        }
+
+        /* ==========================================================
+           FYP+C TEC — SERVIÇOS E SOLICITAÇÕES
+           ========================================================== */
+        const fypcServicosData = [
+            { id: 'web-mobile', icone: '🖥️', cor: 'linear-gradient(135deg,#2563eb,#38bdf8)', titulo: 'Aplicações Web e Mobile', resumo: 'Sites, plataformas e apps sob medida para o seu negócio.', detalhe: 'Desenvolvemos sites institucionais, plataformas web complexas e aplicações móveis nativas ou híbridas, com foco em performance, usabilidade e escalabilidade.' },
+            { id: 'cloud-devops', icone: '☁️', cor: 'linear-gradient(135deg,#0891b2,#06b6d4)', titulo: 'Cloud & DevOps', resumo: 'Infraestrutura, automação e escalabilidade na nuvem.', detalhe: 'Configuração e gestão de infraestrutura cloud (AWS, Azure, GCP), pipelines de CI/CD, automação de deploys e monitorização contínua.' },
+            { id: 'ia', icone: '🤖', cor: 'linear-gradient(135deg,#7c3aed,#a855f7)', titulo: 'Inteligência Artificial', resumo: 'Automação inteligente e soluções orientadas por dados.', detalhe: 'Criação de assistentes virtuais, automação de processos com IA, análise preditiva e integração de modelos de linguagem no seu negócio.' },
+            { id: 'multimedia', icone: '🎬', cor: 'linear-gradient(135deg,#db2777,#f472b6)', titulo: 'Multimédia & Produção', resumo: 'Vídeo, fotografia e conteúdo visual profissional.', detalhe: 'Produção de vídeos institucionais, fotografia de produto e evento, edição e motion graphics para redes sociais e campanhas.' },
+            { id: 'marketing', icone: '📈', cor: 'linear-gradient(135deg,#d97706,#fbbf24)', titulo: 'Marketing Digital', resumo: 'Estratégia, gestão de redes e crescimento online.', detalhe: 'Gestão de redes sociais, campanhas pagas, SEO, e-mail marketing e estratégias de crescimento orientadas a resultados.' },
+            { id: 'seguranca', icone: '🛡️', cor: 'linear-gradient(135deg,#dc2626,#f87171)', titulo: 'Consultoria & Segurança', resumo: 'Proteção de dados e boas práticas tecnológicas.', detalhe: 'Auditorias de segurança, consultoria em proteção de dados, boas práticas de TI e planos de resposta a incidentes.' },
+            { id: 'erp', icone: '🏢', cor: 'linear-gradient(135deg,#059669,#34d399)', titulo: 'Sistemas Empresariais', resumo: 'ERPs, CRMs e sistemas de gestão sob medida.', detalhe: 'Desenvolvimento de sistemas de gestão empresarial (ERP/CRM) personalizados, como o próprio EduSystem, adaptados à realidade de cada negócio.' }
+        ];
+
+        function renderFypcServicos() {
+            const grid = document.getElementById('fypc-services-grid');
+            if (!grid) return;
+            grid.innerHTML = fypcServicosData.map(s => `
+                <div class="fypc-service-card">
+                    <div class="fypc-service-icon" style="background:${s.cor}">${s.icone}</div>
+                    <h3>${s.titulo}</h3>
+                    <p class="fypc-service-resumo">${s.resumo}</p>
+                    <div class="fypc-service-detalhe" id="detalhe-${s.id}">${s.detalhe}</div>
+                    <button class="fypc-saber-mais-btn" onclick="toggleSaberMais('${s.id}', this)">Saber mais ▾</button>
+                </div>
+            `).join('');
+        }
+
+        function toggleSaberMais(id, btn) {
+            const detalhe = document.getElementById('detalhe-' + id);
+            const aberto = detalhe.classList.toggle('aberto');
+            btn.innerText = aberto ? 'Ver menos ▴' : 'Saber mais ▾';
+        }
+
+        function openSolicitarServicoModal() {
+            const container = document.getElementById('serv-checkboxes');
+            container.innerHTML = fypcServicosData.map(s => `
+                <label style="display:flex; align-items:center; gap:8px; font-size:14px; color:#334155; cursor:pointer;">
+                    <input type="checkbox" value="${s.titulo}" class="serv-check"> ${s.titulo}
+                </label>
+            `).join('');
+            document.getElementById('solicitar-servico-modal').style.display = 'flex';
+        }
+
+        function closeSolicitarServicoModal() {
+            document.getElementById('solicitar-servico-modal').style.display = 'none';
+        }
+
+        function submitSolicitacaoServico() {
+            const nome = document.getElementById('serv-nome').value.trim();
+            const contacto = document.getElementById('serv-contacto').value.trim();
+            const mensagem = document.getElementById('serv-mensagem').value.trim();
+            const escolhidos = Array.from(document.querySelectorAll('.serv-check:checked')).map(c => c.value);
+
+            if (!nome || !contacto) {
+                alert('Preencha pelo menos o nome e o contacto.');
+                return;
+            }
+            if (escolhidos.length === 0) {
+                alert('Selecione pelo menos um serviço.');
+                return;
+            }
+
+            // Notificação privada para Lázaro Luís, Francisco Faztudo e Leonel Ngola (um registo por pessoa)
+            const destinatariosServicos = ["Lázaro Luis", "Francisco Faztudo", "Leonel Ngola"];
+            const idBase = Date.now();
+            destinatariosServicos.forEach((pessoa, indice) => {
+                agendaData.push({
+                    id: idBase + indice,
+                    date: new Date().toLocaleDateString('pt-PT'),
+                    title: `📩 Nova solicitação FYP+C Tec de ${nome}: ${escolhidos.join(', ')}`,
+                    responsible: pessoa,
+                    priority: "alta",
+                    status: "pendente"
+                });
+            });
+            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
+
+            let solicitacoesServicos = JSON.parse(localStorage.getItem('fyp_solicitacoes_servicos')) || [];
+            solicitacoesServicos.push({ id: idBase, nome, contacto, servicos: escolhidos, mensagem, data: new Date().toLocaleDateString('pt-PT') });
+            localStorage.setItem('fyp_solicitacoes_servicos', JSON.stringify(solicitacoesServicos));
+
+            document.getElementById('serv-nome').value = '';
+            document.getElementById('serv-contacto').value = '';
+            document.getElementById('serv-mensagem').value = '';
+            closeSolicitarServicoModal();
+            alert('Solicitação enviada com sucesso! A nossa equipa entrará em contacto brevemente.');
+            sincronizarSistema();
+        }
+
+        function tempoRelativo(timestamp) {
+            if (!timestamp) return "Publicado recentemente";
+            const diffMs = Date.now() - timestamp;
+            const minutos = Math.floor(diffMs / 60000);
+            const horas = Math.floor(diffMs / 3600000);
+            const dias = Math.floor(diffMs / 86400000);
+            const semanas = Math.floor(dias / 7);
+
+            if (minutos < 1) return "Agora mesmo";
+            if (minutos < 60) return `Há ${minutos} min`;
+            if (horas < 24) return `Há ${horas} hora${horas > 1 ? 's' : ''}`;
+            if (dias < 7) return `Há ${dias} dia${dias > 1 ? 's' : ''}`;
+            return `Há ${semanas} semana${semanas > 1 ? 's' : ''}`;
+        }
+
+        function filtrarNoticias(tipo, btn) {
+            filtroNoticiasAtivo = tipo;
+            document.querySelectorAll('.news-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderNews();
+        }
+
+        function scrollNoticias(direcao) {
+            const container = document.getElementById('news-display-grid');
+            if (container) container.scrollBy({ left: direcao * 340, behavior: 'smooth' });
+        }
+
+        function toggleLikeNoticia(id) {
+            const item = newsData.find(n => n.id === id);
+            if (!item) return;
+            const jaCurtiu = noticiasCurtidas.includes(id);
+
+            if (jaCurtiu) {
+                item.likes = Math.max(0, (item.likes || 0) - 1);
+                noticiasCurtidas = noticiasCurtidas.filter(nid => nid !== id);
+            } else {
+                item.likes = (item.likes || 0) + 1;
+                noticiasCurtidas.push(id);
+            }
+            localStorage.setItem('fyp_news_data', JSON.stringify(newsData));
+            localStorage.setItem('fyp_noticias_curtidas', JSON.stringify(noticiasCurtidas));
             renderNews();
         }
 
@@ -3334,9 +3987,11 @@
             if(!container) return;
             container.innerHTML = "";
 
-            newsData.forEach(item => {
+            const listaFiltrada = newsData.filter(item => filtroNoticiasAtivo === 'todos' || item.mediaType === filtroNoticiasAtivo);
+
+            listaFiltrada.forEach((item, indice) => {
                 const card = document.createElement('div');
-                card.className = 'news-card';
+                card.className = 'news-card' + (indice === 0 ? ' news-featured' : '');
                 
                 let mediaHtml = "";
                 if(item.mediaType === 'video' && item.mediaUrl) {
@@ -3345,18 +4000,34 @@
                             <video src="${item.mediaUrl}" controls loop muted></video>
                         </div>
                     `;
+                } else if(item.mediaType === 'image' && item.mediaUrl) {
+                    mediaHtml = `
+                        <div class="news-video-wrapper">
+                            <img src="${item.mediaUrl}" alt="${item.title}" style="width:100%; height:100%; object-fit:cover;">
+                        </div>
+                    `;
                 }
+
+                const curtido = noticiasCurtidas.includes(item.id);
 
                 card.innerHTML = `
                     ${mediaHtml}
                     <button class="btn-delete-news" onclick="deleteNewsItem(${item.id})">Apagar</button>
                     <div class="news-card-body">
+                        <span class="news-card-date">${tempoRelativo(item.date)}</span>
                         <h4 class="news-card-title">${item.title}</h4>
                         <p class="news-card-text">${item.text}</p>
+                        <button class="news-like-btn ${curtido ? 'liked' : ''}" onclick="toggleLikeNoticia(${item.id})">
+                            ${curtido ? '❤️' : '🤍'} Gostei (${item.likes || 0})
+                        </button>
                     </div>
                 `;
                 container.appendChild(card);
             });
+
+            if (listaFiltrada.length === 0) {
+                container.innerHTML = '<p style="color:#94a3b8; padding:15px;">Nenhuma publicação nesta categoria.</p>';
+            }
         }
 
         function deleteNewsItem(id) {
@@ -3508,6 +4179,7 @@
         function abrirDetalheProfessor(nome) {
             const p = professoresData.find(pr => pr.nome === nome);
             if (!p) return;
+            professorDetalheAtualNome = nome;
             const turmas = professorClassMapping[nome] ? professorClassMapping[nome].join(', ') : 'Nenhuma turma atribuída';
 
             document.getElementById('wa-detalhe-professor-content').innerHTML = `
@@ -3532,6 +4204,7 @@
         }
 
         function voltarListaProfessores() {
+            professorDetalheAtualNome = null;
             document.getElementById('professores-detalhe-view').style.display = 'none';
             document.getElementById('professores-lista-view').style.display = 'block';
         }
@@ -3554,6 +4227,7 @@
         function abrirDetalheAluno(id) {
             const a = alunosData.find(al => al.id === id);
             if (!a) return;
+            alunoDetalheAtualId = id;
             const estadoTag = a.estado === 'pago'
                 ? '<span class="wa-tag wa-tag-green">Pago</span>'
                 : '<span class="wa-tag wa-tag-red">Em Dívida</span>';
@@ -3589,6 +4263,7 @@
         }
 
         function voltarListaAlunos() {
+            alunoDetalheAtualId = null;
             document.getElementById('alunos-detalhe-view').style.display = 'none';
             document.getElementById('alunos-lista-view').style.display = 'block';
         }
@@ -3611,6 +4286,7 @@
         function abrirDetalheSocio(nome) {
             const s = sociosData.find(so => so.nome === nome);
             if (!s) return;
+            socioDetalheAtualNome = nome;
 
             const statusTag = s.status === 'Ativo'
                 ? '<span class="wa-tag wa-tag-green">Ativo</span>'
@@ -3654,6 +4330,7 @@
         }
 
         function voltarListaSocios() {
+            socioDetalheAtualNome = null;
             document.getElementById('socios-detalhe-view').style.display = 'none';
             document.getElementById('socios-lista-view').style.display = 'block';
         }
@@ -3839,8 +4516,76 @@
             }
         }
 
+        /* ==========================================================
+           SINCRONIZAÇÃO EM TEMPO REAL
+           Ponto central chamado sempre que qualquer ação (TPS, CRM,
+           Comunidade, Administração, etc.) altera dados do sistema.
+           Atualiza instantaneamente todas as telas afetadas, e ainda
+           entre abas abertas no mesmo navegador (via evento 'storage').
+           ========================================================== */
+        function sincronizarSistema() {
+            // Recontagens e listas de contacto (Person FYP+C, Alunos, Professores, Sócios)
+            renderConsultaGeralStats();
+            renderAdminReadOnlyPanels();
+
+            // Painel de Administração (matrículas pendentes, sócios, privilégios, remoções, promoções)
+            renderAdministracaoPanel();
+
+            // Calendário / Minhas Pendências (notificações de promoção, tarefas, etc.)
+            renderAgendaPanel();
+            updateComunidadeCounterBadge();
+
+            // Se a ficha de um aluno/professor/sócio estiver aberta neste momento, atualiza-a ao vivo
+            if (alunoDetalheAtualId !== null) abrirDetalheAluno(alunoDetalheAtualId);
+            if (professorDetalheAtualNome !== null) abrirDetalheProfessor(professorDetalheAtualNome);
+            if (socioDetalheAtualNome !== null) abrirDetalheSocio(socioDetalheAtualNome);
+
+            // Se o EduSystem ERP estiver aberto agora, atualiza os gráficos da aba visível
+            const painelErp = document.getElementById('p-sec-edusystem');
+            const erpVisivel = painelErp && painelErp.style.display !== 'none';
+            if (erpVisivel && abaAtiva === 'dss') renderGraficosDSS();
+            if (erpVisivel && abaAtiva === 'ess') renderGraficosESS();
+        }
+
+        // Sincroniza entre abas do mesmo navegador: quando os dados mudam noutra aba,
+        // recarrega-os aqui e atualiza tudo, no mesmo instante.
+        window.addEventListener('storage', (evento) => {
+            const chavesConhecidas = {
+                'fyp_alunos_data': () => { alunosData = JSON.parse(localStorage.getItem('fyp_alunos_data')) || alunosData; },
+                'fyp_professores_data': () => { professoresData = JSON.parse(localStorage.getItem('fyp_professores_data')) || professoresData; },
+                'fyp_socios_data': () => { sociosData = JSON.parse(localStorage.getItem('fyp_socios_data')) || sociosData; },
+                'fyp_socios_privileges': () => { sociosPrivileges = JSON.parse(localStorage.getItem('fyp_socios_privileges')) || sociosPrivileges; },
+                'fyp_matricula_solicitacoes': () => { matriculaSolicitacoes = JSON.parse(localStorage.getItem('fyp_matricula_solicitacoes')) || matriculaSolicitacoes; },
+                'fyp_removal_requests': () => { removalRequests = JSON.parse(localStorage.getItem('fyp_removal_requests')) || removalRequests; },
+                'fyp_academy_credentials': () => { admins = JSON.parse(localStorage.getItem('fyp_academy_credentials')) || admins; },
+                'fyp_community_questions': () => { communityQuestions = JSON.parse(localStorage.getItem('fyp_community_questions')) || communityQuestions; },
+                'fyp_promotion_requests': () => { promotionRequests = JSON.parse(localStorage.getItem('fyp_promotion_requests')) || promotionRequests; },
+                'fyp_teachers_nomes': () => { teachersNomesList = JSON.parse(localStorage.getItem('fyp_teachers_nomes')) || teachersNomesList; },
+                'fyp_students_nomes': () => { studentsNomesList = JSON.parse(localStorage.getItem('fyp_students_nomes')) || studentsNomesList; },
+                'fyp_super_admins': () => { superAdminsList = JSON.parse(localStorage.getItem('fyp_super_admins')) || superAdminsList; },
+                'fyp_erp_full_access': () => { erpFullAccessList = JSON.parse(localStorage.getItem('fyp_erp_full_access')) || erpFullAccessList; },
+                'fyp_agenda_tasks': () => { agendaData = JSON.parse(localStorage.getItem('fyp_agenda_tasks')) || agendaData; }
+            };
+            if (chavesConhecidas[evento.key]) {
+                chavesConhecidas[evento.key]();
+                sincronizarSistema();
+            }
+        });
+
         function persistSociosPrivileges() {
             localStorage.setItem('fyp_socios_privileges', JSON.stringify(sociosPrivileges));
+        }
+        function persistTeachersNomesList() {
+            localStorage.setItem('fyp_teachers_nomes', JSON.stringify(teachersNomesList));
+        }
+        function persistSuperAdminsList() {
+            localStorage.setItem('fyp_super_admins', JSON.stringify(superAdminsList));
+        }
+        function persistErpFullAccessList() {
+            localStorage.setItem('fyp_erp_full_access', JSON.stringify(erpFullAccessList));
+        }
+        function persistPromotionRequests() {
+            localStorage.setItem('fyp_promotion_requests', JSON.stringify(promotionRequests));
         }
         function persistMatriculaSolicitacoes() {
             localStorage.setItem('fyp_matricula_solicitacoes', JSON.stringify(matriculaSolicitacoes));
@@ -3877,6 +4622,23 @@
                         </td>
                     </tr>
                 `).join('') || '<tr><td colspan="3" style="color:#94a3b8;">Sem solicitações pendentes.</td></tr>';
+            }
+
+            // Tabela de promoções (versão simplificada para Maria Victória)
+            const tblPromocoesAprov = document.getElementById('tbl-promocoes-aprovacao-body');
+            if (tblPromocoesAprov) {
+                tblPromocoesAprov.innerHTML = promotionRequests.map(r => `
+                    <tr>
+                        <td><strong>${r.nome}</strong></td>
+                        <td>${rotulosCargoPromocao[r.novoCargo]}</td>
+                        <td>${r.aprovacoes.join(', ')}</td>
+                        <td>
+                            ${r.aprovacoes.includes(currentLoggedAdmin)
+                                ? '<span style="color:#10b981; font-weight:bold;">Já aprovou</span>'
+                                : `<button class="btn-action-promote" onclick="aprovarPromocao(${r.id})">Aprovar Promoção</button>`}
+                        </td>
+                    </tr>
+                `).join('') || '<tr><td colspan="4" style="color:#94a3b8;">Sem promoções pendentes.</td></tr>';
             }
 
             if (!isSuperCompleto) return;
@@ -3926,6 +4688,18 @@
                 `).join('') || '<tr><td colspan="2" style="color:#94a3b8;">Sem remoções pendentes.</td></tr>';
             }
 
+            // Promoções aguardando aprovação (visão completa)
+            const tblPromocoesCompleto = document.getElementById('tbl-promocoes-pendentes-body');
+            if (tblPromocoesCompleto) {
+                tblPromocoesCompleto.innerHTML = promotionRequests.map(r => `
+                    <tr>
+                        <td><strong>${r.nome}</strong></td>
+                        <td>${rotulosCargoPromocao[r.novoCargo]}</td>
+                        <td>${r.aprovacoes.join(', ')} (${r.aprovacoes.length}/${removalApprovers.length})</td>
+                    </tr>
+                `).join('') || '<tr><td colspan="3" style="color:#94a3b8;">Sem promoções pendentes.</td></tr>';
+            }
+
             // Privilégios do EduSystem ERP (exclui quem já tem acesso total fixo)
             const tblPrivilegios = document.getElementById('tbl-privilegios-erp-body');
             if (tblPrivilegios) {
@@ -3970,7 +4744,161 @@
             document.getElementById('novo-socio-senha').value = '';
 
             alert(`Sócio ${nome} adicionado com sucesso.`);
-            renderAdministracaoPanel();
+            sincronizarSistema();
+        }
+
+        function selecionarModoPromoverAdicionar(modo) {
+            document.getElementById('bloco-adicionar-socio').style.display = modo === 'adicionar' ? 'block' : 'none';
+            document.getElementById('bloco-promover-socio').style.display = modo === 'promover' ? 'block' : 'none';
+            document.getElementById('btn-modo-adicionar').classList.toggle('active', modo === 'adicionar');
+            document.getElementById('btn-modo-promover').classList.toggle('active', modo === 'promover');
+        }
+
+        function atualizarListaPromocaoNomes() {
+            const categoria = document.getElementById('promo-categoria').value;
+            const wrapperNome = document.getElementById('promo-nome-wrapper');
+            const selectNome = document.getElementById('promo-nome');
+
+            document.getElementById('promo-cargo-wrapper').hidden = true;
+            document.getElementById('promo-cargo').value = '';
+            document.getElementById('promo-senha-wrapper').hidden = true;
+            document.getElementById('btn-solicitar-promocao').hidden = true;
+
+            if (!categoria) { wrapperNome.hidden = true; return; }
+
+            let nomes = [];
+            if (categoria === 'professor') nomes = professoresData.map(p => p.nome);
+            else if (categoria === 'aluno') nomes = alunosData.map(a => a.nome);
+            else if (categoria === 'socio') nomes = sociosData.map(s => s.nome);
+
+            selectNome.innerHTML = '<option value="">-- Selecionar --</option>' +
+                nomes.map(n => `<option value="${n}">${n}</option>`).join('');
+            wrapperNome.hidden = false;
+        }
+
+        function atualizarNovaPromocaoBloco() {
+            const nome = document.getElementById('promo-nome').value;
+            document.getElementById('promo-cargo-wrapper').hidden = !nome;
+            document.getElementById('promo-cargo').value = '';
+            document.getElementById('promo-senha-wrapper').hidden = true;
+            document.getElementById('btn-solicitar-promocao').hidden = true;
+        }
+
+        function atualizarSenhaPromocaoWrapper() {
+            const nome = document.getElementById('promo-nome').value;
+            const cargo = document.getElementById('promo-cargo').value;
+            const precisaSenha = nome && !admins[nome];
+            document.getElementById('promo-senha-wrapper').hidden = !precisaSenha;
+            document.getElementById('btn-solicitar-promocao').hidden = !cargo;
+        }
+
+        function solicitarPromocao() {
+            const nome = document.getElementById('promo-nome').value;
+            const cargo = document.getElementById('promo-cargo').value;
+            const senha = document.getElementById('promo-senha').value.trim();
+
+            if (!nome || !cargo) {
+                alert('Selecione o nome e a nova promoção.');
+                return;
+            }
+            if (!admins[nome] && !senha) {
+                alert('Esta pessoa ainda não tem login no sistema. Defina uma senha inicial para ela.');
+                return;
+            }
+            if (promotionRequests.find(r => r.nome === nome)) {
+                alert('Já existe uma promoção pendente para esta pessoa.');
+                return;
+            }
+
+            promotionRequests.push({
+                id: Date.now(),
+                nome,
+                novoCargo: cargo,
+                senhaInicial: senha || null,
+                aprovacoes: [currentLoggedAdmin]
+            });
+            persistPromotionRequests();
+
+            document.getElementById('promo-categoria').value = '';
+            document.getElementById('promo-nome-wrapper').hidden = true;
+            document.getElementById('promo-cargo-wrapper').hidden = true;
+            document.getElementById('promo-senha-wrapper').hidden = true;
+            document.getElementById('btn-solicitar-promocao').hidden = true;
+            document.getElementById('promo-senha').value = '';
+
+            alert('Solicitação de promoção enviada para aprovação de Lázaro Luís, Francisco Faztudo e Maria Victória.');
+            sincronizarSistema();
+        }
+
+        function aprovarPromocao(id) {
+            const req = promotionRequests.find(r => r.id === id);
+            if (!req) return;
+
+            if (!req.aprovacoes.includes(currentLoggedAdmin)) {
+                req.aprovacoes.push(currentLoggedAdmin);
+            }
+
+            const aprovacaoCompleta = removalApprovers.every(aprov => req.aprovacoes.includes(aprov));
+            if (aprovacaoCompleta) {
+                efetivarPromocao(req);
+                promotionRequests = promotionRequests.filter(r => r.id !== id);
+            }
+            persistPromotionRequests();
+            sincronizarSistema();
+        }
+
+        function efetivarPromocao(req) {
+            const nome = req.nome;
+            const cargo = req.novoCargo;
+            const cargoLabel = rotulosCargoPromocao[cargo];
+
+            // Garante o login, se a pessoa ainda não tinha
+            if (!admins[nome] && req.senhaInicial) {
+                admins[nome] = req.senhaInicial;
+                persistAdminsData();
+            }
+
+            if (cargo === 'professor') {
+                if (!teachersNomesList.includes(nome)) teachersNomesList.push(nome);
+                persistTeachersNomesList();
+                if (!professoresData.find(p => p.nome === nome)) {
+                    professoresData.push({ nome, curso: "A Definir", salas: "A Definir" });
+                    localStorage.setItem('fyp_professores_data', JSON.stringify(professoresData));
+                }
+            } else {
+                // Administrador, Sócio, Secretaria e Super Administrador entram todos como sócios (papel "admin")
+                const existente = sociosData.find(s => s.nome === nome);
+                if (existente) {
+                    existente.cargo = cargoLabel;
+                    existente.status = "Ativo";
+                } else {
+                    sociosData.push({ nome, cargo: cargoLabel, status: "Ativo" });
+                }
+                localStorage.setItem('fyp_socios_data', JSON.stringify(sociosData));
+
+                if (!sociosPrivileges[nome]) sociosPrivileges[nome] = { tps: true, crm: true, mis: true };
+                persistSociosPrivileges();
+
+                if (cargo === 'super_administrador') {
+                    if (!superAdminsList.includes(nome)) superAdminsList.push(nome);
+                    if (!erpFullAccessList.includes(nome)) erpFullAccessList.push(nome);
+                    persistSuperAdminsList();
+                    persistErpFullAccessList();
+                }
+            }
+
+            // Notificação privada: só a pessoa promovida vê isto em "Minhas Pendências"
+            agendaData.push({
+                id: Date.now(),
+                date: new Date().toLocaleDateString('pt-PT'),
+                title: `🎉 Você foi promovido(a) a ${cargoLabel}!`,
+                responsible: nome,
+                priority: "alta",
+                status: "pendente"
+            });
+            localStorage.setItem('fyp_agenda_tasks', JSON.stringify(agendaData));
+
+            alert(`Promoção de ${nome} a ${cargoLabel} efetivada com sucesso. A pessoa já pode ver a notificação em Calendário > Minhas Pendências, no próprio login dela.`);
         }
 
         function solicitarRemocaoSocio(nome) {
@@ -3980,7 +4908,7 @@
             }
             removalRequests.push({ nome, aprovacoes: [currentLoggedAdmin] });
             persistRemovalRequests();
-            renderAdministracaoPanel();
+            sincronizarSistema();
         }
 
         function aprovarRemocaoSocio(nome) {
@@ -4007,7 +4935,7 @@
             } else {
                 persistRemovalRequests();
             }
-            renderAdministracaoPanel();
+            sincronizarSistema();
         }
 
         function togglePrivilegio(nome, modulo, marcado) {
@@ -4016,6 +4944,7 @@
             }
             sociosPrivileges[nome][modulo] = marcado;
             persistSociosPrivileges();
+            sincronizarSistema();
         }
 
         function aceitarMatricula(id) {
@@ -4039,14 +4968,13 @@
             persistMatriculaSolicitacoes();
 
             alert(`Matrícula de ${solicitacao.nome} aceite e adicionada aos Alunos & Turmas.`);
-            renderAdministracaoPanel();
-            renderAdminReadOnlyPanels();
+            sincronizarSistema();
         }
 
         function rejeitarMatricula(id) {
             matriculaSolicitacoes = matriculaSolicitacoes.filter(m => m.id !== id);
             persistMatriculaSolicitacoes();
-            renderAdministracaoPanel();
+            sincronizarSistema();
         }
 
         function aplicarPrivilegiosERP() {
@@ -4085,13 +5013,14 @@
         window.addEventListener('DOMContentLoaded', () => {
             loadSavedContent();
             renderNews();
+            renderFypcServicos();
             renderCalendar();
             renderAgendaPanel();
             populateResponsiblesDropdown();
-            renderAdminReadOnlyPanels();
-            renderAdministracaoPanel();
-            renderConsultaGeralStats();
+            sincronizarSistema();
             startHeroSlider();
+            iniciarScrollReveal();
+            iniciarCarrosselTestemunhos();
             updateComunidadeCounterBadge();
         });
         /* ==========================================
