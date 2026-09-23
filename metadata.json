@@ -1,0 +1,8 @@
+{
+  "name": "FYP+C - Gestão Dinâmica",
+  "description": "Plataforma de gestão integrada acadêmica e corporativa da FYP+C com EduSystem ERP",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
